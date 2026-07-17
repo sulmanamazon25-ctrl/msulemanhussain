@@ -1,0 +1,50 @@
+services:
+  web:
+    image: msulemanhussain:latest
+    container_name: msulemanhussain-web
+    restart: unless-stopped
+    networks:
+      - g5t1u52ej20yqweuarrspujb
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - HOSTNAME=0.0.0.0
+    labels:
+      - traefik.enable=true
+      - traefik.http.middlewares.gzip.compress=true
+      - traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https
+      - traefik.http.routers.http-0-msulemanhussain-web.entryPoints=http
+      - traefik.http.routers.http-0-msulemanhussain-web.middlewares=redirect-to-https
+      - traefik.http.routers.http-0-msulemanhussain-web.rule=Host(`msulemanhussain.com`) && PathPrefix(`/`)
+      - traefik.http.routers.http-1-msulemanhussain-web.entryPoints=http
+      - traefik.http.routers.http-1-msulemanhussain-web.middlewares=redirect-to-https
+      - traefik.http.routers.http-1-msulemanhussain-web.rule=Host(`www.msulemanhussain.com`) && PathPrefix(`/`)
+      - traefik.http.routers.https-0-msulemanhussain-web.entryPoints=https
+      - traefik.http.routers.https-0-msulemanhussain-web.middlewares=gzip
+      - traefik.http.routers.https-0-msulemanhussain-web.rule=Host(`msulemanhussain.com`) && PathPrefix(`/`)
+      - traefik.http.routers.https-0-msulemanhussain-web.tls=true
+      - traefik.http.routers.https-0-msulemanhussain-web.tls.certresolver=letsencrypt
+      - traefik.http.routers.https-1-msulemanhussain-web.entryPoints=https
+      - traefik.http.routers.https-1-msulemanhussain-web.middlewares=gzip
+      - traefik.http.routers.https-1-msulemanhussain-web.rule=Host(`www.msulemanhussain.com`) && PathPrefix(`/`)
+      - traefik.http.routers.https-1-msulemanhussain-web.tls=true
+      - traefik.http.routers.https-1-msulemanhussain-web.tls.certresolver=letsencrypt
+      - traefik.http.services.msulemanhussain-web.loadbalancer.server.port=3000
+      - caddy_0=https://msulemanhussain.com
+      - caddy_0.encode=zstd gzip
+      - caddy_0.handle_path=/*
+      - caddy_0.handle_path.0_reverse_proxy={{upstreams 3000}}
+      - caddy_0.header=-Server
+      - caddy_1=https://www.msulemanhussain.com
+      - caddy_1.encode=zstd gzip
+      - caddy_1.handle_path=/*
+      - caddy_1.handle_path.1_reverse_proxy={{upstreams 3000}}
+      - caddy_1.header=-Server
+      - caddy_ingress_network=g5t1u52ej20yqweuarrspujb
+      - coolify.managed=true
+      - coolify.name=msulemanhussain-web
+      - coolify.projectName=msulemanhussain
+
+networks:
+  g5t1u52ej20yqweuarrspujb:
+    external: true
