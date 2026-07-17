@@ -1,0 +1,60 @@
+import type { JourneyStage } from "./site";
+
+export const journeyStages: JourneyStage[] = [
+  {
+    id: "problem",
+    label: "PROBLEM",
+    statement: "I see problems everywhere.",
+    example: "A creator workflow is too slow — hours lost to scripting, cutting, captioning.",
+    productSlug: "reelerx",
+    accent: "#ff3d1f",
+  },
+  {
+    id: "observation",
+    label: "OBSERVATION",
+    statement: "I watch how people actually work.",
+    example: "Teams glue brittle scripts for media transforms instead of owning a system.",
+    productSlug: "downitx",
+    accent: "#ff6a3d",
+  },
+  {
+    id: "idea",
+    label: "IDEA",
+    statement: "Then I shape a product bet.",
+    example: "What if brand voice and growth content lived in one locked system?",
+    productSlug: "brandpilot",
+    accent: "#ffb020",
+  },
+  {
+    id: "experiment",
+    label: "EXPERIMENT",
+    statement: "I test the workflow before I scale it.",
+    example: "Realtime voice agents — measuring latency before promising product magic.",
+    productSlug: "voxi",
+    accent: "#e85dff",
+  },
+  {
+    id: "product",
+    label: "PRODUCT",
+    statement: "I ship something people can use.",
+    example: "ReelerX and DownitX live as real product surfaces — not demos.",
+    productSlug: "reelerx",
+    accent: "#3d8bff",
+  },
+  {
+    id: "users",
+    label: "USERS",
+    statement: "I observe behavior and tighten the loop.",
+    example: "Activation, failures, and queue health become product truth.",
+    productSlug: "downitx",
+    accent: "#5dff9a",
+  },
+  {
+    id: "growth",
+    label: "GROWTH",
+    statement: "I improve the system that acquires and converts.",
+    example: "SEO, content systems, and conversion architecture compound what shipped.",
+    productSlug: "brandpilot",
+    accent: "#5dff9a",
+  },
+];
