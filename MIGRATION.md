@@ -26,6 +26,6 @@ docker start wordpress-g5t1u52ej20yqweuarrspujb
 docker update --restart=unless-stopped wordpress-g5t1u52ej20yqweuarrspujb
 ```
 
-## Note on Vercel
+## Note
 
-An earlier preview was deployed to `msulemanhussain.vercel.app`. Production traffic for the custom domain is on **Coolify**, not Vercel.
+Production is **Coolify only**. Any earlier Vercel preview for this site has been removed.
