@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="pqGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#6A3093"/>
+      <stop offset="100%" stop-color="#E0208C"/>
+    </linearGradient>
+  </defs>
+  <rect x="8" y="8" width="48" height="48" rx="12" stroke="url(#pqGrad)" stroke-width="2.5" fill="none"/>
+  <path d="M18 46 L28 18 L32 22 L24 46 Z" fill="url(#pqGrad)"/>
+  <path d="M28 18 L44 28 L40 32 L28 22 Z" fill="url(#pqGrad)" opacity="0.85"/>
+  <path d="M44 28 L46 26 L48 30 L46 32 Z" fill="#E0208C"/>
+</svg>

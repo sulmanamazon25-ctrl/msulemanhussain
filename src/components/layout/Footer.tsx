@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { site } from "@/content/site";
 
@@ -6,7 +7,16 @@ export function Footer() {
     <footer className="mt-8 border-t border-white/5 bg-ink-2/80">
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 md:grid-cols-4 md:px-6">
         <div className="md:col-span-1">
-          <p className="font-display text-lg font-semibold">{site.name}</p>
+          <div className="flex items-center gap-3">
+            <Image
+              src="/brand/mark.png"
+              alt=""
+              width={40}
+              height={40}
+              className="h-10 w-10 border border-white/10 object-cover"
+            />
+            <p className="font-display text-lg font-semibold">{site.name}</p>
+          </div>
           <p className="mt-3 max-w-xs text-sm leading-relaxed text-bone-dim">
             Founder building software, AI products, and digital businesses.
           </p>

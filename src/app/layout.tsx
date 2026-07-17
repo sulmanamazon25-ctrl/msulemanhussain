@@ -30,17 +30,27 @@ export const metadata: Metadata = {
     template: `%s · ${site.name}`,
   },
   description: site.description,
+  icons: {
+    icon: [
+      { url: "/favicon.png", type: "image/png" },
+      { url: "/brand/mark.svg", type: "image/svg+xml" },
+    ],
+    apple: [{ url: "/brand/mark.png" }],
+    shortcut: ["/favicon.png"],
+  },
   openGraph: {
     title: site.title,
     description: site.description,
     url: site.url,
     siteName: site.name,
     type: "website",
+    images: [{ url: "/brand/mark.png", width: 1024, height: 1024, alt: site.name }],
   },
   twitter: {
-    card: "summary_large_image",
+    card: "summary",
     title: site.title,
     description: site.description,
+    images: ["/brand/mark.png"],
   },
   alternates: {
     canonical: site.url,

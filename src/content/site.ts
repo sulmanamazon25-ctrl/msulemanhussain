@@ -24,7 +24,8 @@ export type ProductStatus =
   | "FOR SALE"
   | "EXPERIMENT"
   | "SHIPPED"
-  | "PAUSED";
+  | "PAUSED"
+  | "COMING SOON";
 
 export type Product = {
   slug: string;
@@ -53,6 +54,10 @@ export type Product = {
   relatedProjectSlugs?: string[];
   liveUrl?: string;
   featured?: boolean;
+  multilingual?: boolean;
+  locales?: string[];
+  logo?: string;
+  previewImage?: string;
 };
 
 export type ProjectStatus = "LIVE" | "SHIPPED" | "BUILDING" | "EXPERIMENT" | "ACQUIRED" | "ARCHIVED";

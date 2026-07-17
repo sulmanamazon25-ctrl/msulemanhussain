@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
@@ -18,8 +19,18 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-white/5 bg-ink/75 backdrop-blur-xl">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 md:px-6">
-        <Link href="/" className="font-display text-sm font-bold tracking-[0.2em] text-bone">
-          SULEMAN HUSSAIN
+        <Link href="/" className="flex items-center gap-3">
+          <Image
+            src="/brand/mark.png"
+            alt="Suleman Hussain"
+            width={36}
+            height={36}
+            className="h-9 w-9 border border-white/10 object-cover"
+            priority
+          />
+          <span className="font-display text-sm font-bold tracking-[0.2em] text-bone">
+            SULEMAN HUSSAIN
+          </span>
         </Link>
 
         <nav className="hidden items-center gap-7 lg:flex">
@@ -59,7 +70,10 @@ export function Header() {
             className="fixed inset-0 z-[60] flex flex-col bg-ink px-6 py-6 lg:hidden"
           >
             <div className="mb-12 flex items-center justify-between">
-              <span className="font-display text-sm tracking-[0.2em]">SULEMAN HUSSAIN</span>
+              <div className="flex items-center gap-3">
+                <Image src="/brand/mark.png" alt="" width={32} height={32} className="h-8 w-8 object-cover" />
+                <span className="font-display text-sm tracking-[0.2em]">SULEMAN HUSSAIN</span>
+              </div>
               <button type="button" onClick={() => setOpen(false)} className="text-sm tracking-widest text-signal">
                 CLOSE
               </button>

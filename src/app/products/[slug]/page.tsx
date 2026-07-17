@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getProduct, products, statusClass } from "@/content/products";
@@ -20,7 +21,11 @@ export async function generateMetadata({
   return {
     title: product.name,
     description: product.tagline,
-    openGraph: { title: product.name, description: product.tagline },
+    openGraph: {
+      title: product.name,
+      description: product.tagline,
+      images: product.previewImage ? [product.previewImage] : undefined,
+    },
   };
 }
 
@@ -47,9 +52,25 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           </Link>
           <div className="mt-8 grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
             <div>
-              <span className={cn("border px-2 py-0.5 text-[10px] tracking-wider", statusClass(product.status))}>
-                {product.status}
-              </span>
+              <div className="flex flex-wrap items-center gap-3">
+                {product.logo ? (
+                  <Image
+                    src={product.logo}
+                    alt={product.name}
+                    width={48}
+                    height={48}
+                    className="h-12 w-12 object-contain"
+                  />
+                ) : null}
+                <span className={cn("border px-2 py-0.5 text-[10px] tracking-wider", statusClass(product.status))}>
+                  {product.status}
+                </span>
+                {product.multilingual ? (
+                  <span className="border border-phosphor/40 px-2 py-0.5 text-[10px] tracking-wider text-phosphor">
+                    MULTILINGUAL{product.locales ? ` · ${product.locales.join(" / ")}` : ""}
+                  </span>
+                ) : null}
+              </div>
               <h1 className="mt-4 font-display text-5xl font-bold md:text-6xl" style={{ color: product.accent }}>
                 {product.name}
               </h1>
@@ -58,15 +79,17 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                 {product.category}
                 {product.year ? ` · ${product.year}` : ""}
               </p>
-              {product.status === "FOR SALE" && (
-                <p className="mt-6 inline-block border border-signal/50 bg-signal/10 px-4 py-2 text-sm tracking-wide text-signal">
-                  AVAILABLE FOR ACQUISITION
+              {product.status === "COMING SOON" ? (
+                <p className="mt-6 inline-block border border-amber/40 bg-amber/10 px-4 py-2 text-sm tracking-wide text-amber">
+                  COMING SOON FROM THE WORKSHOP
                 </p>
-              )}
+              ) : null}
               <div className="mt-8 flex flex-wrap gap-3">
                 {product.liveUrl ? (
                   <a
                     href={product.liveUrl}
+                    target="_blank"
+                    rel="noreferrer"
                     className="bg-signal px-5 py-3 text-sm font-semibold hover:bg-signal-hot"
                   >
                     Explore live product
@@ -76,32 +99,33 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                     href="/contact"
                     className="bg-signal px-5 py-3 text-sm font-semibold hover:bg-signal-hot"
                   >
-                    {product.status === "FOR SALE" ? "Talk acquisition" : "Talk about this product"}
+                    Talk about this product
                   </Link>
                 )}
               </div>
             </div>
             <div
-              className="min-h-64 border border-white/10 bg-ink-3/80 p-4"
+              className="relative min-h-64 overflow-hidden border border-white/10 bg-ink-3/80"
               style={{ boxShadow: `0 0 80px ${product.accentSoft}` }}
             >
-              <div className="flex h-full flex-col border border-dashed border-white/15 p-4">
-                <div className="flex gap-2">
-                  <span className="h-2 w-2 rounded-full" style={{ background: product.accent }} />
-                  <span className="h-2 w-2 rounded-full bg-amber" />
-                  <span className="h-2 w-2 rounded-full bg-phosphor" />
+              {product.previewImage ? (
+                <Image
+                  src={product.previewImage}
+                  alt={`${product.name} preview`}
+                  fill
+                  className="object-cover object-top"
+                  sizes="(max-width: 1024px) 100vw, 40vw"
+                />
+              ) : (
+                <div
+                  className="flex h-full min-h-64 items-center justify-center p-8"
+                  style={{ background: product.accentSoft }}
+                >
+                  <p className="font-display text-3xl font-bold" style={{ color: product.accent }}>
+                    {product.name}
+                  </p>
                 </div>
-                <div className="mt-6 grid flex-1 grid-cols-3 gap-2">
-                  {[1, 2, 3, 4, 5, 6].map((n) => (
-                    <div
-                      key={n}
-                      className="border border-white/10"
-                      style={{ background: n % 2 ? product.accentSoft : "rgba(0,0,0,0.3)" }}
-                    />
-                  ))}
-                </div>
-                <p className="mt-4 font-mono text-[10px] text-bone-faint">Product experience · preview surface</p>
-              </div>
+              )}
             </div>
           </div>
         </div>
@@ -138,9 +162,9 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                 >
                   {step}
                 </span>
-                {i < product.howItWorks.length - 1 && (
+                {i < product.howItWorks.length - 1 ? (
                   <span className="hidden text-bone-faint md:inline">→</span>
-                )}
+                ) : null}
               </li>
             ))}
           </ol>
@@ -158,14 +182,28 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           ))}
         </div>
 
-        <div className="mt-12 p-6" style={{ background: product.accentSoft, outline: `1px solid ${product.accent}44` }}>
+        <div
+          className="mt-12 p-6"
+          style={{ background: product.accentSoft, outline: `1px solid ${product.accent}44` }}
+        >
           <p className="font-mono text-[10px] tracking-[0.2em] text-bone-faint">CURRENT STATUS</p>
           <p className="mt-2 font-display text-2xl font-semibold" style={{ color: product.accent }}>
-            {product.status === "FOR SALE" ? "Available for acquisition" : product.status}
+            {product.status === "LIVE" ? "Live · multilingual product" : product.status}
           </p>
+          {product.liveUrl ? (
+            <a
+              href={product.liveUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="mt-4 inline-block text-sm hover:underline"
+              style={{ color: product.accent }}
+            >
+              {product.liveUrl} →
+            </a>
+          ) : null}
         </div>
 
-        {related.length > 0 && (
+        {related.length > 0 ? (
           <div className="mt-14">
             <h2 className="font-display text-xl font-semibold">Related projects</h2>
             <ul className="mt-4 space-y-3">
@@ -181,7 +219,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
               )}
             </ul>
           </div>
-        )}
+        ) : null}
       </section>
     </article>
   );
