@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { productPageJsonLd } from "@/content/owned-brands";
 import { getProduct, products, statusClass } from "@/content/products";
 import { getProject } from "@/content/projects";
+import { site } from "@/content/site";
 import { cn } from "@/lib/utils";
 
 export function generateStaticParams() {
@@ -38,8 +40,14 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
     .map((s) => getProject(s))
     .filter(Boolean);
 
+  const jsonLd = productPageJsonLd(product);
+
   return (
     <article>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <section
         className="px-4 py-16 md:px-6 md:py-24"
         style={{
@@ -78,6 +86,12 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
               <p className="mt-2 text-sm text-bone-faint">
                 {product.category}
                 {product.year ? ` · ${product.year}` : ""}
+              </p>
+              <p className="mt-4 text-sm text-bone-dim">
+                Founded by{" "}
+                <Link href="/about" className="text-phosphor hover:underline">
+                  {site.name}
+                </Link>
               </p>
               {product.status === "COMING SOON" ? (
                 <p className="mt-6 inline-block border border-amber/40 bg-amber/10 px-4 py-2 text-sm tracking-wide text-amber">

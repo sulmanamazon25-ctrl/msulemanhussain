@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Syne, DM_Sans, JetBrains_Mono } from "next/font/google";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { personEntityJsonLd } from "@/content/owned-brands";
 import { site } from "@/content/site";
 import "./globals.css";
 
@@ -60,22 +61,7 @@ export const metadata: Metadata = {
   },
 };
 
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Person",
-  name: site.name,
-  url: site.url,
-  jobTitle: "Founder / Builder / Experimenter",
-  description: site.description,
-  sameAs: [
-    site.social.linkedin,
-    site.social.youtube,
-    site.social.tiktok,
-    site.social.instagram,
-    site.social.x,
-    site.social.github,
-  ],
-};
+const jsonLd = personEntityJsonLd();
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
