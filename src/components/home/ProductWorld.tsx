@@ -2,102 +2,69 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { products, statusClass } from "@/content/products";
 import type { Product } from "@/content/site";
 import { cn } from "@/lib/utils";
 
 function ProductPreview({ product }: { product: Product }) {
-  const bars = [42, 68, 51, 82, 60, 74];
-  const cards = product.metrics;
+  if (!product.previewImage) {
+    return (
+      <div
+        className="relative flex min-h-[300px] items-center justify-center md:min-h-[380px]"
+        style={{ background: product.accentSoft }}
+      >
+        <p className="font-display text-3xl font-bold" style={{ color: product.accent }}>
+          {product.name}
+        </p>
+      </div>
+    );
+  }
 
   return (
-    <div
-      className="relative min-h-[300px] overflow-hidden p-5 md:min-h-[380px]"
-      style={{ background: `linear-gradient(145deg, ${product.accentSoft}, transparent 55%)` }}
-    >
-      <div className="absolute inset-0 foundry-grid opacity-40" />
-      {product.previewImage && (
-        <div className="absolute inset-4 overflow-hidden border border-white/10 opacity-25">
+    <div className="relative min-h-[300px] overflow-hidden bg-ink md:min-h-[380px]">
+      <div className="flex items-center gap-2 border-b border-white/10 bg-ink-3/95 px-3 py-2">
+        <span className="h-2.5 w-2.5 rounded-full bg-signal/80" />
+        <span className="h-2.5 w-2.5 rounded-full bg-amber/80" />
+        <span className="h-2.5 w-2.5 rounded-full bg-phosphor/80" />
+        <p className="ml-2 truncate font-mono text-[10px] text-bone-faint">
+          {product.liveUrl?.replace(/^https?:\/\//, "") ?? `${product.slug}.product`}
+        </p>
+        {product.logo ? (
+          <Image
+            src={product.logo}
+            alt=""
+            width={18}
+            height={18}
+            className="ml-auto h-4 w-4 object-contain opacity-80"
+            unoptimized={product.logo.endsWith(".svg")}
+          />
+        ) : null}
+      </div>
+      <div className="relative aspect-[16/11] w-full md:aspect-auto md:min-h-[340px]">
+        <motion.div
+          key={product.slug}
+          initial={{ opacity: 0, scale: 1.03 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5 }}
+          className="absolute inset-0"
+        >
           <Image
             src={product.previewImage}
-            alt=""
+            alt={`${product.name} product screenshot`}
             fill
             className="object-cover object-top"
-            sizes="(max-width: 768px) 100vw, 50vw"
+            sizes="(max-width: 1024px) 100vw, 55vw"
+            priority={product.status === "LIVE"}
           />
-        </div>
-      )}
-      <div className="relative flex h-full min-h-[270px] flex-col justify-between border border-white/10 bg-ink/70 p-4 backdrop-blur-sm md:min-h-[340px]">
-        <div className="flex items-center gap-3">
-          {product.logo ? (
-            <Image
-              src={product.logo}
-              alt={product.name}
-              width={36}
-              height={36}
-              className="h-9 w-9 object-contain"
-            />
-          ) : (
-            <motion.span
-              className="h-2.5 w-2.5 rounded-full"
-              style={{ background: product.accent }}
-              animate={{ opacity: [1, 0.35, 1] }}
-              transition={{ duration: 1.6, repeat: Infinity }}
-            />
-          )}
-          <div>
-            <p className="font-mono text-[10px] text-bone-faint">{product.name}.os</p>
-            {product.multilingual && product.locales && (
-              <p className="font-mono text-[10px] text-phosphor">{product.locales.join(" · ")} · multilingual</p>
-            )}
-          </div>
-          <span className="ml-auto font-mono text-[10px]" style={{ color: product.accent }}>
-            {product.status}
-          </span>
-        </div>
-
-        <div className="mt-5 grid flex-1 grid-cols-12 gap-3">
-          <div className="col-span-12 grid grid-cols-3 gap-2">
-            {cards.slice(0, 3).map((card, i) => (
-              <motion.div
-                key={card.label}
-                className="border border-white/10 bg-ink/60 p-2"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.08 * i }}
-              >
-                <p className="font-mono text-[9px] tracking-wider text-bone-faint">{card.label}</p>
-                <p className="mt-1 truncate text-xs font-semibold" style={{ color: product.accent }}>
-                  {card.value}
-                </p>
-                <motion.div
-                  className="mt-2 h-1 origin-left"
-                  style={{ background: product.accent }}
-                  animate={{ scaleX: [0.4, 1, 0.7] }}
-                  transition={{ duration: 1.8 + i * 0.25, repeat: Infinity, repeatType: "mirror" }}
-                />
-              </motion.div>
-            ))}
-          </div>
-          <div className="col-span-12 grid h-20 grid-cols-6 items-end gap-1.5 border border-white/10 bg-ink/40 p-3">
-            {bars.map((h, i) => (
-              <motion.div
-                key={i}
-                className="w-full origin-bottom"
-                style={{ background: product.accent, height: `${h}%`, opacity: 0.8 }}
-                animate={{ scaleY: [0.45, 1, 0.65, 1] }}
-                transition={{
-                  duration: 1.5 + i * 0.12,
-                  repeat: Infinity,
-                  repeatType: "mirror",
-                  delay: i * 0.08,
-                }}
-              />
-            ))}
-          </div>
-        </div>
+        </motion.div>
+        <div
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background: `linear-gradient(to top, ${product.accentSoft}, transparent 40%)`,
+          }}
+        />
       </div>
     </div>
   );
@@ -106,6 +73,22 @@ function ProductPreview({ product }: { product: Product }) {
 export function ProductWorld({ showHeading = true }: { showHeading?: boolean }) {
   const [active, setActive] = useState(0);
   const product = products[active];
+  const liveCount = products.filter((p) => p.status === "LIVE").length;
+
+  useEffect(() => {
+    const liveIndexes = products
+      .map((p, i) => (p.status === "LIVE" ? i : -1))
+      .filter((i) => i >= 0);
+    if (liveIndexes.length < 2) return;
+    const id = window.setInterval(() => {
+      setActive((current) => {
+        const pos = liveIndexes.indexOf(current);
+        const next = pos < 0 ? liveIndexes[0] : liveIndexes[(pos + 1) % liveIndexes.length];
+        return next;
+      });
+    }, 5500);
+    return () => window.clearInterval(id);
+  }, []);
 
   return (
     <section id="products-world" className="scroll-mt-24 border-y border-white/5 bg-ink-2/40 px-4 py-20 md:px-6 md:py-28">
@@ -117,7 +100,8 @@ export function ProductWorld({ showHeading = true }: { showHeading?: boolean }) 
               Destinations inside the workshop.
             </h2>
             <p className="mt-4 max-w-xl text-bone-dim">
-              Four live multilingual products. The rest are coming soon from the same workshop.
+              {liveCount} live products with real screenshots from the sites. The rest are coming soon from the same
+              workshop.
             </p>
           </>
         )}
@@ -139,7 +123,14 @@ export function ProductWorld({ showHeading = true }: { showHeading?: boolean }) 
                 }}
               >
                 {p.logo && (
-                  <Image src={p.logo} alt="" width={24} height={24} className="h-6 w-6 object-contain" />
+                  <Image
+                    src={p.logo}
+                    alt=""
+                    width={24}
+                    height={24}
+                    className="h-6 w-6 object-contain"
+                    unoptimized={p.logo.endsWith(".svg")}
+                  />
                 )}
                 <span>
                   <span className="block font-display font-semibold">{p.name}</span>
@@ -156,10 +147,10 @@ export function ProductWorld({ showHeading = true }: { showHeading?: boolean }) 
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -8 }}
               transition={{ duration: 0.35 }}
-              className="relative overflow-hidden"
-              style={{ boxShadow: `inset 0 0 80px ${product.accentSoft}` }}
+              className="relative overflow-hidden border border-white/10"
+              style={{ boxShadow: `0 0 80px ${product.accentSoft}` }}
             >
-              <div className="grid gap-0 lg:grid-cols-[1.1fr_0.9fr]">
+              <div className="grid gap-0 lg:grid-cols-[1.15fr_0.85fr]">
                 <ProductPreview product={product} />
                 <div className="flex flex-col justify-between bg-ink-3/80 p-6 md:p-8">
                   <div>

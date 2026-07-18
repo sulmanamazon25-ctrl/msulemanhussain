@@ -2,97 +2,132 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { site } from "@/content/site";
 import { liveProducts } from "@/content/products";
 
 export function FounderWorldHero() {
   const live = liveProducts();
+  const [slide, setSlide] = useState(0);
+
+  useEffect(() => {
+    if (live.length < 2) return;
+    const id = window.setInterval(() => {
+      setSlide((s) => (s + 1) % live.length);
+    }, 3800);
+    return () => window.clearInterval(id);
+  }, [live.length]);
+
+  const featured = live[slide] ?? live[0];
 
   return (
     <section className="relative overflow-hidden px-4 pb-16 pt-12 md:px-6 md:pb-24 md:pt-16">
       <div className="pointer-events-none absolute -left-24 top-0 h-80 w-80 rounded-full bg-signal/20 blur-[120px]" />
       <div className="pointer-events-none absolute right-0 top-20 h-72 w-72 rounded-full bg-cobalt/15 blur-[100px]" />
 
-      <div className="relative mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14">
-        {/* Visual — fills the blank side with live product stack */}
+      <div className="relative mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14">
         <motion.div
           initial={{ opacity: 0, scale: 0.96 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.55 }}
           className="relative order-2 lg:order-1"
         >
-          <div className="relative mx-auto aspect-[4/5] w-full max-w-md lg:max-w-none">
-            <div className="absolute inset-0 foundry-grid opacity-50" />
+          <div className="relative mx-auto w-full max-w-lg lg:max-w-none">
+            {/* Main sliding product window */}
             <div
-              className="absolute inset-6 rounded-full opacity-40 blur-3xl"
-              style={{
-                background:
-                  "radial-gradient(circle, rgba(255,61,31,0.35), rgba(61,139,255,0.2), transparent 70%)",
-              }}
-            />
+              className="relative overflow-hidden border border-white/15 bg-ink-3 shadow-[0_30px_80px_rgba(0,0,0,0.5)]"
+              style={{ boxShadow: featured ? `0 24px 70px ${featured.accentSoft}` : undefined }}
+            >
+              <div className="flex items-center gap-2 border-b border-white/10 bg-ink/90 px-3 py-2">
+                <span className="h-2.5 w-2.5 rounded-full bg-signal/80" />
+                <span className="h-2.5 w-2.5 rounded-full bg-amber/80" />
+                <span className="h-2.5 w-2.5 rounded-full bg-phosphor/80" />
+                <p className="ml-2 truncate font-mono text-[10px] text-bone-faint">
+                  {featured?.liveUrl?.replace(/^https?:\/\//, "") ?? "product"}
+                </p>
+              </div>
+              <div className="relative aspect-[16/10] bg-ink">
+                <AnimatePresence mode="wait">
+                  {featured?.previewImage ? (
+                    <motion.div
+                      key={featured.slug}
+                      initial={{ opacity: 0, x: 24 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      exit={{ opacity: 0, x: -24 }}
+                      transition={{ duration: 0.45 }}
+                      className="absolute inset-0"
+                    >
+                      <Image
+                        src={featured.previewImage}
+                        alt={`${featured.name} live site`}
+                        fill
+                        className="object-cover object-top"
+                        sizes="(max-width: 1024px) 90vw, 540px"
+                        priority
+                      />
+                    </motion.div>
+                  ) : null}
+                </AnimatePresence>
+                <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-ink-3/90 to-transparent" />
+                {featured ? (
+                  <div className="absolute bottom-3 left-3 right-3 flex items-center gap-2">
+                    {featured.logo ? (
+                      <Image
+                        src={featured.logo}
+                        alt=""
+                        width={22}
+                        height={22}
+                        className="h-5 w-5 object-contain"
+                        unoptimized={featured.logo.endsWith(".svg")}
+                      />
+                    ) : null}
+                    <span className="font-display text-sm font-semibold text-bone drop-shadow">{featured.name}</span>
+                    <span
+                      className="ml-auto rounded border px-1.5 py-0.5 font-mono text-[9px] tracking-wider"
+                      style={{ color: featured.accent, borderColor: `${featured.accent}66`, background: featured.accentSoft }}
+                    >
+                      LIVE
+                    </span>
+                  </div>
+                ) : null}
+              </div>
+            </div>
 
-            {live.map((p, i) => {
-              const positions = [
-                "left-[6%] top-[8%] w-[58%] rotate-[-6deg]",
-                "right-[4%] top-[22%] w-[54%] rotate-[5deg]",
-                "left-[10%] bottom-[26%] w-[56%] rotate-[3deg]",
-                "right-[8%] bottom-[6%] w-[52%] rotate-[-4deg]",
-              ];
-              return (
-                <motion.div
+            {/* Thumbnail pattern strip */}
+            <div className="mt-4 flex gap-2 overflow-x-auto pb-1">
+              {live.map((p, i) => (
+                <button
                   key={p.slug}
-                  className={`absolute ${positions[i] ?? positions[0]}`}
-                  style={{ zIndex: 10 + i }}
-                  animate={{ y: [0, i % 2 === 0 ? -8 : 8, 0] }}
-                  transition={{ duration: 4 + i * 0.4, repeat: Infinity, ease: "easeInOut" }}
+                  type="button"
+                  onClick={() => setSlide(i)}
+                  aria-label={`Show ${p.name}`}
+                  className="relative h-14 w-24 shrink-0 overflow-hidden border transition sm:h-16 sm:w-28"
+                  style={{
+                    borderColor: i === slide ? p.accent : "rgba(255,255,255,0.12)",
+                    boxShadow: i === slide ? `0 0 0 1px ${p.accent}` : undefined,
+                  }}
                 >
-                  <Link
-                    href={`/products/${p.slug}`}
-                    className="group block overflow-hidden border border-white/15 bg-ink-3/95 shadow-[0_20px_60px_rgba(0,0,0,0.45)] backdrop-blur transition hover:border-white/30"
-                    style={{ boxShadow: `0 18px 50px ${p.accentSoft}` }}
-                  >
-                    <div className="relative h-28 w-full bg-ink sm:h-32">
-                      {p.previewImage ? (
-                        <Image
-                          src={p.previewImage}
-                          alt={p.name}
-                          fill
-                          className="object-cover object-top"
-                          sizes="280px"
-                          unoptimized={p.previewImage.endsWith(".svg")}
-                        />
-                      ) : (
-                        <div className="absolute inset-0" style={{ background: p.accentSoft }} />
-                      )}
-                      <div className="absolute inset-0 bg-gradient-to-t from-ink-3 to-transparent" />
-                    </div>
-                    <div className="flex items-center gap-2 px-3 py-2.5">
-                      {p.logo ? (
-                        <Image
-                          src={p.logo}
-                          alt=""
-                          width={22}
-                          height={22}
-                          className="h-5 w-5 object-contain"
-                          unoptimized={p.logo.endsWith(".svg")}
-                        />
-                      ) : (
-                        <span className="live-dot" style={{ background: p.accent }} />
-                      )}
-                      <span className="font-display text-sm font-semibold text-bone">{p.name}</span>
-                      <span className="ml-auto font-mono text-[9px] tracking-wider" style={{ color: p.accent }}>
-                        LIVE
-                      </span>
-                    </div>
-                  </Link>
-                </motion.div>
-              );
-            })}
+                  {p.previewImage ? (
+                    <Image
+                      src={p.previewImage}
+                      alt=""
+                      fill
+                      className="object-cover object-top"
+                      sizes="112px"
+                    />
+                  ) : (
+                    <div className="absolute inset-0" style={{ background: p.accentSoft }} />
+                  )}
+                  <span className="absolute inset-x-0 bottom-0 bg-ink/75 px-1 py-0.5 text-center font-mono text-[8px] text-bone">
+                    {p.name}
+                  </span>
+                </button>
+              ))}
+            </div>
           </div>
         </motion.div>
 
-        {/* Copy */}
         <div className="order-1 lg:order-2">
           <motion.p
             initial={{ opacity: 0, y: 10 }}
