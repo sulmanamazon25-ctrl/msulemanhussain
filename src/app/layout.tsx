@@ -1,80 +1,15 @@
 import type { Metadata } from "next";
-import { Syne, DM_Sans, JetBrains_Mono } from "next/font/google";
-import { Header } from "@/components/layout/Header";
-import { Footer } from "@/components/layout/Footer";
-import { personEntityJsonLd } from "@/content/owned-brands";
 import { site } from "@/content/site";
 import "./globals.css";
 
-const syne = Syne({
-  variable: "--font-syne",
-  subsets: ["latin"],
-  weight: ["500", "600", "700", "800"],
-});
-
-const dm = DM_Sans({
-  variable: "--font-dm",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-});
-
-const jet = JetBrains_Mono({
-  variable: "--font-jet",
-  subsets: ["latin"],
-  weight: ["400", "500"],
-});
-
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
-  title: {
-    default: site.title,
-    template: `%s · ${site.name}`,
-  },
-  description: site.description,
-  icons: {
-    icon: [
-      { url: "/favicon.png", type: "image/png" },
-      { url: "/brand/mark.svg", type: "image/svg+xml" },
-    ],
-    apple: [{ url: "/brand/mark.png" }],
-    shortcut: ["/favicon.png"],
-  },
-  openGraph: {
-    title: site.title,
-    description: site.description,
-    url: site.url,
-    siteName: site.name,
-    type: "website",
-    images: [{ url: "/brand/mark.png", width: 1024, height: 1024, alt: site.name }],
-  },
-  twitter: {
-    card: "summary",
-    title: site.title,
-    description: site.description,
-    images: ["/brand/mark.png"],
-  },
-  alternates: {
-    canonical: site.url,
-  },
   verification: {
     google: "IE8ur8NHlqZrlCnp8ixUpx2qcBkUN4Y43MvD84pdXJI",
   },
 };
 
-const jsonLd = personEntityJsonLd();
-
+/** Pass-through root — html/body live in [locale]/layout. */
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return (
-    <html lang="en" className={`${syne.variable} ${dm.variable} ${jet.variable} h-full antialiased`}>
-      <body className="foundry-bg min-h-full font-sans text-bone">
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
-      </body>
-    </html>
-  );
+  return children;
 }

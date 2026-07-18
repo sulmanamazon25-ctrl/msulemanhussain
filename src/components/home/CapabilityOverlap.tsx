@@ -5,22 +5,21 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { capabilityGroups } from "@/content/capabilities";
 import { getProduct } from "@/content/products";
+import { useLocale } from "@/i18n/LocaleProvider";
 
 export function CapabilityOverlap() {
   const [active, setActive] = useState(0);
   const group = capabilityGroups[active];
+  const { dict, href } = useLocale();
 
   return (
     <section className="border-y border-white/5 bg-ink-2/50 px-4 py-20 md:px-6 md:py-28">
       <div className="mx-auto max-w-6xl">
-        <p className="font-mono text-[11px] tracking-[0.28em] text-phosphor">UNFAIR ADVANTAGE</p>
+        <p className="font-mono text-[11px] tracking-[0.28em] text-phosphor">{dict.advantage.eyebrow}</p>
         <h2 className="mt-4 max-w-3xl font-display text-4xl font-bold md:text-5xl">
-          My advantage is the overlap.
+          {dict.advantage.title}
         </h2>
-        <p className="mt-5 max-w-2xl text-lg text-bone-dim">
-          I can understand the problem, design the product, build the system, connect the AI, launch it, and think
-          about how it grows.
-        </p>
+        <p className="mt-5 max-w-2xl text-lg text-bone-dim">{dict.advantage.blurb}</p>
 
         <div className="mt-12 flex flex-wrap gap-3">
           {capabilityGroups.map((g, i) => (
@@ -60,14 +59,14 @@ export function CapabilityOverlap() {
               ))}
             </ul>
             <div>
-              <p className="font-mono text-[10px] tracking-[0.2em] text-bone-faint">TIED TO PRODUCTS</p>
+              <p className="font-mono text-[10px] tracking-[0.2em] text-bone-faint">{dict.advantage.tied}</p>
               <ul className="mt-4 space-y-3">
                 {group.relatedProductSlugs.map((slug) => {
                   const p = getProduct(slug);
                   if (!p) return null;
                   return (
                     <li key={slug}>
-                      <Link href={`/products/${slug}`} className="text-lg font-medium hover:underline" style={{ color: group.accent }}>
+                      <Link href={href(`/products/${slug}`)} className="text-lg font-medium hover:underline" style={{ color: group.accent }}>
                         {p.name}
                       </Link>
                       <p className="text-sm text-bone-faint">{p.tagline}</p>
@@ -75,8 +74,8 @@ export function CapabilityOverlap() {
                   );
                 })}
               </ul>
-              <Link href="/expertise" className="mt-8 inline-block text-sm text-phosphor hover:underline">
-                Explore all ecosystems →
+              <Link href={href("/expertise")} className="mt-8 inline-block text-sm text-phosphor hover:underline">
+                {dict.advantage.explore}
               </Link>
             </div>
           </motion.div>

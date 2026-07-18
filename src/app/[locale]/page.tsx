@@ -7,13 +7,27 @@ import { CapabilityOverlap } from "@/components/home/CapabilityOverlap";
 import { ShippedArchive } from "@/components/home/ShippedArchive";
 import { BuildLogPreview } from "@/components/home/BuildLogPreview";
 import { FutureSection } from "@/components/home/FutureSection";
-import { site } from "@/content/site";
+import { alternateLanguages, isLocale, type Locale } from "@/i18n/config";
+import { getDictionary } from "@/i18n/dictionaries";
 
-export const metadata: Metadata = {
-  title: "Founder World",
-  description: site.description,
-  alternates: { canonical: site.url },
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale: raw } = await params;
+  if (!isLocale(raw)) return {};
+  const locale = raw as Locale;
+  const dict = getDictionary(locale);
+  return {
+    title: dict.meta.title,
+    description: dict.meta.description,
+    alternates: {
+      canonical: `https://msulemanhussain.com/${locale}`,
+      languages: alternateLanguages(""),
+    },
+  };
+}
 
 export default function HomePage() {
   return (

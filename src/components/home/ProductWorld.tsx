@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { products, statusClass } from "@/content/products";
 import type { Product } from "@/content/site";
+import { useLocale } from "@/i18n/LocaleProvider";
 import { cn } from "@/lib/utils";
 
 function ProductPreview({ product }: { product: Product }) {
@@ -73,7 +74,7 @@ function ProductPreview({ product }: { product: Product }) {
 export function ProductWorld({ showHeading = true }: { showHeading?: boolean }) {
   const [active, setActive] = useState(0);
   const product = products[active];
-  const liveCount = products.filter((p) => p.status === "LIVE").length;
+  const { dict, href } = useLocale();
 
   useEffect(() => {
     const liveIndexes = products
@@ -95,14 +96,11 @@ export function ProductWorld({ showHeading = true }: { showHeading?: boolean }) 
       <div className="mx-auto max-w-6xl">
         {showHeading && (
           <>
-            <p className="font-mono text-[11px] tracking-[0.28em] text-cobalt">PRODUCT WORLD</p>
+            <p className="font-mono text-[11px] tracking-[0.28em] text-cobalt">{dict.products.eyebrow}</p>
             <h2 className="mt-4 max-w-3xl font-display text-4xl font-bold md:text-5xl">
-              Destinations inside the workshop.
+              {dict.products.title}
             </h2>
-            <p className="mt-4 max-w-xl text-bone-dim">
-              {liveCount} live products with real screenshots from the sites. The rest are coming soon from the same
-              workshop.
-            </p>
+            <p className="mt-4 max-w-xl text-bone-dim">{dict.products.blurb}</p>
           </>
         )}
 
@@ -160,7 +158,7 @@ export function ProductWorld({ showHeading = true }: { showHeading?: boolean }) 
                       </span>
                       {product.multilingual && (
                         <span className="border border-phosphor/40 px-2 py-0.5 text-[10px] tracking-wider text-phosphor">
-                          MULTILINGUAL
+                          {dict.products.multilingual}
                         </span>
                       )}
                     </div>
@@ -179,14 +177,14 @@ export function ProductWorld({ showHeading = true }: { showHeading?: boolean }) 
                         rel="noreferrer"
                         className="inline-flex bg-signal px-5 py-3 text-sm font-semibold hover:bg-signal-hot"
                       >
-                        Open live product
+                        {dict.products.openLive}
                       </a>
                     ) : null}
                     <Link
-                      href={`/products/${product.slug}`}
+                      href={href(`/products/${product.slug}`)}
                       className="inline-flex border border-white/20 px-5 py-3 text-sm font-semibold hover:border-phosphor hover:text-phosphor"
                     >
-                      Enter {product.name}
+                      {dict.products.enter} {product.name}
                     </Link>
                   </div>
                 </div>

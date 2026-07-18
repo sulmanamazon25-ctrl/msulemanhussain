@@ -4,21 +4,21 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { liveProducts, statusClass } from "@/content/products";
+import { useLocale } from "@/i18n/LocaleProvider";
 import { cn } from "@/lib/utils";
 
 export function CurrentBuildSection() {
   const items = liveProducts();
+  const { dict, href } = useLocale();
 
   return (
     <section id="now" className="scroll-mt-24 px-4 py-20 md:px-6 md:py-28">
       <div className="mx-auto max-w-6xl">
-        <p className="font-mono text-[11px] tracking-[0.28em] text-signal">RIGHT NOW</p>
+        <p className="font-mono text-[11px] tracking-[0.28em] text-signal">{dict.now.eyebrow}</p>
         <h2 className="mt-4 max-w-3xl font-display text-4xl font-bold leading-tight md:text-6xl">
-          Live products.
+          {dict.now.title}
         </h2>
-        <p className="mt-4 max-w-xl text-bone-dim">
-          Multilingual and live — DownitX, PinQuill, Wasup, and Pickleball Deutsch. Everything else is coming soon.
-        </p>
+        <p className="mt-4 max-w-xl text-bone-dim">{dict.now.blurb}</p>
 
         <div className="mt-12 grid gap-5 sm:grid-cols-2">
           {items.map((p, i) => (
@@ -29,7 +29,7 @@ export function CurrentBuildSection() {
               transition={{ duration: 0.4, delay: i * 0.06 }}
             >
               <Link
-                href={`/products/${p.slug}`}
+                href={href(`/products/${p.slug}`)}
                 className="group relative flex h-full min-h-[320px] flex-col overflow-hidden border border-white/10 bg-ink-3 transition duration-300 hover:-translate-y-1 hover:border-white/25"
                 style={{ boxShadow: `inset 3px 0 0 ${p.accent}` }}
               >
@@ -126,7 +126,7 @@ export function CurrentBuildSection() {
                   <div className="mt-4 flex items-center justify-between gap-3 border-t border-white/10 pt-4">
                     <p className="line-clamp-2 text-xs text-bone-faint">{p.happeningNow}</p>
                     <span className="shrink-0 text-sm font-medium" style={{ color: p.accent }}>
-                      Open →
+                      {dict.now.open}
                     </span>
                   </div>
                 </div>

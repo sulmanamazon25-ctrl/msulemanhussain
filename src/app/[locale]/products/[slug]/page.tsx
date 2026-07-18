@@ -6,6 +6,8 @@ import { productPageJsonLd } from "@/content/owned-brands";
 import { getProduct, products, statusClass } from "@/content/products";
 import { getProject } from "@/content/projects";
 import { site } from "@/content/site";
+import { alternateLanguages, isLocale, localePath, type Locale } from "@/i18n/config";
+import { getDictionary } from "@/i18n/dictionaries";
 import { cn } from "@/lib/utils";
 
 export function generateStaticParams() {
@@ -15,14 +17,19 @@ export function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ locale: string; slug: string }>;
 }): Promise<Metadata> {
-  const { slug } = await params;
+  const { locale: raw, slug } = await params;
   const product = getProduct(slug);
-  if (!product) return {};
+  if (!product || !isLocale(raw)) return {};
+  const locale = raw as Locale;
   return {
     title: product.name,
     description: product.tagline,
+    alternates: {
+      canonical: `https://msulemanhussain.com/${locale}/products/${slug}`,
+      languages: alternateLanguages(`/products/${slug}`),
+    },
     openGraph: {
       title: product.name,
       description: product.tagline,
@@ -31,8 +38,16 @@ export async function generateMetadata({
   };
 }
 
-export default async function ProductPage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
+export default async function ProductPage({
+  params,
+}: {
+  params: Promise<{ locale: string; slug: string }>;
+}) {
+  const { locale: raw, slug } = await params;
+  if (!isLocale(raw)) notFound();
+  const locale = raw as Locale;
+  const dict = getDictionary(locale);
+  const lp = (path: string) => localePath(locale, path);
   const product = getProduct(slug);
   if (!product) notFound();
 
@@ -55,8 +70,8 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
         }}
       >
         <div className="mx-auto max-w-6xl">
-          <Link href="/products" className="text-sm text-bone-dim hover:text-phosphor">
-            ← Product World
+          <Link href={lp("/products")} className="text-sm text-bone-dim hover:text-phosphor">
+            {dict.products.back}
           </Link>
           <div className="mt-8 grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
             <div>
@@ -75,7 +90,8 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                 </span>
                 {product.multilingual ? (
                   <span className="border border-phosphor/40 px-2 py-0.5 text-[10px] tracking-wider text-phosphor">
-                    MULTILINGUAL{product.locales ? ` · ${product.locales.join(" / ")}` : ""}
+                    {dict.products.multilingual}
+                    {product.locales ? ` · ${product.locales.join(" / ")}` : ""}
                   </span>
                 ) : null}
               </div>
@@ -89,13 +105,13 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
               </p>
               <p className="mt-4 text-sm text-bone-dim">
                 Founded by{" "}
-                <Link href="/about" className="text-phosphor hover:underline">
+                <Link href={lp("/about")} className="text-phosphor hover:underline">
                   {site.name}
                 </Link>
               </p>
               {product.status === "COMING SOON" ? (
                 <p className="mt-6 inline-block border border-amber/40 bg-amber/10 px-4 py-2 text-sm tracking-wide text-amber">
-                  COMING SOON FROM THE WORKSHOP
+                  {dict.products.comingSoon}
                 </p>
               ) : null}
               <div className="mt-8 flex flex-wrap gap-3">
@@ -106,14 +122,14 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                     rel="noreferrer"
                     className="bg-signal px-5 py-3 text-sm font-semibold hover:bg-signal-hot"
                   >
-                    Explore live product
+                    {dict.products.openLive}
                   </a>
                 ) : (
                   <Link
-                    href="/contact"
+                    href={lp("/contact")}
                     className="bg-signal px-5 py-3 text-sm font-semibold hover:bg-signal-hot"
                   >
-                    Talk about this product
+                    {dict.products.talk}
                   </Link>
                 )}
               </div>
@@ -147,18 +163,18 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
 
       <section className="mx-auto grid max-w-6xl gap-12 px-4 py-16 md:grid-cols-2 md:px-6">
         <div>
-          <h2 className="font-display text-2xl font-semibold text-signal">Problem</h2>
+          <h2 className="font-display text-2xl font-semibold text-signal">{dict.products.problem}</h2>
           <p className="mt-3 text-bone-dim">{product.problem}</p>
         </div>
         <div>
-          <h2 className="font-display text-2xl font-semibold text-phosphor">Why it exists</h2>
+          <h2 className="font-display text-2xl font-semibold text-phosphor">{dict.products.why}</h2>
           <p className="mt-3 text-bone-dim">{product.whyExists}</p>
         </div>
         <div className="md:col-span-2">
-          <h2 className="font-display text-2xl font-semibold text-cobalt">What was built</h2>
+          <h2 className="font-display text-2xl font-semibold text-cobalt">{dict.products.built}</h2>
           <p className="mt-3 max-w-3xl text-bone-dim">{product.solution}</p>
           <p className="mt-4 text-sm text-bone-faint">
-            <span className="text-phosphor">Happening now: </span>
+            <span className="text-phosphor">{dict.products.happening} </span>
             {product.happeningNow}
           </p>
         </div>
@@ -166,7 +182,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
 
       <section className="border-y border-white/5 bg-ink-2/40 px-4 py-16 md:px-6">
         <div className="mx-auto max-w-6xl">
-          <h2 className="font-display text-2xl font-semibold">How it works</h2>
+          <h2 className="font-display text-2xl font-semibold">{dict.products.how}</h2>
           <ol className="mt-8 flex flex-col gap-3 md:flex-row md:flex-wrap md:items-center">
             {product.howItWorks.map((step, i) => (
               <li key={step} className="flex items-center gap-3">
@@ -186,7 +202,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
       </section>
 
       <section className="mx-auto max-w-6xl px-4 py-16 md:px-6">
-        <h2 className="font-display text-2xl font-semibold">Technology / build details</h2>
+        <h2 className="font-display text-2xl font-semibold">{dict.products.tech}</h2>
         <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {Object.entries(product.details).map(([key, value]) => (
             <div key={key}>
@@ -200,9 +216,9 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           className="mt-12 p-6"
           style={{ background: product.accentSoft, outline: `1px solid ${product.accent}44` }}
         >
-          <p className="font-mono text-[10px] tracking-[0.2em] text-bone-faint">CURRENT STATUS</p>
+          <p className="font-mono text-[10px] tracking-[0.2em] text-bone-faint">{dict.products.status}</p>
           <p className="mt-2 font-display text-2xl font-semibold" style={{ color: product.accent }}>
-            {product.status === "LIVE" ? "Live · multilingual product" : product.status}
+            {product.status === "LIVE" ? dict.products.liveStatus : product.status}
           </p>
           {product.liveUrl ? (
             <a
@@ -219,12 +235,12 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
 
         {related.length > 0 ? (
           <div className="mt-14">
-            <h2 className="font-display text-xl font-semibold">Related projects</h2>
+            <h2 className="font-display text-xl font-semibold">{dict.products.related}</h2>
             <ul className="mt-4 space-y-3">
               {related.map((r) =>
                 r ? (
                   <li key={r.slug} className="border-t border-white/10 pt-3">
-                    <Link href="/projects" className="font-medium hover:text-phosphor">
+                    <Link href={lp("/projects")} className="font-medium hover:text-phosphor">
                       {r.title}
                     </Link>
                     <p className="text-sm text-bone-dim">{r.summary}</p>

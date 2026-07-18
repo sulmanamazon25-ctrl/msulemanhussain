@@ -1,8 +1,13 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { site } from "@/content/site";
+import { useLocale } from "@/i18n/LocaleProvider";
 
 export function Footer() {
+  const { dict, href } = useLocale();
+
   return (
     <footer className="mt-8 border-t border-white/5 bg-ink-2/80">
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 md:grid-cols-4 md:px-6">
@@ -17,62 +22,60 @@ export function Footer() {
             />
             <p className="font-display text-lg font-semibold">{site.name}</p>
           </div>
-          <p className="mt-3 max-w-xs text-sm leading-relaxed text-bone-dim">
-            Founder building software, AI products, and digital businesses.
-          </p>
+          <p className="mt-3 max-w-xs text-sm leading-relaxed text-bone-dim">{dict.footer.blurb}</p>
         </div>
         <div>
-          <p className="mb-3 text-[10px] tracking-[0.22em] text-phosphor">EXPLORE</p>
+          <p className="mb-3 text-[10px] tracking-[0.22em] text-phosphor">{dict.footer.explore}</p>
           <ul className="space-y-2 text-sm text-bone-dim">
             <li>
-              <Link href="/products" className="hover:text-bone">
-                Products
+              <Link href={href("/products")} className="hover:text-bone">
+                {dict.footer.products}
               </Link>
             </li>
             <li>
-              <Link href="/build-log" className="hover:text-bone">
-                Build Log
+              <Link href={href("/build-log")} className="hover:text-bone">
+                {dict.footer.buildLog}
               </Link>
             </li>
             <li>
-              <Link href="/projects" className="hover:text-bone">
-                Projects
+              <Link href={href("/projects")} className="hover:text-bone">
+                {dict.footer.projects}
               </Link>
             </li>
             <li>
-              <Link href="/insights" className="hover:text-bone">
-                Insights
+              <Link href={href("/insights")} className="hover:text-bone">
+                {dict.footer.insights}
               </Link>
             </li>
           </ul>
         </div>
         <div>
-          <p className="mb-3 text-[10px] tracking-[0.22em] text-cobalt">CAPABILITIES</p>
+          <p className="mb-3 text-[10px] tracking-[0.22em] text-cobalt">{dict.footer.capabilities}</p>
           <ul className="space-y-2 text-sm text-bone-dim">
             <li>
-              <Link href="/expertise/product-software" className="hover:text-bone">
-                Software
+              <Link href={href("/expertise/product-software")} className="hover:text-bone">
+                {dict.footer.software}
               </Link>
             </li>
             <li>
-              <Link href="/expertise/ai-automation" className="hover:text-bone">
-                AI & Automation
+              <Link href={href("/expertise/ai-automation")} className="hover:text-bone">
+                {dict.footer.ai}
               </Link>
             </li>
             <li>
-              <Link href="/expertise/growth-digital" className="hover:text-bone">
-                Growth
+              <Link href={href("/expertise/growth-digital")} className="hover:text-bone">
+                {dict.footer.growth}
               </Link>
             </li>
             <li>
-              <Link href="/expertise/product-business" className="hover:text-bone">
-                Product
+              <Link href={href("/expertise/product-business")} className="hover:text-bone">
+                {dict.footer.product}
               </Link>
             </li>
           </ul>
         </div>
         <div>
-          <p className="mb-3 text-[10px] tracking-[0.22em] text-signal">CONNECT</p>
+          <p className="mb-3 text-[10px] tracking-[0.22em] text-signal">{dict.footer.connect}</p>
           <ul className="space-y-2 text-sm text-bone-dim">
             <li>
               <a href={site.social.linkedin} target="_blank" rel="noreferrer" className="hover:text-bone">
@@ -105,8 +108,8 @@ export function Footer() {
               </a>
             </li>
             <li>
-              <Link href="/contact" className="hover:text-bone">
-                Contact
+              <Link href={href("/contact")} className="hover:text-bone">
+                {dict.footer.contact}
               </Link>
             </li>
           </ul>
@@ -115,11 +118,11 @@ export function Footer() {
       <div className="border-t border-white/5 px-4 py-5 text-xs text-bone-faint md:flex md:justify-between md:px-6">
         <p>© 2026 Suleman Hussain</p>
         <p className="mt-2 space-x-4 md:mt-0">
-          <Link href="/privacy" className="hover:text-bone">
-            Privacy
+          <Link href={href("/privacy")} className="hover:text-bone">
+            {dict.footer.privacy}
           </Link>
-          <Link href="/terms" className="hover:text-bone">
-            Terms
+          <Link href={href("/terms")} className="hover:text-bone">
+            {dict.footer.terms}
           </Link>
         </p>
       </div>

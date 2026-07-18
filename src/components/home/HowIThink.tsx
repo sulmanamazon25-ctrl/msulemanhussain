@@ -5,26 +5,25 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { journeyStages } from "@/content/journey";
 import { getProduct } from "@/content/products";
+import { useLocale } from "@/i18n/LocaleProvider";
 
 export function HowIThink() {
   const [active, setActive] = useState(0);
   const stage = journeyStages[active];
   const product = stage.productSlug ? getProduct(stage.productSlug) : undefined;
+  const { dict, href } = useLocale();
 
   return (
     <section id="think" className="scroll-mt-24 px-4 py-20 md:px-6 md:py-28">
       <div className="mx-auto max-w-6xl">
         <div className="grid gap-10 lg:grid-cols-[1fr_1.1fr] lg:items-end">
           <div>
-            <p className="font-mono text-[11px] tracking-[0.28em] text-amber">HOW I THINK</p>
+            <p className="font-mono text-[11px] tracking-[0.28em] text-amber">{dict.think.eyebrow}</p>
             <h2 className="mt-4 font-display text-4xl font-bold leading-tight md:text-5xl">
-              I see problems everywhere. Then I build solutions.
+              {dict.think.title}
             </h2>
           </div>
-          <p className="max-w-lg text-bone-dim lg:pb-2">
-            Not a consulting funnel. A founder loop — from friction to product to users to growth — with real
-            examples from the workshop.
-          </p>
+          <p className="max-w-lg text-bone-dim lg:pb-2">{dict.think.blurb}</p>
         </div>
 
         <div className="mt-12 flex gap-2 overflow-x-auto pb-2 md:flex-wrap md:overflow-visible">
@@ -66,11 +65,11 @@ export function HowIThink() {
               <p className="text-lg text-bone-dim">{stage.example}</p>
               {product && (
                 <Link
-                  href={`/products/${product.slug}`}
+                  href={href(`/products/${product.slug}`)}
                   className="mt-6 inline-block text-sm font-medium hover:underline"
                   style={{ color: stage.accent }}
                 >
-                  See {product.name} →
+                  {dict.think.see} {product.name} →
                 </Link>
               )}
             </div>

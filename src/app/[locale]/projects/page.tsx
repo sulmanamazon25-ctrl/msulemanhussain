@@ -2,11 +2,13 @@
 
 import { useMemo, useState } from "react";
 import { projects } from "@/content/projects";
+import { useLocale } from "@/i18n/LocaleProvider";
 
 const filters = ["ALL", "SAAS", "AI", "WEB", "AUTOMATION", "EXPERIMENTS", "CLIENT", "TOOLS"] as const;
 
 export default function ProjectsPage() {
   const [filter, setFilter] = useState<(typeof filters)[number]>("ALL");
+  const { dict } = useLocale();
   const list = useMemo(() => {
     const base = filter === "ALL" ? projects : projects.filter((p) => p.category === filter);
     return [...base].sort((a, b) => (b.year ?? 0) - (a.year ?? 0));
@@ -14,11 +16,9 @@ export default function ProjectsPage() {
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-16 md:px-6">
-      <p className="font-mono text-[11px] tracking-[0.28em] text-phosphor">PROJECTS</p>
-      <h1 className="mt-3 font-display text-4xl font-bold md:text-5xl">Shipped archive</h1>
-      <p className="mt-4 max-w-2xl text-bone-dim">
-        SaaS, AI, web, automation, experiments, client work, and tools — a timeline of progress, not a card dump.
-      </p>
+      <p className="font-mono text-[11px] tracking-[0.28em] text-phosphor">{dict.projects.eyebrow}</p>
+      <h1 className="mt-3 font-display text-4xl font-bold md:text-5xl">{dict.projects.title}</h1>
+      <p className="mt-4 max-w-2xl text-bone-dim">{dict.projects.blurb}</p>
       <div className="mt-8 flex gap-2 overflow-x-auto pb-2">
         {filters.map((f) => (
           <button

@@ -4,12 +4,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { site } from "@/content/site";
 import { liveProducts } from "@/content/products";
+import { useLocale } from "@/i18n/LocaleProvider";
 
 export function FounderWorldHero() {
   const live = liveProducts();
   const [slide, setSlide] = useState(0);
+  const { dict, href } = useLocale();
 
   useEffect(() => {
     if (live.length < 2) return;
@@ -34,7 +35,6 @@ export function FounderWorldHero() {
           className="relative order-2 lg:order-1"
         >
           <div className="relative mx-auto w-full max-w-lg lg:max-w-none">
-            {/* Main sliding product window */}
             <div
               className="relative overflow-hidden border border-white/15 bg-ink-3 shadow-[0_30px_80px_rgba(0,0,0,0.5)]"
               style={{ boxShadow: featured ? `0 24px 70px ${featured.accentSoft}` : undefined }}
@@ -85,7 +85,11 @@ export function FounderWorldHero() {
                     <span className="font-display text-sm font-semibold text-bone drop-shadow">{featured.name}</span>
                     <span
                       className="ml-auto rounded border px-1.5 py-0.5 font-mono text-[9px] tracking-wider"
-                      style={{ color: featured.accent, borderColor: `${featured.accent}66`, background: featured.accentSoft }}
+                      style={{
+                        color: featured.accent,
+                        borderColor: `${featured.accent}66`,
+                        background: featured.accentSoft,
+                      }}
                     >
                       LIVE
                     </span>
@@ -94,7 +98,6 @@ export function FounderWorldHero() {
               </div>
             </div>
 
-            {/* Thumbnail pattern strip */}
             <div className="mt-4 flex gap-2 overflow-x-auto pb-1">
               {live.map((p, i) => (
                 <button
@@ -109,13 +112,7 @@ export function FounderWorldHero() {
                   }}
                 >
                   {p.previewImage ? (
-                    <Image
-                      src={p.previewImage}
-                      alt=""
-                      fill
-                      className="object-cover object-top"
-                      sizes="112px"
-                    />
+                    <Image src={p.previewImage} alt="" fill className="object-cover object-top" sizes="112px" />
                   ) : (
                     <div className="absolute inset-0" style={{ background: p.accentSoft }} />
                   )}
@@ -134,7 +131,7 @@ export function FounderWorldHero() {
             animate={{ opacity: 1, y: 0 }}
             className="font-mono text-[11px] tracking-[0.28em] text-phosphor"
           >
-            {site.role}
+            {dict.hero.role}
           </motion.p>
 
           <motion.h1
@@ -143,7 +140,7 @@ export function FounderWorldHero() {
             transition={{ delay: 0.06 }}
             className="mt-5 font-display text-4xl font-bold leading-[1.02] text-bone text-balance md:text-6xl lg:text-7xl"
           >
-            {site.tagline}
+            {dict.hero.tagline}
           </motion.h1>
 
           <motion.p
@@ -152,7 +149,7 @@ export function FounderWorldHero() {
             transition={{ delay: 0.12 }}
             className="mt-5 max-w-lg text-base leading-relaxed text-bone-dim md:text-lg"
           >
-            {site.support}
+            {dict.hero.support}
           </motion.p>
 
           <motion.div
@@ -162,16 +159,16 @@ export function FounderWorldHero() {
             className="mt-8 flex flex-wrap gap-3"
           >
             <Link
-              href="#now"
+              href={href("/#now")}
               className="bg-signal px-6 py-3.5 text-sm font-semibold tracking-wide text-bone hover:bg-signal-hot"
             >
-              Explore what I&apos;m building
+              {dict.hero.ctaExplore}
             </Link>
             <Link
-              href="#think"
+              href={href("/#think")}
               className="border border-white/20 px-6 py-3.5 text-sm font-semibold tracking-wide text-bone hover:border-phosphor hover:text-phosphor"
             >
-              See how I think
+              {dict.hero.ctaThink}
             </Link>
           </motion.div>
 
@@ -181,12 +178,12 @@ export function FounderWorldHero() {
             transition={{ delay: 0.28 }}
             className="mt-10 border-t border-white/10 pt-6"
           >
-            <p className="mb-3 font-mono text-[10px] tracking-[0.24em] text-bone-faint">LIVE NOW</p>
+            <p className="mb-3 font-mono text-[10px] tracking-[0.24em] text-bone-faint">{dict.hero.liveNow}</p>
             <ul className="flex flex-wrap gap-x-5 gap-y-2">
               {live.map((p) => (
                 <li key={p.slug} className="flex items-center gap-2 text-sm text-bone-dim">
                   <span className="live-dot" style={{ background: p.accent }} />
-                  <Link href={`/products/${p.slug}`} className="hover:text-bone">
+                  <Link href={href(`/products/${p.slug}`)} className="hover:text-bone">
                     {p.name}
                   </Link>
                 </li>

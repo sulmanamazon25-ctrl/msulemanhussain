@@ -4,11 +4,13 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { projects } from "@/content/projects";
+import { useLocale } from "@/i18n/LocaleProvider";
 
 const filters = ["ALL", "SAAS", "AI", "WEB", "AUTOMATION", "TOOLS", "EXPERIMENTS", "CLIENT"] as const;
 
 export function ShippedArchive() {
   const [filter, setFilter] = useState<(typeof filters)[number]>("ALL");
+  const { dict, href } = useLocale();
   const list = useMemo(() => {
     const base = filter === "ALL" ? projects : projects.filter((p) => p.category === filter);
     return [...base].sort((a, b) => (b.year ?? 0) - (a.year ?? 0));
@@ -19,11 +21,11 @@ export function ShippedArchive() {
       <div className="mx-auto max-w-6xl">
         <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
           <div>
-            <p className="font-mono text-[11px] tracking-[0.28em] text-cobalt">SHIPPED ARCHIVE</p>
-            <h2 className="mt-4 font-display text-4xl font-bold md:text-5xl">What I have shipped.</h2>
+            <p className="font-mono text-[11px] tracking-[0.28em] text-cobalt">{dict.archive.eyebrow}</p>
+            <h2 className="mt-4 font-display text-4xl font-bold md:text-5xl">{dict.archive.title}</h2>
           </div>
-          <Link href="/projects" className="text-sm text-phosphor hover:underline">
-            Full archive →
+          <Link href={href("/projects")} className="text-sm text-phosphor hover:underline">
+            {dict.archive.full}
           </Link>
         </div>
 
@@ -64,7 +66,9 @@ export function ShippedArchive() {
                     <span className="font-mono text-[10px] text-bone-faint">{p.status}</span>
                   </div>
                   <p className="mt-2 max-w-2xl text-sm text-bone-dim">{p.summary}</p>
-                  <p className="mt-1 text-xs text-bone-faint">{p.role} · {p.tech.join(", ")}</p>
+                  <p className="mt-1 text-xs text-bone-faint">
+                    {p.role} · {p.tech.join(", ")}
+                  </p>
                 </div>
                 <p className="text-sm text-phosphor md:text-right">{p.result}</p>
               </motion.li>
