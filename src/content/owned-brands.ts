@@ -27,6 +27,11 @@ export const ownedBrands = [
     url: "https://spaineats.info/",
     portfolioPath: "/products/spain-eats",
   },
+  {
+    name: "Bokily",
+    url: "https://www.bokily.com/",
+    portfolioPath: "/products/bokily",
+  },
 ] as const;
 
 export function personEntityJsonLd() {

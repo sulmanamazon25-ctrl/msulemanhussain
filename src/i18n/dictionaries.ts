@@ -29,13 +29,13 @@ const en = {
     eyebrow: "RIGHT NOW",
     title: "Live products.",
     blurb:
-      "Multilingual and live — DownitX, PinQuill, Wasup, Pickleball Deutsch, and Spain Eats. Everything else is coming soon.",
+      "Multilingual and live — DownitX, PinQuill, Wasup, Pickleball Deutsch, Spain Eats, and Bokily. Everything else is coming soon.",
     open: "Open →",
   },
   products: {
     eyebrow: "PRODUCT WORLD",
     title: "Destinations inside the workshop.",
-    blurb: "Five live products with real screenshots. The rest are coming soon from the same workshop.",
+    blurb: "Six live products with real screenshots. The rest are coming soon from the same workshop.",
     pageTitle: "Product World",
     pageBlurb:
       "Destinations inside Founder World. Select a product to explore identity, status, and build context — then enter the full experience.",
@@ -193,13 +193,13 @@ const es: Dictionary = {
     eyebrow: "AHORA MISMO",
     title: "Productos en vivo.",
     blurb:
-      "Multilingües y en vivo — DownitX, PinQuill, Wasup, Pickleball Deutsch y Spain Eats. Todo lo demás llega pronto.",
+      "Multilingües y en vivo — DownitX, PinQuill, Wasup, Pickleball Deutsch, Spain Eats y Bokily. Todo lo demás llega pronto.",
     open: "Abrir →",
   },
   products: {
     eyebrow: "PRODUCT WORLD",
     title: "Destinos dentro del taller.",
-    blurb: "Cinco productos en vivo con capturas reales. El resto llega pronto desde el mismo taller.",
+    blurb: "Seis productos en vivo con capturas reales. El resto llega pronto desde el mismo taller.",
     pageTitle: "Product World",
     pageBlurb:
       "Destinos dentro de Founder World. Elige un producto para explorar identidad, estado y contexto — y entra en la experiencia completa.",

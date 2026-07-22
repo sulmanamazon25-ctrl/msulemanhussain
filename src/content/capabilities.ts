@@ -54,13 +54,13 @@ export const capabilityGroups: CapabilityGroup[] = [
       "SaaS operations",
       "Desktop licensing",
     ],
-    relatedProductSlugs: ["downitx", "wasup", "pinquill"],
+    relatedProductSlugs: ["downitx", "wasup", "pinquill", "bokily"],
   },
   {
     id: "design",
     name: "DESIGN",
     accent: "#ff3d1f",
     skills: ["UI/UX", "Product design", "Landing pages", "Interactive experiences"],
-    relatedProductSlugs: ["pinquill", "wasup", "pickleball-deutsch"],
+    relatedProductSlugs: ["pinquill", "wasup", "pickleball-deutsch", "bokily"],
   },
 ];
