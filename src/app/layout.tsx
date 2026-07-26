@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   verification: {
     google: "IE8ur8NHlqZrlCnp8ixUpx2qcBkUN4Y43MvD84pdXJI",
+    other: {
+      "msvalidate.01": "51279CD460663940E70C5BA9FFFB392A",
+    },
   },
 };
 
