@@ -1,0 +1,303 @@
+{
+  "slug": "downitx-vs-4kdownloader",
+  "ourProductSlug": "downitx",
+  "accent": "#3d8bff",
+  "our": {
+    "id": "downitx",
+    "name": "DownitX",
+    "logo": "/products/downitx-logo.svg",
+    "isOurs": true,
+    "audience": "Creators who need bulk download + Long→Short clip pipelines",
+    "pricingModel": "Free single downloads; Pro for bulk + clip studio",
+    "pros": [
+      "Bulk / channel queues",
+      "Long → Short with captions",
+      "Local file saves on your PC"
+    ],
+    "cons": [
+      "Windows-first creator app",
+      "Not a generic media library for every site"
+    ],
+    "liveUrl": "https://downitx.com/"
+  },
+  "competitor": {
+    "id": "4kdownloader",
+    "name": "4K Downloader",
+    "isOurs": false,
+    "audience": "Users who want a general-purpose video downloader",
+    "pricingModel": "One-time / licensed desktop downloader",
+    "pros": [
+      "Established downloader brand",
+      "Broad format support"
+    ],
+    "cons": [
+      "Not built as a creator publish pipeline",
+      "Weaker Long→Short / bulk channel workflow focus"
+    ]
+  },
+  "en": {
+    "title": "DownitX vs 4K Downloader — Creator Pipeline Compared",
+    "description": "Compare DownitX and 4K Downloader: bulk creator pipelines and Long→Short clips vs a general video downloader. See workflow and privacy differences.",
+    "h1": "Why switch from 4K Downloader to DownitX?",
+    "intro": "4K Downloader is a general video downloader. DownitX is a Windows creator app: paste-link downloads across major platforms, channel bulk, and Long→Short clips with burned captions.",
+    "heroBadges": ["Bulk queues", "Long → Short", "Local saves"],
+    "whySwitch": "If downloading is step one of a publish pipeline — not the whole product — DownitX is built for creators who need volume and clip output.",
+    "categories": [
+      {
+        "id": "architecture",
+        "name": "Core architecture",
+        "rows": [
+          {
+            "id": "job",
+            "name": "Primary job",
+            "ourValue": "Creator download + clip pipeline",
+            "competitorValue": "General video download",
+            "highlight": true
+          },
+          {
+            "id": "bulk",
+            "name": "Channel / bulk workflows",
+            "ourValue": true,
+            "competitorValue": "Limited / not the focus",
+            "highlight": true
+          },
+          {
+            "id": "runtime",
+            "name": "Runtime",
+            "ourValue": "Windows desktop + local saves",
+            "competitorValue": "Desktop downloader"
+          }
+        ]
+      },
+      {
+        "id": "workflow",
+        "name": "Creator workflow",
+        "rows": [
+          {
+            "id": "long-short",
+            "name": "Long → Short clips",
+            "ourValue": true,
+            "competitorValue": false,
+            "highlight": true
+          },
+          {
+            "id": "captions",
+            "name": "Burned captions / clip studio",
+            "ourValue": true,
+            "competitorValue": false
+          },
+          {
+            "id": "platforms",
+            "name": "Creator platforms focus",
+            "ourValue": "YouTube, TikTok, Facebook, X, Shorts",
+            "competitorValue": "Broad media URLs"
+          }
+        ]
+      },
+      {
+        "id": "pricing",
+        "name": "Pricing",
+        "rows": [
+          {
+            "id": "model",
+            "name": "Pricing model",
+            "ourValue": "Free single + Pro bulk/clips",
+            "competitorValue": "Licensed downloader",
+            "highlight": true
+          },
+          {
+            "id": "cloud-tax",
+            "name": "Per-minute cloud render tax",
+            "ourValue": false,
+            "competitorValue": false,
+            "note": "Both are desktop-first; DownitX emphasizes local pipelines."
+          }
+        ]
+      },
+      {
+        "id": "privacy",
+        "name": "Privacy",
+        "rows": [
+          {
+            "id": "files",
+            "name": "Where files land",
+            "ourValue": "Your PC",
+            "competitorValue": "Your PC",
+            "highlight": true
+          },
+          {
+            "id": "pipeline",
+            "name": "Built for publish-ready output",
+            "ourValue": true,
+            "competitorValue": false
+          }
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "q": "Is DownitX just another downloader?",
+        "a": "Downloading is the intake step. DownitX adds bulk/channel queues and Long→Short clip workflows for creators."
+      },
+      {
+        "q": "Should I keep 4K Downloader?",
+        "a": "If you only need occasional general downloads, a classic downloader may be enough. Switch when volume and clip output matter."
+      },
+      {
+        "q": "Does DownitX process in the cloud?",
+        "a": "Core saves are local on your machine. Optional AI features can use BYOA — without forcing per-minute cloud tax for basic pipelines."
+      }
+    ],
+    "cta": {
+      "heading": "Out-publish with DownitX",
+      "buttonLabel": "Open DownitX",
+      "href": "https://downitx.com/",
+      "badge": "Free single downloads"
+    },
+    "roi": {
+      "inputLabel": "Videos processed / week",
+      "inputUnit": "videos",
+      "min": 10,
+      "max": 500,
+      "defaultValue": 80,
+      "step": 5,
+      "competitorCostPerUnit": 0.35,
+      "ourCostPerUnit": 0.08,
+      "currency": "USD",
+      "resultLabel": "Estimated weekly time-cost gap (illustrative)",
+      "note": "Illustrative — maps rough ‘minutes of manual work’ into a dollar proxy for bulk/clip workflows vs download-only tools. Not a quote."
+    }
+  },
+  "es": {
+    "title": "DownitX vs 4K Downloader — Pipeline para creadores",
+    "description": "Compara DownitX y 4K Downloader: pipelines bulk y Long→Short vs un descargador genérico. Flujos, precio y privacidad.",
+    "h1": "¿Por qué pasar de 4K Downloader a DownitX?",
+    "intro": "4K Downloader es un descargador general. DownitX es una app Windows para creadores: descargas multiplataforma, bulk por canal y clips Long→Short con subtítulos.",
+    "heroBadges": ["Colas bulk", "Long → Short", "Guardado local"],
+    "whySwitch": "Si descargar es el primer paso de un pipeline de publicación — no el producto entero — DownitX está hecho para volumen y clips.",
+    "categories": [
+      {
+        "id": "architecture",
+        "name": "Arquitectura",
+        "rows": [
+          {
+            "id": "job",
+            "name": "Trabajo principal",
+            "ourValue": "Descarga + pipeline de clips",
+            "competitorValue": "Descarga general de vídeo",
+            "highlight": true
+          },
+          {
+            "id": "bulk",
+            "name": "Flujos bulk / canal",
+            "ourValue": true,
+            "competitorValue": "Limitado / no es el foco",
+            "highlight": true
+          },
+          {
+            "id": "runtime",
+            "name": "Runtime",
+            "ourValue": "Windows + guardado local",
+            "competitorValue": "Descargador desktop"
+          }
+        ]
+      },
+      {
+        "id": "workflow",
+        "name": "Flujo creador",
+        "rows": [
+          {
+            "id": "long-short",
+            "name": "Clips Long → Short",
+            "ourValue": true,
+            "competitorValue": false,
+            "highlight": true
+          },
+          {
+            "id": "captions",
+            "name": "Subtítulos / clip studio",
+            "ourValue": true,
+            "competitorValue": false
+          },
+          {
+            "id": "platforms",
+            "name": "Foco de plataformas",
+            "ourValue": "YouTube, TikTok, Facebook, X, Shorts",
+            "competitorValue": "URLs de medios amplias"
+          }
+        ]
+      },
+      {
+        "id": "pricing",
+        "name": "Precios",
+        "rows": [
+          {
+            "id": "model",
+            "name": "Modelo de precio",
+            "ourValue": "Gratis unitario + Pro bulk/clips",
+            "competitorValue": "Licencia de descargador",
+            "highlight": true
+          },
+          {
+            "id": "cloud-tax",
+            "name": "Impuesto cloud por minuto",
+            "ourValue": false,
+            "competitorValue": false
+          }
+        ]
+      },
+      {
+        "id": "privacy",
+        "name": "Privacidad",
+        "rows": [
+          {
+            "id": "files",
+            "name": "Dónde quedan los archivos",
+            "ourValue": "Tu PC",
+            "competitorValue": "Tu PC",
+            "highlight": true
+          },
+          {
+            "id": "pipeline",
+            "name": "Salida lista para publicar",
+            "ourValue": true,
+            "competitorValue": false
+          }
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "q": "¿DownitX es solo otro descargador?",
+        "a": "La descarga es la entrada. DownitX añade colas bulk/canal y flujos Long→Short para creadores."
+      },
+      {
+        "q": "¿Debo quedarme con 4K Downloader?",
+        "a": "Si solo descargas de vez en cuando, un descargador clásico puede bastar. Cambia cuando importen volumen y clips."
+      },
+      {
+        "q": "¿DownitX procesa en la nube?",
+        "a": "El guardado principal es local. La IA opcional puede usar BYOA — sin forzar impuesto cloud por minuto en el pipeline básico."
+      }
+    ],
+    "cta": {
+      "heading": "Publica más con DownitX",
+      "buttonLabel": "Abrir DownitX",
+      "href": "https://downitx.com/",
+      "badge": "Descargas unitarias gratis"
+    },
+    "roi": {
+      "inputLabel": "Vídeos procesados / semana",
+      "inputUnit": "vídeos",
+      "min": 10,
+      "max": 500,
+      "defaultValue": 80,
+      "step": 5,
+      "competitorCostPerUnit": 0.35,
+      "ourCostPerUnit": 0.08,
+      "currency": "USD",
+      "resultLabel": "Brecha estimada semanal (ilustrativa)",
+      "note": "Ilustrativo — convierte trabajo manual aproximado en un proxy de coste. No es un presupuesto."
+    }
+  }
+}

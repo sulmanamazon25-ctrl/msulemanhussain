@@ -5,6 +5,7 @@ import { ecosystems } from "@/content/expertise";
 import { buildLog } from "@/content/build-log";
 import { insights } from "@/content/insights";
 import { tools } from "@/content/tools";
+import { listComparisons } from "@/lib/comparisons";
 import { locales } from "@/i18n/config";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -13,6 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "",
     "/products",
     "/tools",
+    "/vs",
     "/projects",
     "/expertise",
     "/build-log",
@@ -28,7 +30,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${base}/${locale}${path}`,
       lastModified: new Date(),
       changeFrequency: "weekly" as const,
-      priority: path === "" ? 1 : path === "/tools" ? 0.85 : 0.7,
+      priority: path === "" ? 1 : path === "/tools" || path === "/vs" ? 0.85 : 0.7,
       alternates: {
         languages: {
           en: `${base}/en${path}`,
@@ -65,6 +67,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
           en: `${base}/en/tools/${t.slug}`,
           es: `${base}/es/tools/${t.slug}`,
           "x-default": `${base}/en/tools/${t.slug}`,
+        },
+      },
+    })),
+    ...listComparisons().map((c) => ({
+      url: `${base}/${locale}/vs/${c.slug}`,
+      lastModified: new Date(),
+      changeFrequency: "weekly" as const,
+      priority: 0.85,
+      alternates: {
+        languages: {
+          en: `${base}/en/vs/${c.slug}`,
+          es: `${base}/es/vs/${c.slug}`,
+          "x-default": `${base}/en/vs/${c.slug}`,
         },
       },
     })),

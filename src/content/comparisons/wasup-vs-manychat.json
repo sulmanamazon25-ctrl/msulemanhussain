@@ -1,0 +1,293 @@
+{
+  "slug": "wasup-vs-manychat",
+  "ourProductSlug": "wasup",
+  "accent": "#25d366",
+  "our": {
+    "id": "wasup",
+    "name": "Wasup",
+    "logo": "/products/wasup-icon.svg",
+    "isOurs": true,
+    "audience": "Operators who want WhatsApp speed with human approval",
+    "pricingModel": "Desktop app + Pro license; AI via your own OpenRouter keys (BYOK)",
+    "pros": [
+      "Human-in-the-loop draft queue",
+      "Local WhatsApp session on your PC",
+      "BYOK — no inference markup"
+    ],
+    "cons": [
+      "Windows desktop first",
+      "Not a multi-agent cloud CRM suite"
+    ],
+    "liveUrl": "https://wasup.app/es"
+  },
+  "competitor": {
+    "id": "manychat",
+    "name": "ManyChat",
+    "isOurs": false,
+    "audience": "Teams building cloud chat funnels and automations",
+    "pricingModel": "SaaS tiers often tied to contacts / conversations",
+    "pros": [
+      "Mature cloud automation builder",
+      "Broad channel ecosystem"
+    ],
+    "cons": [
+      "Cloud-hosted conversations",
+      "Cost scales with contacts",
+      "Less emphasis on local privacy"
+    ],
+    "liveUrl": "https://manychat.com/"
+  },
+  "en": {
+    "title": "Wasup vs ManyChat — WhatsApp Copilot Compared",
+    "description": "Compare Wasup and ManyChat for WhatsApp: local BYOK drafts with human approval vs cloud automation SaaS. See pricing, privacy, and workflow differences.",
+    "h1": "Why switch from ManyChat to Wasup?",
+    "intro": "ManyChat is a cloud automation platform. Wasup is a desktop WhatsApp copiloto: AI drafts from your FAQs, you approve before send, sessions stay on your PC.",
+    "heroBadges": ["Human approve", "BYOK AI", "Local session"],
+    "whySwitch": "If you need WhatsApp replies with human control and local privacy — not another contact-tier chatbot cloud — Wasup is built for that loop.",
+    "categories": [
+      {
+        "id": "architecture",
+        "name": "Core architecture",
+        "rows": [
+          {
+            "id": "runtime",
+            "name": "Where WhatsApp runs",
+            "ourValue": "Local desktop session",
+            "competitorValue": "Cloud-hosted platform",
+            "highlight": true,
+            "note": "Local session keeps chat data on your machine."
+          },
+          {
+            "id": "send-model",
+            "name": "Send model",
+            "ourValue": "Draft queue → human approve",
+            "competitorValue": "Automated flows / bots",
+            "highlight": true
+          },
+          {
+            "id": "install",
+            "name": "Install footprint",
+            "ourValue": "Windows app",
+            "competitorValue": "Web SaaS"
+          }
+        ]
+      },
+      {
+        "id": "pricing",
+        "name": "Pricing",
+        "rows": [
+          {
+            "id": "pricing-model",
+            "name": "Pricing model",
+            "ourValue": "Flat Pro license + BYOK",
+            "competitorValue": "Tiered SaaS (contacts)",
+            "highlight": true
+          },
+          {
+            "id": "ai-cost",
+            "name": "AI inference cost",
+            "ourValue": "You pay your API provider",
+            "competitorValue": "Bundled / platform pricing"
+          }
+        ]
+      },
+      {
+        "id": "ai",
+        "name": "AI capabilities",
+        "rows": [
+          {
+            "id": "ai-style",
+            "name": "AI style",
+            "ourValue": "FAQ-trained drafts + STT",
+            "competitorValue": "Flow / automation AI features",
+            "highlight": true
+          },
+          {
+            "id": "byok",
+            "name": "Bring your own keys",
+            "ourValue": true,
+            "competitorValue": false
+          }
+        ]
+      },
+      {
+        "id": "privacy",
+        "name": "Privacy",
+        "rows": [
+          {
+            "id": "data-location",
+            "name": "Conversation data location",
+            "ourValue": "On your PC",
+            "competitorValue": "Vendor cloud",
+            "highlight": true
+          },
+          {
+            "id": "auto-send",
+            "name": "Autonomous auto-send by default",
+            "ourValue": false,
+            "competitorValue": "Common in bot flows"
+          }
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "q": "Is Wasup a ManyChat clone?",
+        "a": "No. ManyChat is a cloud automation suite. Wasup is a desktop WhatsApp assistant focused on draft → approve → send."
+      },
+      {
+        "q": "Do I need ManyChat contacts tiers?",
+        "a": "Wasup uses a Pro license model and your own AI keys — not contact-based cloud tiers."
+      },
+      {
+        "q": "Can Wasup replace every ManyChat workflow?",
+        "a": "No. If you need multi-channel cloud funnels and team SaaS ops, ManyChat may still fit. Wasup wins on local WhatsApp copiloto with human control."
+      }
+    ],
+    "cta": {
+      "heading": "Try Wasup — WhatsApp copiloto with human approval",
+      "buttonLabel": "Open Wasup",
+      "href": "https://wasup.app/es",
+      "badge": "Free installer"
+    },
+    "roi": {
+      "inputLabel": "Active WhatsApp contacts / month",
+      "inputUnit": "contacts",
+      "min": 500,
+      "max": 20000,
+      "defaultValue": 3000,
+      "step": 100,
+      "competitorCostPerUnit": 0.02,
+      "ourCostPerUnit": 0.004,
+      "currency": "USD",
+      "resultLabel": "Estimated monthly platform cost gap",
+      "note": "Illustrative only — based on simplified per-contact SaaS assumptions vs flat BYOK desktop licensing. Your real bills will differ."
+    }
+  },
+  "es": {
+    "title": "Wasup vs ManyChat — Comparativa de copiloto WhatsApp",
+    "description": "Compara Wasup y ManyChat para WhatsApp: borradores BYOK locales con aprobación humana vs SaaS de automatización en la nube.",
+    "h1": "¿Por qué pasar de ManyChat a Wasup?",
+    "intro": "ManyChat es una plataforma cloud de automatización. Wasup es un copiloto de WhatsApp en escritorio: borradores con IA desde tus FAQs, tú apruebas antes de enviar, la sesión queda en tu PC.",
+    "heroBadges": ["Aprobación humana", "BYOK IA", "Sesión local"],
+    "whySwitch": "Si necesitas respuestas de WhatsApp con control humano y privacidad local — no otro chatbot cloud por contactos — Wasup está hecho para ese loop.",
+    "categories": [
+      {
+        "id": "architecture",
+        "name": "Arquitectura",
+        "rows": [
+          {
+            "id": "runtime",
+            "name": "Dónde corre WhatsApp",
+            "ourValue": "Sesión local en escritorio",
+            "competitorValue": "Plataforma en la nube",
+            "highlight": true
+          },
+          {
+            "id": "send-model",
+            "name": "Modelo de envío",
+            "ourValue": "Cola de borradores → apruebas",
+            "competitorValue": "Flujos / bots automáticos",
+            "highlight": true
+          },
+          {
+            "id": "install",
+            "name": "Instalación",
+            "ourValue": "App Windows",
+            "competitorValue": "SaaS web"
+          }
+        ]
+      },
+      {
+        "id": "pricing",
+        "name": "Precios",
+        "rows": [
+          {
+            "id": "pricing-model",
+            "name": "Modelo de precio",
+            "ourValue": "Licencia Pro + BYOK",
+            "competitorValue": "SaaS por contactos",
+            "highlight": true
+          },
+          {
+            "id": "ai-cost",
+            "name": "Coste de inferencia IA",
+            "ourValue": "Pagas a tu proveedor API",
+            "competitorValue": "Precio de plataforma"
+          }
+        ]
+      },
+      {
+        "id": "ai",
+        "name": "IA",
+        "rows": [
+          {
+            "id": "ai-style",
+            "name": "Estilo de IA",
+            "ourValue": "Borradores con FAQs + STT",
+            "competitorValue": "IA / flujos de automatización",
+            "highlight": true
+          },
+          {
+            "id": "byok",
+            "name": "Tus propias keys (BYOK)",
+            "ourValue": true,
+            "competitorValue": false
+          }
+        ]
+      },
+      {
+        "id": "privacy",
+        "name": "Privacidad",
+        "rows": [
+          {
+            "id": "data-location",
+            "name": "Dónde están las conversaciones",
+            "ourValue": "En tu PC",
+            "competitorValue": "Nube del proveedor",
+            "highlight": true
+          },
+          {
+            "id": "auto-send",
+            "name": "Auto-envío autónomo por defecto",
+            "ourValue": false,
+            "competitorValue": "Habitual en bots"
+          }
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "q": "¿Wasup es un clon de ManyChat?",
+        "a": "No. ManyChat es una suite cloud. Wasup es un asistente de escritorio centrado en borrador → aprobar → enviar."
+      },
+      {
+        "q": "¿Necesito tiers de contactos?",
+        "a": "Wasup usa licencia Pro y tus keys de IA — no tiers cloud por contactos."
+      },
+      {
+        "q": "¿Puede sustituir todos los flujos de ManyChat?",
+        "a": "No. Si necesitas funnels multi-canal y ops SaaS de equipo, ManyChat puede seguir encajando. Wasup gana en copiloto local con control humano."
+      }
+    ],
+    "cta": {
+      "heading": "Prueba Wasup — copiloto WhatsApp con aprobación humana",
+      "buttonLabel": "Abrir Wasup",
+      "href": "https://wasup.app/es",
+      "badge": "Instalador gratis"
+    },
+    "roi": {
+      "inputLabel": "Contactos WhatsApp activos / mes",
+      "inputUnit": "contactos",
+      "min": 500,
+      "max": 20000,
+      "defaultValue": 3000,
+      "step": 100,
+      "competitorCostPerUnit": 0.02,
+      "ourCostPerUnit": 0.004,
+      "currency": "USD",
+      "resultLabel": "Brecha estimada de coste mensual",
+      "note": "Solo ilustrativo — asume SaaS simplificado por contacto vs licencia desktop BYOK. Tu factura real variará."
+    }
+  }
+}

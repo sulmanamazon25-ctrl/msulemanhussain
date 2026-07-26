@@ -38,6 +38,11 @@ export function Footer() {
               </Link>
             </li>
             <li>
+              <Link href={href("/vs")} className="hover:text-bone">
+                {dict.footer.comparisons}
+              </Link>
+            </li>
+            <li>
               <Link href={href("/build-log")} className="hover:text-bone">
                 {dict.footer.buildLog}
               </Link>
