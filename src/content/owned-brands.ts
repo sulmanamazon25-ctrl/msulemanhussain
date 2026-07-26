@@ -126,6 +126,7 @@ export function productPageJsonLd(product: {
           : "Web",
         url: product.liveUrl ?? portfolioUrl,
         image: product.logo ? `${site.url}${product.logo}` : undefined,
+        inLanguage: ["en", "es"],
         author: { "@id": personId },
         offers: {
           "@type": "Offer",

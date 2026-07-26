@@ -75,6 +75,7 @@ export default async function ComparisonPage({
         operatingSystem: "Windows",
         url: doc.our.liveUrl ?? `${site.url}/${locale}/products/${doc.ourProductSlug}`,
         description: copy.intro,
+        inLanguage: ["en", "es"],
         author: { "@type": "Person", name: site.name, url: site.url },
         offers: {
           "@type": "Offer",

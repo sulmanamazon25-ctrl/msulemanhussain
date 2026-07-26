@@ -4,9 +4,12 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "prebuild": "node scripts/write-indexnow-key.mjs",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "indexnow:key": "node scripts/write-indexnow-key.mjs",
+    "indexnow:ping": "node scripts/ping-indexnow.mjs"
   },
   "dependencies": {
     "clsx": "^2.1.1",
