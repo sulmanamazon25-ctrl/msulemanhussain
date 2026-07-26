@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { articleJsonLd } from "@/content/owned-brands";
 import { getInsight, insights } from "@/content/insights";
 import { readingTime } from "@/lib/utils";
 import { site } from "@/content/site";
@@ -46,6 +47,20 @@ export default async function InsightPage({
 
   return (
     <article className="mx-auto max-w-3xl px-4 py-16 md:px-6">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            articleJsonLd({
+              title: post.title,
+              excerpt: post.excerpt,
+              date: post.date,
+              slug: post.slug,
+              pathPrefix: "insights",
+            }),
+          ),
+        }}
+      />
       <Link href={lp("/insights")} className="text-sm text-bone-dim hover:text-amber">
         {dict.insights.back}
       </Link>

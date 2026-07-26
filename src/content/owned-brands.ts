@@ -82,10 +82,20 @@ export function productPageJsonLd(product: {
   tagline: string;
   liveUrl?: string;
   logo?: string;
+  status?: string;
+  category?: string;
+  stack?: string[];
 }) {
   const personId = `${site.url}/#person`;
   const portfolioUrl = `${site.url}/products/${product.slug}`;
   const orgUrl = product.liveUrl?.replace(/\/$/, "") ?? portfolioUrl;
+  const appCategory =
+    product.category?.toLowerCase().includes("video")
+      ? "MultimediaApplication"
+      : product.category?.toLowerCase().includes("whatsapp")
+        ? "BusinessApplication"
+        : "WebApplication";
+
   return {
     "@context": "https://schema.org",
     "@graph": [
@@ -106,6 +116,24 @@ export function productPageJsonLd(product: {
         sameAs: [portfolioUrl, site.url],
       },
       {
+        "@type": "SoftwareApplication",
+        "@id": `${orgUrl}/#software`,
+        name: product.name,
+        description: product.tagline,
+        applicationCategory: appCategory,
+        operatingSystem: product.stack?.some((s) => /windows|desktop/i.test(s))
+          ? "Windows, Web"
+          : "Web",
+        url: product.liveUrl ?? portfolioUrl,
+        image: product.logo ? `${site.url}${product.logo}` : undefined,
+        author: { "@id": personId },
+        offers: {
+          "@type": "Offer",
+          price: "0",
+          priceCurrency: "USD",
+        },
+      },
+      {
         "@type": "WebPage",
         "@id": `${portfolioUrl}#webpage`,
         url: portfolioUrl,
@@ -115,6 +143,59 @@ export function productPageJsonLd(product: {
         author: { "@id": personId },
         isPartOf: { "@id": `${site.url}/#website` },
       },
+    ],
+  };
+}
+
+export function articleJsonLd(post: {
+  title: string;
+  excerpt: string;
+  date: string;
+  slug: string;
+  pathPrefix: "build-log" | "insights";
+}) {
+  const personId = `${site.url}/#person`;
+  const url = `${site.url}/${post.pathPrefix}/${post.slug}`;
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: post.title,
+    description: post.excerpt,
+    datePublished: post.date,
+    author: {
+      "@type": "Person",
+      "@id": personId,
+      name: site.name,
+      url: site.url,
+    },
+    publisher: {
+      "@type": "Person",
+      "@id": personId,
+      name: site.name,
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": url,
+    },
+    url,
+  };
+}
+
+export function aboutPersonJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "@id": `${site.url}/#person`,
+    name: site.name,
+    url: `${site.url}/en`,
+    jobTitle: "Founder & Product Builder",
+    sameAs: [
+      site.social.linkedin,
+      site.social.youtube,
+      site.social.x,
+      site.social.github,
+      site.social.instagram,
+      site.social.tiktok,
     ],
   };
 }

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { articleJsonLd } from "@/content/owned-brands";
 import { buildLog, getBuildLogPost } from "@/content/build-log";
 import { readingTime } from "@/lib/utils";
 import { site } from "@/content/site";
@@ -44,6 +45,20 @@ export default async function BuildLogPostPage({
 
   return (
     <article className="mx-auto max-w-3xl px-4 py-16 md:px-6">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            articleJsonLd({
+              title: post.title,
+              excerpt: post.excerpt,
+              date: post.date,
+              slug: post.slug,
+              pathPrefix: "build-log",
+            }),
+          ),
+        }}
+      />
       <Link href={localePath(locale, "/build-log")} className="text-sm text-bone-dim hover:text-phosphor">
         {dict.buildLog.back}
       </Link>

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { aboutPersonJsonLd } from "@/content/owned-brands";
 import { site } from "@/content/site";
 import { products, buildingNow } from "@/content/products";
 import { founderTimeline } from "@/content/timeline";
@@ -36,6 +37,10 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-16 md:px-6">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutPersonJsonLd()) }}
+      />
       <p className="font-mono text-[11px] tracking-[0.28em] text-signal">{dict.about.eyebrow}</p>
       <h1 className="mt-3 font-display text-4xl font-bold md:text-6xl">{dict.about.title}</h1>
       <p className="mt-6 text-lg leading-relaxed text-bone-dim">{dict.about.who}</p>

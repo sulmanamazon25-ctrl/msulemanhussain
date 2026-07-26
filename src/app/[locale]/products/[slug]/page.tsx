@@ -26,6 +26,7 @@ export async function generateMetadata({
   return {
     title: product.name,
     description: product.tagline,
+    robots: product.status === "COMING SOON" ? { index: false, follow: true } : undefined,
     alternates: {
       canonical: `https://msulemanhussain.com/${locale}/products/${slug}`,
       languages: alternateLanguages(`/products/${slug}`),

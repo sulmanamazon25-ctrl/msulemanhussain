@@ -4,6 +4,7 @@ import { products } from "@/content/products";
 import { ecosystems } from "@/content/expertise";
 import { buildLog } from "@/content/build-log";
 import { insights } from "@/content/insights";
+import { tools } from "@/content/tools";
 import { locales } from "@/i18n/config";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -11,6 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticPaths = [
     "",
     "/products",
+    "/tools",
     "/projects",
     "/expertise",
     "/build-log",
@@ -26,7 +28,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${base}/${locale}${path}`,
       lastModified: new Date(),
       changeFrequency: "weekly" as const,
-      priority: path === "" ? 1 : 0.7,
+      priority: path === "" ? 1 : path === "/tools" ? 0.85 : 0.7,
       alternates: {
         languages: {
           en: `${base}/en${path}`,
@@ -38,16 +40,31 @@ export default function sitemap(): MetadataRoute.Sitemap {
   );
 
   const dynamic = locales.flatMap((locale) => [
-    ...products.map((p) => ({
-      url: `${base}/${locale}/products/${p.slug}`,
+    ...products
+      .filter((p) => p.status !== "COMING SOON")
+      .map((p) => ({
+        url: `${base}/${locale}/products/${p.slug}`,
+        lastModified: new Date(),
+        changeFrequency: "weekly" as const,
+        priority: 0.8,
+        alternates: {
+          languages: {
+            en: `${base}/en/products/${p.slug}`,
+            es: `${base}/es/products/${p.slug}`,
+            "x-default": `${base}/en/products/${p.slug}`,
+          },
+        },
+      })),
+    ...tools.map((t) => ({
+      url: `${base}/${locale}/tools/${t.slug}`,
       lastModified: new Date(),
       changeFrequency: "weekly" as const,
-      priority: 0.8,
+      priority: 0.85,
       alternates: {
         languages: {
-          en: `${base}/en/products/${p.slug}`,
-          es: `${base}/es/products/${p.slug}`,
-          "x-default": `${base}/en/products/${p.slug}`,
+          en: `${base}/en/tools/${t.slug}`,
+          es: `${base}/es/tools/${t.slug}`,
+          "x-default": `${base}/en/tools/${t.slug}`,
         },
       },
     })),
