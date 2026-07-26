@@ -45,15 +45,106 @@ export const toolCategories: {
   {
     id: "pickleball",
     en: {
-      name: "Pickleball Germany tools",
-      blurb: "Court discovery built from editorial city-guide coverage in Germany.",
+      name: "Pickleball tools",
+      blurb:
+        "Court finders for USA, Canada, Australia, UK, Spain, and Germany — plus court dimension converters for builders and travelers.",
     },
     es: {
-      name: "Herramientas de pickleball en Alemania",
-      blurb: "Búsqueda de pistas basada en guías editoriales de ciudades en Alemania.",
+      name: "Herramientas de pickleball",
+      blurb:
+        "Buscadores de pistas para EE. UU., Canadá, Australia, Reino Unido, España y Alemania — más convertidores de medidas de pista.",
     },
   },
 ];
+
+function regionalCourtTool(opts: {
+  slug: string;
+  countryEn: string;
+  countryEs: string;
+  h1En: string;
+  h1Es: string;
+  relatedProductUrl?: string;
+  relatedProductLabel?: string;
+}): Tool {
+  const {
+    slug,
+    countryEn,
+    countryEs,
+    h1En,
+    h1Es,
+    relatedProductUrl = "https://msulemanhussain.com/en/products/pickleball-deutsch",
+    relatedProductLabel = "Pickleball Deutsch",
+  } = opts;
+  return {
+    slug,
+    category: "pickleball",
+    relatedProductSlug: "pickleball-deutsch",
+    relatedProductUrl,
+    relatedProductLabel,
+    processing: "local",
+    accent: "#ffb020",
+    en: {
+      name: `Pickleball courts finder (${countryEn})`,
+      title: `Pickleball Courts in ${countryEn} — Free Court Finder`,
+      description: `Find pickleball court hubs by city or region in ${countryEn} — indoor/outdoor notes for travelers and locals. Free, no signup.`,
+      h1: h1En,
+      intro: `Search a curated list of pickleball metro hubs across ${countryEn}. Filter by region or indoor/outdoor. This is not a complete national directory — always confirm hours and booking with the venue.`,
+      benefit: `Filter ${countryEn} pickleball hubs by city, region, and indoor/outdoor.`,
+      howTo: [
+        "Type a city or region name to filter.",
+        "Optionally limit to indoor or outdoor.",
+        "Open any linked guide when available.",
+      ],
+      whatItDoes: `Filters a curated city-hub dataset for ${countryEn} so you can discover where scenes exist.`,
+      whatItDoesNot:
+        "It is not a live booking system and will not list every private, HOA, or newly opened court.",
+      tips: [
+        "Treat results as discovery hubs, then verify locally.",
+        "Indoor capacity matters more in wet or cold seasons.",
+      ],
+      faq: [
+        {
+          q: "Is this a complete directory?",
+          a: "No. It is a curated metro-hub starter list for discovery — expand your search with local clubs after you pick a city.",
+        },
+        {
+          q: "Can I book a court here?",
+          a: "No. Booking stays with the venue or club.",
+        },
+      ],
+    },
+    es: {
+      name: `Buscador de pistas (${countryEs})`,
+      title: `Pistas de pickleball en ${countryEs} — Buscador gratis`,
+      description: `Encuentra hubs de pickleball por ciudad o región en ${countryEs} — notas indoor/outdoor. Gratis, sin registro.`,
+      h1: h1Es,
+      intro: `Busca una lista curada de hubs de pickleball en ${countryEs}. Filtra por región o indoor/outdoor. No es un directorio nacional completo — confirma horarios y reservas con el club.`,
+      benefit: `Filtra hubs de pickleball en ${countryEs} por ciudad, región e indoor/outdoor.`,
+      howTo: [
+        "Escribe una ciudad o región para filtrar.",
+        "Opcionalmente limita a indoor u outdoor.",
+        "Abre cualquier guía enlazada si está disponible.",
+      ],
+      whatItDoes: `Filtra un dataset curado de hubs urbanos en ${countryEs} para descubrir dónde hay escena.`,
+      whatItDoesNot:
+        "No es un sistema de reservas y no lista todas las pistas privadas o recién abiertas.",
+      tips: [
+        "Úsalo para descubrir ciudades, luego verifica en local.",
+        "En temporada fría o lluviosa prioriza opciones indoor.",
+      ],
+      faq: [
+        {
+          q: "¿Es un directorio completo?",
+          a: "No. Es una lista curada de hubs para empezar — amplía con clubs locales cuando elijas ciudad.",
+        },
+        {
+          q: "¿Puedo reservar aquí?",
+          a: "No. La reserva es con el club o instalación.",
+        },
+      ],
+    },
+  };
+}
 
 export const tools: Tool[] = [
   {
@@ -277,6 +368,116 @@ export const tools: Tool[] = [
         {
           q: "¿Puedo reservar aquí?",
           a: "No. El buscador ayuda a descubrir ubicaciones; la reserva es con el club.",
+        },
+      ],
+    },
+  },
+  regionalCourtTool({
+    slug: "pickleball-courts-usa",
+    countryEn: "USA",
+    countryEs: "EE. UU.",
+    h1En: "Pickleball courts in the USA",
+    h1Es: "Pistas de pickleball en EE. UU.",
+  }),
+  regionalCourtTool({
+    slug: "pickleball-courts-canada",
+    countryEn: "Canada",
+    countryEs: "Canadá",
+    h1En: "Pickleball courts in Canada",
+    h1Es: "Pistas de pickleball en Canadá",
+  }),
+  regionalCourtTool({
+    slug: "pickleball-courts-australia",
+    countryEn: "Australia",
+    countryEs: "Australia",
+    h1En: "Pickleball courts in Australia",
+    h1Es: "Pistas de pickleball en Australia",
+  }),
+  regionalCourtTool({
+    slug: "pickleball-courts-uk",
+    countryEn: "the UK",
+    countryEs: "el Reino Unido",
+    h1En: "Pickleball courts in the UK",
+    h1Es: "Pistas de pickleball en el Reino Unido",
+  }),
+  regionalCourtTool({
+    slug: "pickleball-courts-spain",
+    countryEn: "Spain",
+    countryEs: "España",
+    h1En: "Pickleball courts in Spain",
+    h1Es: "Pistas de pickleball en España",
+  }),
+  {
+    slug: "pickleball-court-dimensions",
+    category: "pickleball",
+    relatedProductSlug: "pickleball-deutsch",
+    relatedProductUrl: "https://msulemanhussain.com/en/products/pickleball-deutsch",
+    relatedProductLabel: "Pickleball Deutsch",
+    processing: "local",
+    accent: "#ffb020",
+    en: {
+      name: "Pickleball court dimensions converter",
+      title: "Pickleball Court Dimensions — Feet to Meters Converter",
+      description:
+        "Convert official pickleball court sizes between feet and meters — full court, kitchen/NVZ, and net height. Free browser tool.",
+      h1: "Pickleball court dimensions (ft ↔ m)",
+      intro:
+        "Official pickleball courts are 20 × 44 feet. Use this converter for builders, facility managers, and travelers switching between US imperial and metric measurements used in Spain, Australia, and much of Europe.",
+      benefit: "Convert standard court, kitchen, and net measurements between feet and meters.",
+      howTo: [
+        "Review the standard layout values.",
+        "Enter a custom length in feet or meters.",
+        "Copy the converted result for plans or travel notes.",
+      ],
+      whatItDoes:
+        "Shows standard USA Pickleball court dimensions and converts custom lengths between feet and meters.",
+      whatItDoesNot:
+        "It does not replace local building codes, facility certifications, or tournament referee rulings.",
+      tips: [
+        "Kitchen / non-volley zone is 7 feet from the net on each side.",
+        "Net height is 36 in at sidelines and 34 in at center.",
+      ],
+      faq: [
+        {
+          q: "What is the official court size?",
+          a: "20 feet wide by 44 feet long (6.10 m × 13.41 m) for both singles and doubles.",
+        },
+        {
+          q: "Why convert to meters?",
+          a: "Many facilities outside the US plan in metric — this avoids tape-measure mistakes.",
+        },
+      ],
+    },
+    es: {
+      name: "Convertidor de medidas de pista",
+      title: "Medidas de pista de pickleball — Pies a metros",
+      description:
+        "Convierte el tamaño oficial de pista de pickleball entre pies y metros — pista completa, kitchen/NVZ y altura de red. Gratis.",
+      h1: "Medidas de pista de pickleball (ft ↔ m)",
+      intro:
+        "La pista oficial mide 20 × 44 pies. Usa este convertidor si construyes o viajas entre medidas imperiales (EE. UU.) y métricas (España, Australia, gran parte de Europa).",
+      benefit: "Convierte pista, kitchen y red entre pies y metros.",
+      howTo: [
+        "Revisa los valores estándar.",
+        "Introduce una longitud en pies o metros.",
+        "Copia el resultado convertido.",
+      ],
+      whatItDoes:
+        "Muestra medidas oficiales y convierte longitudes personalizadas entre pies y metros.",
+      whatItDoesNot:
+        "No sustituye normativas locales de construcción ni reglas de torneo.",
+      tips: [
+        "La kitchen / zona de no volea tiene 7 pies desde la red a cada lado.",
+        "La red mide 36 in en laterales y 34 in en el centro.",
+      ],
+      faq: [
+        {
+          q: "¿Cuál es el tamaño oficial?",
+          a: "20 pies de ancho por 44 de largo (6,10 m × 13,41 m) en individuales y dobles.",
+        },
+        {
+          q: "¿Por qué convertir a metros?",
+          a: "Fuera de EE. UU. muchas instalaciones planifican en métrico — evita errores de medición.",
         },
       ],
     },

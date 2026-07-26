@@ -1,18 +1,40 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { germanStates, pickleballCourts, type CourtSurface } from "@/content/pickleball-courts";
+import {
+  regionsForCountry,
+  courtsByCountry,
+  type CountryCode,
+  type CourtSurface,
+} from "@/content/pickleball-courts";
 
-export function PickleballCourtsFinder({ locale }: { locale: "en" | "es" }) {
+const REGION_LABEL: Record<CountryCode, { en: string; es: string; placeholder: string }> = {
+  DE: { en: "State", es: "Estado", placeholder: "Berlin" },
+  ES: { en: "Region", es: "Comunidad / región", placeholder: "Madrid" },
+  US: { en: "State", es: "Estado", placeholder: "Phoenix" },
+  CA: { en: "Province", es: "Provincia", placeholder: "Toronto" },
+  AU: { en: "State / territory", es: "Estado / territorio", placeholder: "Sydney" },
+  UK: { en: "Nation / region", es: "Nación / región", placeholder: "London" },
+};
+
+export function PickleballCourtsFinder({
+  locale,
+  country,
+}: {
+  locale: "en" | "es";
+  country: CountryCode;
+}) {
   const [query, setQuery] = useState("");
-  const [state, setState] = useState("ALL");
+  const [region, setRegion] = useState("ALL");
   const [surface, setSurface] = useState<"ALL" | CourtSurface>("ALL");
   const es = locale === "es";
+  const labels = REGION_LABEL[country];
+  const regions = regionsForCountry(country);
 
   const list = useMemo(() => {
     const q = query.trim().toLowerCase();
-    return pickleballCourts.filter((c) => {
-      if (state !== "ALL" && c.state !== state) return false;
+    return courtsByCountry(country).filter((c) => {
+      if (region !== "ALL" && c.region !== region) return false;
       if (surface !== "ALL") {
         if (surface === "both") {
           if (c.surface !== "both") return false;
@@ -23,34 +45,39 @@ export function PickleballCourtsFinder({ locale }: { locale: "en" | "es" }) {
       if (!q) return true;
       return (
         c.city.toLowerCase().includes(q) ||
-        c.state.toLowerCase().includes(q) ||
+        c.region.toLowerCase().includes(q) ||
         c.name.toLowerCase().includes(q)
       );
     });
-  }, [query, state, surface]);
+  }, [country, query, region, surface]);
 
   return (
     <div className="border border-white/10 bg-ink-3/80 p-5 md:p-6">
+      <p className="mb-4 text-xs text-bone-faint">
+        {es
+          ? "Lista curada de hubs — no es un directorio completo. Confirma siempre con el club."
+          : "Curated hubs only — not a complete directory. Always confirm with the venue."}
+      </p>
       <div className="grid gap-4 md:grid-cols-3">
         <label className="block text-sm text-bone-dim md:col-span-1">
-          {es ? "Buscar ciudad / estado" : "Search city / state"}
+          {es ? "Buscar ciudad / región" : "Search city / region"}
           <input
             type="search"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder={es ? "p. ej. Berlin" : "e.g. Berlin"}
+            placeholder={es ? `p. ej. ${labels.placeholder}` : `e.g. ${labels.placeholder}`}
             className="mt-2 w-full border border-white/15 bg-ink px-3 py-2.5 text-bone outline-none focus:border-phosphor"
           />
         </label>
         <label className="block text-sm text-bone-dim">
-          {es ? "Estado" : "State"}
+          {es ? labels.es : labels.en}
           <select
-            value={state}
-            onChange={(e) => setState(e.target.value)}
+            value={region}
+            onChange={(e) => setRegion(e.target.value)}
             className="mt-2 w-full border border-white/15 bg-ink px-3 py-2.5 text-bone outline-none focus:border-phosphor"
           >
             <option value="ALL">{es ? "Todos" : "All"}</option>
-            {germanStates.map((s) => (
+            {regions.map((s) => (
               <option key={s} value={s}>
                 {s}
               </option>
@@ -82,18 +109,22 @@ export function PickleballCourtsFinder({ locale }: { locale: "en" | "es" }) {
             <div>
               <p className="font-display text-lg font-semibold text-bone">{c.name}</p>
               <p className="mt-1 text-sm text-bone-dim">
-                {c.city}, {c.state} · {c.surface}
+                {c.city}, {c.region} · {c.surface}
               </p>
               <p className="mt-1 text-xs text-bone-faint">{c.notes}</p>
             </div>
-            <a
-              href={c.guideUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="text-sm font-medium text-phosphor hover:underline"
-            >
-              {es ? "Guía →" : "City guide →"}
-            </a>
+            {c.guideUrl ? (
+              <a
+                href={c.guideUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="text-sm font-medium text-phosphor hover:underline"
+              >
+                {es ? "Guía →" : "City guide →"}
+              </a>
+            ) : (
+              <span className="text-xs text-bone-faint">{es ? "Hub local" : "Local hub"}</span>
+            )}
           </li>
         ))}
         {list.length === 0 ? (
