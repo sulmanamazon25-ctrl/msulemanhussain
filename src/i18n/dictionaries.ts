@@ -55,6 +55,11 @@ const en = {
     status: "CURRENT STATUS",
     liveStatus: "Live · multilingual product",
     related: "Related projects",
+    growth: "Free tools & comparisons",
+    growthTools: "Free tools",
+    growthComparisons: "Comparisons",
+    growthAllTools: "All free tools →",
+    growthAllVs: "All comparisons →",
     talk: "Talk about this product",
   },
   think: {
@@ -92,6 +97,8 @@ const en = {
     title: "What I'm building next is the interesting part.",
     follow: "Follow the build",
     build: "Let's build something",
+    toolsCta: "Free tools",
+    vsCta: "Comparisons",
   },
   footer: {
     blurb: "Founder building software, AI products, and digital businesses.",
@@ -175,6 +182,7 @@ const en = {
     privacyHint: "Your data stays in your browser.",
     relatedProduct: "More on",
     relatedTools: "Related tools",
+    relatedComparison: "Related comparison",
     howToUse: "How to use",
     whatDoes: "What the tool does",
     whatDoesNot: "What the tool does not do",
@@ -210,6 +218,7 @@ const en = {
     faqTitle: "FAQ",
     builtBy: "Built by · portfolio:",
     portfolioLink: "View portfolio product page",
+    relatedTool: "Related free tool",
   },
   lang: {
     en: "EN",
@@ -279,6 +288,11 @@ const es: Dictionary = {
     status: "ESTADO ACTUAL",
     liveStatus: "En vivo · producto multilingüe",
     related: "Proyectos relacionados",
+    growth: "Herramientas gratis y comparativas",
+    growthTools: "Herramientas gratis",
+    growthComparisons: "Comparativas",
+    growthAllTools: "Todas las herramientas →",
+    growthAllVs: "Todas las comparativas →",
     talk: "Hablar de este producto",
   },
   think: {
@@ -316,6 +330,8 @@ const es: Dictionary = {
     title: "Lo que construyo después es lo interesante.",
     follow: "Seguir el build",
     build: "Construyamos algo",
+    toolsCta: "Herramientas gratis",
+    vsCta: "Comparativas",
   },
   footer: {
     blurb: "Founder construyendo software, productos de IA y negocios digitales.",
@@ -399,6 +415,7 @@ const es: Dictionary = {
     privacyHint: "Tus datos se quedan en el navegador.",
     relatedProduct: "Más en",
     relatedTools: "Herramientas relacionadas",
+    relatedComparison: "Comparativa relacionada",
     howToUse: "Cómo usarla",
     whatDoes: "Qué hace",
     whatDoesNot: "Qué no hace",
@@ -434,6 +451,7 @@ const es: Dictionary = {
     faqTitle: "FAQ",
     builtBy: "Hecho por · portfolio:",
     portfolioLink: "Ver página del producto en el portfolio",
+    relatedTool: "Herramienta gratis relacionada",
   },
   lang: {
     en: "EN",

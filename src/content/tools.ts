@@ -164,7 +164,7 @@ function regionalCourtTool(opts: {
     countryEs,
     h1En,
     h1Es,
-    relatedProductUrl = "https://msulemanhussain.com/en/products/pickleball-deutsch",
+    relatedProductUrl = "https://pickleballdeutch.com/",
     relatedProductLabel = "Pickleball Deutsch",
   } = opts;
   return {
@@ -578,7 +578,7 @@ export const tools: Tool[] = [
     slug: "pickleball-court-dimensions",
     category: "pickleball",
     relatedProductSlug: "pickleball-deutsch",
-    relatedProductUrl: "https://msulemanhussain.com/en/products/pickleball-deutsch",
+    relatedProductUrl: "https://pickleballdeutch.com/",
     relatedProductLabel: "Pickleball Deutsch",
     processing: "local",
     accent: "#ffb020",

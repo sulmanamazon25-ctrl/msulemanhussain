@@ -2,6 +2,7 @@
 
 import { useCallback, useMemo, useRef, useState } from "react";
 import { QRCodeCanvas, QRCodeSVG } from "qrcode.react";
+import { externalProductUrls } from "@/content/growth-links";
 
 const COUNTRY_CODES = [
   { code: "1", label: "US/CA +1" },
@@ -218,7 +219,7 @@ export function WhatsAppLinkGenerator({ locale }: { locale: "en" | "es" }) {
             : "Local drafts with human approval and BYOK. Built for when the link is only step one."}
         </p>
         <a
-          href="https://wasup.app/es"
+          href={externalProductUrls.wasup}
           target="_blank"
           rel="noopener noreferrer"
           className="mt-4 inline-block bg-[#25d366] px-4 py-2.5 text-sm font-semibold text-ink hover:brightness-110"

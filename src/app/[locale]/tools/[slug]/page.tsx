@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ToolInteractive } from "@/components/tools/ToolInteractive";
+import { comparisonForTool } from "@/content/growth-links";
 import { site } from "@/content/site";
 import { getTool, toolCopy, tools } from "@/content/tools";
+import { getComparison, comparisonCopy } from "@/lib/comparisons";
 import { alternateLanguages, isLocale, localePath, type Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
 
@@ -52,6 +54,9 @@ export default async function ToolPage({
   const copy = toolCopy(tool, loc);
   const lp = (path: string) => localePath(locale, path);
   const related = tools.filter((t) => t.category === tool.category && t.slug !== tool.slug);
+  const relatedCmp = comparisonForTool(tool.slug);
+  const relatedCmpDoc = relatedCmp ? getComparison(relatedCmp.comparisonSlug) : undefined;
+  const relatedCmpCopy = relatedCmpDoc ? comparisonCopy(relatedCmpDoc, loc) : null;
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -178,15 +183,28 @@ export default async function ToolPage({
           <a
             href={tool.relatedProductUrl}
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
             className="font-medium text-phosphor hover:underline"
           >
-            {tool.relatedProductLabel} →
+            {tool.relatedProductLabel} ↗
           </a>
         </p>
         <p className="mt-3 text-sm text-bone-faint">
           <Link href={lp(`/products/${tool.relatedProductSlug}`)} className="hover:text-bone">
             {locale === "es" ? "Ver en el portfolio →" : "See in the portfolio →"}
+          </Link>
+        </p>
+        {relatedCmpDoc && relatedCmpCopy ? (
+          <p className="mt-3 text-sm text-bone-dim">
+            {dict.tools.relatedComparison}{" "}
+            <Link href={lp(`/vs/${relatedCmpDoc.slug}`)} className="font-medium text-phosphor hover:underline">
+              {relatedCmpDoc.our.name} vs {relatedCmpDoc.competitor.name} →
+            </Link>
+          </p>
+        ) : null}
+        <p className="mt-3 text-sm text-bone-faint">
+          <Link href={lp("/vs")} className="hover:text-bone">
+            {dict.tools.vsLink}
           </Link>
         </p>
       </section>

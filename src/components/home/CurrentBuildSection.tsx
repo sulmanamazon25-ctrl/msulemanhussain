@@ -134,6 +134,14 @@ export function CurrentBuildSection() {
             </motion.div>
           ))}
         </div>
+        <div className="mt-12 flex flex-wrap items-center gap-4 border-t border-white/10 pt-8">
+          <Link href={href("/tools")} className="text-sm text-phosphor hover:underline">
+            {dict.nav.tools} →
+          </Link>
+          <Link href={href("/vs")} className="text-sm text-phosphor hover:underline">
+            {dict.nav.vs} →
+          </Link>
+        </div>
       </div>
     </section>
   );

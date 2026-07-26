@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { ProductWorld } from "@/components/home/ProductWorld";
-import { alternateLanguages, isLocale, type Locale } from "@/i18n/config";
+import { alternateLanguages, isLocale, localePath, type Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
 
 export async function generateMetadata({
@@ -33,6 +34,14 @@ export default async function ProductsPage({ params }: { params: Promise<{ local
         <p className="font-mono text-[11px] tracking-[0.28em] text-signal">{dict.nav.products}</p>
         <h1 className="mt-3 font-display text-4xl font-bold md:text-6xl">{dict.products.pageTitle}</h1>
         <p className="mt-4 max-w-2xl text-bone-dim">{dict.products.pageBlurb}</p>
+        <div className="mt-6 flex flex-wrap gap-4 text-sm">
+          <Link href={localePath(raw as Locale, "/tools")} className="text-phosphor hover:underline">
+            {dict.products.growthAllTools}
+          </Link>
+          <Link href={localePath(raw as Locale, "/vs")} className="text-phosphor hover:underline">
+            {dict.products.growthAllVs}
+          </Link>
+        </div>
       </div>
       <ProductWorld showHeading={false} />
     </div>

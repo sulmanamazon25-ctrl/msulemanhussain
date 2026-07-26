@@ -9,12 +9,12 @@ export const ownedBrands = [
   },
   {
     name: "PinQuill",
-    url: "https://pinquill.com/",
+    url: "https://pinquill.com/en",
     portfolioPath: "/products/pinquill",
   },
   {
     name: "Wasup",
-    url: "https://wasup.app/",
+    url: "https://wasup.app/es",
     portfolioPath: "/products/wasup",
   },
   {

@@ -12,6 +12,8 @@ import {
   getAllComparisonSlugs,
   getComparison,
 } from "@/lib/comparisons";
+import { toolForComparison } from "@/content/growth-links";
+import { getTool, toolCopy } from "@/content/tools";
 import { alternateLanguages, isLocale, localePath, type Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
 
@@ -59,6 +61,9 @@ export default async function ComparisonPage({
   const loc = locale === "es" ? "es" : "en";
   const copy = comparisonCopy(doc, loc);
   const lp = (path: string) => localePath(locale, path);
+  const relatedToolRef = toolForComparison(doc.slug);
+  const relatedTool = relatedToolRef ? getTool(relatedToolRef.toolSlug) : undefined;
+  const relatedToolName = relatedTool ? toolCopy(relatedTool, loc).name : null;
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -157,6 +162,14 @@ export default async function ComparisonPage({
             >
               {dict.vs.builtBy} {doc.our.name}
             </Link>
+            {relatedTool && relatedToolName ? (
+              <Link
+                href={lp(`/tools/${relatedTool.slug}`)}
+                className="border border-white/20 px-5 py-3 text-sm font-semibold hover:border-phosphor hover:text-phosphor"
+              >
+                {dict.vs.relatedTool}: {relatedToolName}
+              </Link>
+            ) : null}
           </div>
           {copy.cta.badge ? (
             <p className="mt-3 font-mono text-[11px] tracking-[0.16em] text-phosphor">{copy.cta.badge}</p>
@@ -243,6 +256,21 @@ export default async function ComparisonPage({
             >
               {dict.vs.portfolioLink}
             </Link>
+            {relatedTool && relatedToolName ? (
+              <Link
+                href={lp(`/tools/${relatedTool.slug}`)}
+                className="border border-white/20 px-5 py-3 text-sm font-semibold hover:border-phosphor hover:text-phosphor"
+              >
+                {relatedToolName} →
+              </Link>
+            ) : (
+              <Link
+                href={lp("/tools")}
+                className="border border-white/20 px-5 py-3 text-sm font-semibold hover:border-phosphor hover:text-phosphor"
+              >
+                {dict.tools.title} →
+              </Link>
+            )}
           </div>
         </div>
       </section>

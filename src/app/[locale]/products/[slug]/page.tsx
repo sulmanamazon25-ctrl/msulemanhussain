@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { productPageJsonLd } from "@/content/owned-brands";
+import { comparisonsForProduct, toolsForProduct } from "@/content/growth-links";
 import { getProduct, products, statusClass } from "@/content/products";
 import { getProject } from "@/content/projects";
 import { site } from "@/content/site";
@@ -55,6 +56,10 @@ export default async function ProductPage({
   const related = (product.relatedProjectSlugs ?? [])
     .map((s) => getProject(s))
     .filter(Boolean);
+
+  const loc = locale === "es" ? "es" : "en";
+  const growthTools = toolsForProduct(product.slug, loc);
+  const growthComparisons = comparisonsForProduct(product.slug, loc);
 
   const jsonLd = productPageJsonLd(product);
 
@@ -120,7 +125,7 @@ export default async function ProductPage({
                   <a
                     href={product.liveUrl}
                     target="_blank"
-                    rel="noreferrer"
+                    rel="noopener noreferrer"
                     className="bg-signal px-5 py-3 text-sm font-semibold hover:bg-signal-hot"
                   >
                     {dict.products.openLive}
@@ -133,6 +138,22 @@ export default async function ProductPage({
                     {dict.products.talk}
                   </Link>
                 )}
+                {growthTools[0] ? (
+                  <Link
+                    href={lp(`/tools/${growthTools[0].slug}`)}
+                    className="border border-white/20 px-5 py-3 text-sm font-semibold hover:border-phosphor hover:text-phosphor"
+                  >
+                    {growthTools[0].name}
+                  </Link>
+                ) : null}
+                {growthComparisons[0] ? (
+                  <Link
+                    href={lp(`/vs/${growthComparisons[0].slug}`)}
+                    className="border border-white/20 px-5 py-3 text-sm font-semibold hover:border-phosphor hover:text-phosphor"
+                  >
+                    {growthComparisons[0].label}
+                  </Link>
+                ) : null}
               </div>
             </div>
             <div
@@ -225,7 +246,7 @@ export default async function ProductPage({
             <a
               href={product.liveUrl}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="mt-4 inline-block text-sm hover:underline"
               style={{ color: product.accent }}
             >
@@ -249,6 +270,62 @@ export default async function ProductPage({
                 ) : null,
               )}
             </ul>
+          </div>
+        ) : null}
+
+        {(growthTools.length > 0 || growthComparisons.length > 0) ? (
+          <div className="mt-14 border-t border-white/10 pt-10">
+            <h2 className="font-display text-xl font-semibold">{dict.products.growth}</h2>
+            <div className="mt-6 grid gap-8 md:grid-cols-2">
+              {growthTools.length > 0 ? (
+                <div>
+                  <p className="font-mono text-[10px] tracking-[0.2em] text-phosphor">{dict.products.growthTools}</p>
+                  <ul className="mt-3 space-y-2">
+                    {growthTools.map((t) => (
+                      <li key={t.slug}>
+                        <Link href={lp(`/tools/${t.slug}`)} className="text-sm text-bone hover:text-phosphor">
+                          {t.name} →
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ) : null}
+              {growthComparisons.length > 0 ? (
+                <div>
+                  <p className="font-mono text-[10px] tracking-[0.2em] text-phosphor">
+                    {dict.products.growthComparisons}
+                  </p>
+                  <ul className="mt-3 space-y-2">
+                    {growthComparisons.map((c) => (
+                      <li key={c.slug}>
+                        <Link href={lp(`/vs/${c.slug}`)} className="text-sm text-bone hover:text-phosphor">
+                          {c.label} →
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ) : null}
+            </div>
+            <div className="mt-6 flex flex-wrap gap-4 text-sm">
+              <Link href={lp("/tools")} className="text-phosphor hover:underline">
+                {dict.products.growthAllTools}
+              </Link>
+              <Link href={lp("/vs")} className="text-phosphor hover:underline">
+                {dict.products.growthAllVs}
+              </Link>
+              {product.liveUrl ? (
+                <a
+                  href={product.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-bone-dim hover:text-bone"
+                >
+                  {dict.products.openLive} ↗
+                </a>
+              ) : null}
+            </div>
           </div>
         ) : null}
       </section>

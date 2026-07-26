@@ -32,6 +32,12 @@ export function FutureSection() {
             >
               {dict.future.follow}
             </Link>
+            <Link href={href("/tools")} className="border border-white/20 px-5 py-3 text-sm font-semibold hover:border-phosphor hover:text-phosphor">
+              {dict.future.toolsCta}
+            </Link>
+            <Link href={href("/vs")} className="border border-white/20 px-5 py-3 text-sm font-semibold hover:border-phosphor hover:text-phosphor">
+              {dict.future.vsCta}
+            </Link>
             <Link href={href("/contact")} className="bg-signal px-5 py-3 text-sm font-semibold hover:bg-signal-hot">
               {dict.future.build}
             </Link>
