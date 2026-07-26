@@ -11,11 +11,11 @@ export const productGrowthLinks: Record<
     comparisonSlugs: ["wasup-vs-manychat"],
   },
   downitx: {
-    toolSlugs: [],
+    toolSlugs: ["tiktok-reels-safe-zone", "vertical-aspect-guide"],
     comparisonSlugs: ["downitx-vs-4kdownloader"],
   },
   pinquill: {
-    toolSlugs: [],
+    toolSlugs: ["pinterest-23-canvas", "pinterest-pin-copy-length"],
     comparisonSlugs: [],
   },
   "spain-eats": {

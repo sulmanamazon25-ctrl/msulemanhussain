@@ -24,6 +24,22 @@ const WhatsAppLinkGenerator = dynamic(
   () => import("@/components/tools/WhatsAppLinkGenerator").then((m) => m.WhatsAppLinkGenerator),
   { ssr: false, loading: () => <ToolSkeleton /> },
 );
+const TikTokReelsSafeZone = dynamic(
+  () => import("@/components/tools/TikTokReelsSafeZone").then((m) => m.TikTokReelsSafeZone),
+  { ssr: false, loading: () => <ToolSkeleton /> },
+);
+const VerticalAspectGuide = dynamic(
+  () => import("@/components/tools/VerticalAspectGuide").then((m) => m.VerticalAspectGuide),
+  { ssr: false, loading: () => <ToolSkeleton /> },
+);
+const Pinterest23Canvas = dynamic(
+  () => import("@/components/tools/Pinterest23Canvas").then((m) => m.Pinterest23Canvas),
+  { ssr: false, loading: () => <ToolSkeleton /> },
+);
+const PinterestPinCopyLength = dynamic(
+  () => import("@/components/tools/PinterestPinCopyLength").then((m) => m.PinterestPinCopyLength),
+  { ssr: false, loading: () => <ToolSkeleton /> },
+);
 
 function ToolSkeleton() {
   return <div className="min-h-48 animate-pulse border border-white/10 bg-ink-3/50" />;
@@ -40,6 +56,10 @@ const COURT_SLUG_COUNTRY: Record<string, CountryCode> = {
 
 export function ToolInteractive({ slug, locale }: { slug: string; locale: "en" | "es" }) {
   if (slug === "whatsapp-link-generator") return <WhatsAppLinkGenerator locale={locale} />;
+  if (slug === "tiktok-reels-safe-zone") return <TikTokReelsSafeZone locale={locale} />;
+  if (slug === "vertical-aspect-guide") return <VerticalAspectGuide locale={locale} />;
+  if (slug === "pinterest-23-canvas") return <Pinterest23Canvas locale={locale} />;
+  if (slug === "pinterest-pin-copy-length") return <PinterestPinCopyLength locale={locale} />;
   if (slug === "spain-tip-calculator") return <SpainTipCalculator locale={locale} />;
   if (slug === "menu-del-dia-calculator") return <MenuDelDiaCalculator locale={locale} />;
   if (slug === "pickleball-court-dimensions") return <PickleballCourtDimensions locale={locale} />;

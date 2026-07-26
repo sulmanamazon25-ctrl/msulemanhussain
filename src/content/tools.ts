@@ -112,42 +112,7 @@ export const toolCategories: {
   },
 ];
 
-export const toolPlaceholders: ToolPlaceholder[] = [
-  {
-    id: "tiktok-reels-safe-zone",
-    category: "downitx",
-    accent: "#3d8bff",
-    relatedProductUrl: "https://downitx.com/",
-    relatedProductLabel: "DownitX",
-    en: {
-      name: "TikTok / Reels safe-zone checker",
-      benefit: "Preview caption and UI overlays so clips stay readable on vertical platforms.",
-      status: "COMING SOON",
-    },
-    es: {
-      name: "Checker de safe-zone TikTok / Reels",
-      benefit: "Previsualiza subtítulos y overlays de UI para que los clips se lean en vertical.",
-      status: "PRÓXIMAMENTE",
-    },
-  },
-  {
-    id: "pinterest-23-canvas",
-    category: "pinquill",
-    accent: "#e60023",
-    relatedProductUrl: "https://pinquill.com/en",
-    relatedProductLabel: "PinQuill",
-    en: {
-      name: "2:3 Pinterest canvas previewer",
-      benefit: "Check pin framing at the standard 2:3 ratio before you publish.",
-      status: "COMING SOON",
-    },
-    es: {
-      name: "Previewer de canvas Pinterest 2:3",
-      benefit: "Revisa el encuadre del pin en ratio 2:3 antes de publicar.",
-      status: "PRÓXIMAMENTE",
-    },
-  },
-];
+export const toolPlaceholders: ToolPlaceholder[] = [];
 
 function regionalCourtTool(opts: {
   slug: string;
@@ -310,6 +275,294 @@ export const tools: Tool[] = [
         {
           q: "¿Sustituye a una bandeja de WhatsApp Business?",
           a: "No. Crea un enlace de entrada. Para borradores con IA y aprobación humana a escala, mira Wasup.",
+        },
+      ],
+    },
+  },
+  {
+    slug: "tiktok-reels-safe-zone",
+    category: "downitx",
+    relatedProductSlug: "downitx",
+    relatedProductUrl: "https://downitx.com/",
+    relatedProductLabel: "DownitX",
+    processing: "local",
+    accent: "#3d8bff",
+    en: {
+      name: "TikTok / Reels safe-zone checker",
+      title: "TikTok & Reels Safe-Zone Checker — Free Vertical Overlay Preview",
+      description:
+        "Preview TikTok and Instagram Reels UI overlays on a 9:16 frame so captions and faces stay readable. Free, runs in your browser.",
+      h1: "TikTok / Reels safe-zone checker",
+      intro:
+        "Upload a still or use the blank stage. Toggle TikTok vs Reels chrome to see where captions, buttons, and side actions cover your frame — before you burn text into a Long→Short clip.",
+      benefit: "Preview caption and UI overlays so clips stay readable on vertical platforms.",
+      howTo: [
+        "Choose TikTok or Instagram Reels.",
+        "Optionally upload a frame or poster image.",
+        "Check that faces and captions sit outside the shaded chrome zones.",
+      ],
+      whatItDoes:
+        "Draws approximate platform UI safe zones on a 9:16 stage so you can spot collision with captions and faces.",
+      whatItDoesNot:
+        "It is not an official TikTok/Meta layout export and does not encode video or burn captions for you.",
+      tips: [
+        "Keep primary text in the middle third — top and bottom get the heaviest chrome.",
+        "Reels and TikTok share a vertical canvas but place actions differently — toggle both.",
+      ],
+      faq: [
+        {
+          q: "Are the overlays pixel-perfect?",
+          a: "No. They are practical guides based on common UI placement — always spot-check on device.",
+        },
+        {
+          q: "Where does my image go?",
+          a: "Only into your browser via FileReader. Nothing is uploaded to a server.",
+        },
+      ],
+    },
+    es: {
+      name: "Checker de safe-zone TikTok / Reels",
+      title: "Safe-zone TikTok y Reels — Preview de overlays verticales",
+      description:
+        "Previsualiza overlays de UI de TikTok e Instagram Reels en un frame 9:16 para que subtítulos y rostros se lean. Gratis, en el navegador.",
+      h1: "Checker de safe-zone TikTok / Reels",
+      intro:
+        "Sube un fotograma o usa el escenario vacío. Alterna TikTok vs Reels para ver dónde botones y captions cubren el frame — antes de quemar texto en un clip Long→Short.",
+      benefit: "Previsualiza subtítulos y overlays de UI para que los clips se lean en vertical.",
+      howTo: [
+        "Elige TikTok o Instagram Reels.",
+        "Opcionalmente sube una imagen o póster.",
+        "Comprueba que rostros y textos queden fuera de las zonas sombreadas.",
+      ],
+      whatItDoes:
+        "Dibuja zonas seguras aproximadas de UI en un escenario 9:16 para detectar choques con captions y rostros.",
+      whatItDoesNot:
+        "No es un export oficial de TikTok/Meta y no codifica vídeo ni quema subtítulos.",
+      tips: [
+        "Mantén el texto clave en el tercio central — arriba y abajo llevan más chrome.",
+        "Reels y TikTok comparten canvas vertical pero colocan acciones distinto — prueba ambos.",
+      ],
+      faq: [
+        {
+          q: "¿Los overlays son exactos al píxel?",
+          a: "No. Son guías prácticas según UI habitual — verifica siempre en el dispositivo.",
+        },
+        {
+          q: "¿A dónde va mi imagen?",
+          a: "Solo a tu navegador con FileReader. No se sube a ningún servidor.",
+        },
+      ],
+    },
+  },
+  {
+    slug: "vertical-aspect-guide",
+    category: "downitx",
+    relatedProductSlug: "downitx",
+    relatedProductUrl: "https://downitx.com/",
+    relatedProductLabel: "DownitX",
+    processing: "local",
+    accent: "#3d8bff",
+    en: {
+      name: "Vertical aspect ratio guide",
+      title: "Vertical Aspect Ratio Guide — TikTok, Reels, Shorts & Feed",
+      description:
+        "Pick a platform target and preview the aspect ratio box for TikTok, Reels, Shorts, 4:5 feed, or 1:1 — free browser guide.",
+      h1: "Vertical aspect ratio guide",
+      intro:
+        "Creators often export the wrong ratio. Pick a destination, see the preview frame, and copy the ratio label before you cut clips in DownitX or another editor.",
+      benefit: "See the right canvas ratio for short-form and feed formats instantly.",
+      howTo: [
+        "Select a platform / format.",
+        "Read the ratio and recommended use notes.",
+        "Match your export settings to the preview box.",
+      ],
+      whatItDoes: "Shows a live aspect-ratio preview and short guidance for common creator formats.",
+      whatItDoesNot: "It does not resize or export video files.",
+      tips: [
+        "9:16 wins for TikTok, Reels, and Shorts.",
+        "4:5 often performs better than 1:1 in Instagram feed.",
+      ],
+      faq: [
+        {
+          q: "Is 9:16 always required?",
+          a: "For full-screen short-form, yes. Feed placements may prefer 4:5 or square.",
+        },
+        {
+          q: "Does this change my file?",
+          a: "No. It is a visual guide only.",
+        },
+      ],
+    },
+    es: {
+      name: "Guía de aspect ratio vertical",
+      title: "Guía de aspect ratio — TikTok, Reels, Shorts y feed",
+      description:
+        "Elige un destino y previsualiza el ratio para TikTok, Reels, Shorts, feed 4:5 o 1:1 — guía gratis en el navegador.",
+      h1: "Guía de aspect ratio vertical",
+      intro:
+        "Muchos creadores exportan el ratio equivocado. Elige destino, mira el frame y copia la etiqueta antes de cortar en DownitX u otro editor.",
+      benefit: "Ve al instante el canvas correcto para formatos short-form y feed.",
+      howTo: [
+        "Selecciona plataforma / formato.",
+        "Lee el ratio y las notas de uso.",
+        "Ajusta el export al frame de preview.",
+      ],
+      whatItDoes: "Muestra un preview de aspect ratio y guía corta para formatos de creador habituales.",
+      whatItDoesNot: "No redimensiona ni exporta archivos de vídeo.",
+      tips: [
+        "9:16 gana en TikTok, Reels y Shorts.",
+        "4:5 suele rendir mejor que 1:1 en el feed de Instagram.",
+      ],
+      faq: [
+        {
+          q: "¿Siempre hace falta 9:16?",
+          a: "Para short-form a pantalla completa, sí. En feed puede convenir 4:5 o cuadrado.",
+        },
+        {
+          q: "¿Cambia mi archivo?",
+          a: "No. Solo es una guía visual.",
+        },
+      ],
+    },
+  },
+  {
+    slug: "pinterest-23-canvas",
+    category: "pinquill",
+    relatedProductSlug: "pinquill",
+    relatedProductUrl: "https://pinquill.com/en",
+    relatedProductLabel: "PinQuill",
+    processing: "local",
+    accent: "#e60023",
+    en: {
+      name: "2:3 Pinterest canvas previewer",
+      title: "2:3 Pinterest Canvas Previewer — Free Pin Framing Tool",
+      description:
+        "Upload a pin image and preview it in the standard 2:3 Pinterest ratio with a title-safe guide. Free, local in your browser.",
+      h1: "2:3 Pinterest canvas previewer",
+      intro:
+        "Pinterest’s standard pin ratio is 2:3 (e.g. 1000×1500). Upload your artwork, toggle contain vs cover, and keep key text inside the title-safe band before you publish with PinQuill.",
+      benefit: "Check pin framing at the standard 2:3 ratio before you publish.",
+      howTo: [
+        "Upload a pin image (PNG/JPG/WebP).",
+        "Toggle contain or cover fit.",
+        "Confirm important content sits inside the title-safe guide.",
+      ],
+      whatItDoes: "Forces a 2:3 preview frame and optional title-safe overlay on an image you choose locally.",
+      whatItDoesNot: "It does not publish to Pinterest or generate pin copy for you.",
+      tips: [
+        "Design at 1000×1500 or any exact 2:3 multiple.",
+        "Keep faces and headlines away from the very top and bottom edges.",
+      ],
+      faq: [
+        {
+          q: "Why 2:3?",
+          a: "It is Pinterest’s recommended standard pin aspect ratio for clean grid display.",
+        },
+        {
+          q: "Is my image uploaded?",
+          a: "No. Preview stays in your browser.",
+        },
+      ],
+    },
+    es: {
+      name: "Previewer de canvas Pinterest 2:3",
+      title: "Previewer canvas Pinterest 2:3 — Encuadre de pines gratis",
+      description:
+        "Sube la imagen del pin y previsualízala en ratio 2:3 estándar con guía de título seguro. Gratis, en local.",
+      h1: "Previewer de canvas Pinterest 2:3",
+      intro:
+        "El ratio estándar de pin en Pinterest es 2:3 (p. ej. 1000×1500). Sube el arte, alterna contain/cover y mantén el texto clave dentro de la banda segura antes de publicar con PinQuill.",
+      benefit: "Revisa el encuadre del pin en ratio 2:3 antes de publicar.",
+      howTo: [
+        "Sube una imagen de pin (PNG/JPG/WebP).",
+        "Alterna ajuste contain o cover.",
+        "Confirma que lo importante queda dentro de la guía de título.",
+      ],
+      whatItDoes: "Fuerza un frame 2:3 y un overlay opcional de título seguro sobre una imagen local.",
+      whatItDoesNot: "No publica en Pinterest ni genera el copy del pin.",
+      tips: [
+        "Diseña a 1000×1500 o cualquier múltiplo exacto 2:3.",
+        "Aleja rostros y titulares de los bordes superior e inferior.",
+      ],
+      faq: [
+        {
+          q: "¿Por qué 2:3?",
+          a: "Es el aspect ratio recomendado de Pinterest para pines estándar en el grid.",
+        },
+        {
+          q: "¿Se sube mi imagen?",
+          a: "No. El preview se queda en tu navegador.",
+        },
+      ],
+    },
+  },
+  {
+    slug: "pinterest-pin-copy-length",
+    category: "pinquill",
+    relatedProductSlug: "pinquill",
+    relatedProductUrl: "https://pinquill.com/en",
+    relatedProductLabel: "PinQuill",
+    processing: "local",
+    accent: "#e60023",
+    en: {
+      name: "Pinterest pin copy length checker",
+      title: "Pinterest Pin Title & Description Length Checker",
+      description:
+        "Count characters for Pinterest pin titles and descriptions with soft limits — free local checker for cleaner pins.",
+      h1: "Pinterest pin copy length checker",
+      intro:
+        "Paste your pin title and description. Soft limits (~100 title / ~500 description) help you stay scannable without cutting SEO value — then polish the final pin in PinQuill.",
+      benefit: "Stay inside practical Pinterest title and description length ranges.",
+      howTo: [
+        "Paste or type the pin title.",
+        "Paste the description.",
+        "Watch the counters turn amber/red as you approach soft limits.",
+      ],
+      whatItDoes: "Counts characters and flags soft length guidance for pin title and description fields.",
+      whatItDoesNot: "It does not publish pins or rewrite copy with AI.",
+      tips: [
+        "Front-load keywords in the first ~40 characters of the title.",
+        "Descriptions can be longer — lead with the hook, then detail.",
+      ],
+      faq: [
+        {
+          q: "Are these hard Pinterest limits?",
+          a: "No. They are practical soft targets for readability and common editor guidance.",
+        },
+        {
+          q: "Is copy stored?",
+          a: "No. Everything stays in your browser session.",
+        },
+      ],
+    },
+    es: {
+      name: "Checker de longitud de copy de pin",
+      title: "Checker de título y descripción de pines Pinterest",
+      description:
+        "Cuenta caracteres de título y descripción de pines con límites blandos — checker local gratis.",
+      h1: "Checker de longitud de copy de pin",
+      intro:
+        "Pega título y descripción del pin. Límites blandos (~100 título / ~500 descripción) ayudan a mantener el texto escaneable — luego afina el pin en PinQuill.",
+      benefit: "Mantente en rangos prácticos de título y descripción en Pinterest.",
+      howTo: [
+        "Pega o escribe el título del pin.",
+        "Pega la descripción.",
+        "Mira los contadores pasar a ámbar/rojo al acercarte a los límites.",
+      ],
+      whatItDoes: "Cuenta caracteres y marca guía blanda de longitud para título y descripción.",
+      whatItDoesNot: "No publica pines ni reescribe el copy con IA.",
+      tips: [
+        "Pon keywords al inicio (~40 caracteres) del título.",
+        "La descripción puede ser más larga — ganchó primero, detalle después.",
+      ],
+      faq: [
+        {
+          q: "¿Son límites duros de Pinterest?",
+          a: "No. Son objetivos prácticos de legibilidad y guía habitual de editores.",
+        },
+        {
+          q: "¿Se guarda el texto?",
+          a: "No. Todo queda en la sesión del navegador.",
         },
       ],
     },
