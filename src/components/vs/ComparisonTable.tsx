@@ -1,6 +1,14 @@
 import type { FeatureCategory, FeatureValue } from "@/types/comparison";
 
-function CellValue({ value }: { value: FeatureValue }) {
+function CellValue({
+  value,
+  yesLabel,
+  noLabel,
+}: {
+  value: FeatureValue;
+  yesLabel: string;
+  noLabel: string;
+}) {
   if (typeof value === "boolean") {
     return (
       <span
@@ -9,7 +17,7 @@ function CellValue({ value }: { value: FeatureValue }) {
             ? "font-mono text-sm font-semibold text-phosphor"
             : "font-mono text-sm text-bone-dim/70"
         }
-        aria-label={value ? "Yes" : "No"}
+        aria-label={value ? yesLabel : noLabel}
       >
         {value ? "✓" : "✗"}
       </span>
@@ -23,9 +31,20 @@ type Props = {
   ourName: string;
   competitorName: string;
   accent: string;
+  featureLabel: string;
+  yesLabel: string;
+  noLabel: string;
 };
 
-export function ComparisonTable({ categories, ourName, competitorName, accent }: Props) {
+export function ComparisonTable({
+  categories,
+  ourName,
+  competitorName,
+  accent,
+  featureLabel,
+  yesLabel,
+  noLabel,
+}: Props) {
   return (
     <div className="space-y-10">
       {categories.map((cat) => (
@@ -38,7 +57,7 @@ export function ComparisonTable({ categories, ourName, competitorName, accent }:
               <thead>
                 <tr className="border-b border-white/10 bg-white/[0.03]">
                   <th scope="col" className="px-4 py-3 text-xs font-semibold text-bone-dim">
-                    Feature
+                    {featureLabel}
                   </th>
                   <th
                     scope="col"
@@ -68,14 +87,16 @@ export function ComparisonTable({ categories, ourName, competitorName, accent }:
                     >
                       {row.name}
                       {row.note ? (
-                        <p className="mt-1 text-xs font-normal text-bone-dim">{row.note}</p>
+                        <p className="mt-1 text-xs font-normal text-bone-dim" title={row.note}>
+                          {row.note}
+                        </p>
                       ) : null}
                     </th>
                     <td className="px-4 py-3.5 align-top">
-                      <CellValue value={row.ourValue} />
+                      <CellValue value={row.ourValue} yesLabel={yesLabel} noLabel={noLabel} />
                     </td>
                     <td className="px-4 py-3.5 align-top">
-                      <CellValue value={row.competitorValue} />
+                      <CellValue value={row.competitorValue} yesLabel={yesLabel} noLabel={noLabel} />
                     </td>
                   </tr>
                 ))}

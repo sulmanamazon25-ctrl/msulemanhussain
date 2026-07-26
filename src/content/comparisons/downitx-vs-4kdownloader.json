@@ -42,6 +42,31 @@
     "intro": "4K Downloader is a general video downloader. DownitX is a Windows creator app: paste-link downloads across major platforms, channel bulk, and Long→Short clips with burned captions.",
     "heroBadges": ["Bulk queues", "Long → Short", "Local saves"],
     "whySwitch": "If downloading is step one of a publish pipeline — not the whole product — DownitX is built for creators who need volume and clip output.",
+    "ourMeta": {
+      "audience": "Creators who need bulk download + Long→Short clip pipelines",
+      "pricingModel": "Free single downloads; Pro for bulk + clip studio",
+      "pros": [
+        "Bulk / channel queues",
+        "Long → Short with captions",
+        "Local file saves on your PC"
+      ],
+      "cons": [
+        "Windows-first creator app",
+        "Not a generic media library for every site"
+      ]
+    },
+    "competitorMeta": {
+      "audience": "Users who want a general-purpose video downloader",
+      "pricingModel": "One-time / licensed desktop downloader",
+      "pros": [
+        "Established downloader brand",
+        "Broad format support"
+      ],
+      "cons": [
+        "Not built as a creator publish pipeline",
+        "Weaker Long→Short / bulk channel workflow focus"
+      ]
+    },
     "categories": [
       {
         "id": "architecture",
@@ -175,6 +200,31 @@
     "intro": "4K Downloader es un descargador general. DownitX es una app Windows para creadores: descargas multiplataforma, bulk por canal y clips Long→Short con subtítulos.",
     "heroBadges": ["Colas bulk", "Long → Short", "Guardado local"],
     "whySwitch": "Si descargar es el primer paso de un pipeline de publicación — no el producto entero — DownitX está hecho para volumen y clips.",
+    "ourMeta": {
+      "audience": "Creadores que necesitan bulk + pipelines Long→Short",
+      "pricingModel": "Descargas unitarias gratis; Pro para bulk + clip studio",
+      "pros": [
+        "Colas bulk / canal",
+        "Long → Short con subtítulos",
+        "Guardado local en tu PC"
+      ],
+      "cons": [
+        "App Windows primero",
+        "No es una librería genérica de todos los sitios"
+      ]
+    },
+    "competitorMeta": {
+      "audience": "Usuarios que quieren un descargador de vídeo general",
+      "pricingModel": "Descargador desktop con licencia",
+      "pros": [
+        "Marca consolidada de descargas",
+        "Amplio soporte de formatos"
+      ],
+      "cons": [
+        "No pensado como pipeline de publicación",
+        "Menos foco en Long→Short / bulk por canal"
+      ]
+    },
     "categories": [
       {
         "id": "architecture",

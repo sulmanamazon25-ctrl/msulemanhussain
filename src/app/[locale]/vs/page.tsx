@@ -57,7 +57,7 @@ export default async function VsHubPage({ params }: { params: Promise<{ locale: 
   };
 
   return (
-    <main>
+    <div>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
       <section className="relative overflow-hidden px-4 pb-16 pt-14 md:px-6 md:pb-20 md:pt-20">
@@ -95,6 +95,6 @@ export default async function VsHubPage({ params }: { params: Promise<{ locale: 
           })}
         </div>
       </section>
-    </main>
+    </div>
   );
 }

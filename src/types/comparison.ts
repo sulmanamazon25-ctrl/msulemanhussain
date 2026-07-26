@@ -56,6 +56,13 @@ export type RoiConfig = {
   note: string;
 };
 
+export type CompetitorMeta = {
+  audience: string;
+  pricingModel: string;
+  pros: string[];
+  cons: string[];
+};
+
 export type ComparisonLocaleCopy = {
   title: string;
   description: string;
@@ -63,6 +70,9 @@ export type ComparisonLocaleCopy = {
   intro: string;
   heroBadges: string[];
   whySwitch: string;
+  /** Localized at-a-glance cards (audience / pricing / pros / cons) */
+  ourMeta: CompetitorMeta;
+  competitorMeta: CompetitorMeta;
   categories: FeatureCategory[];
   faq: ComparisonFaq[];
   cta: ComparisonCta;

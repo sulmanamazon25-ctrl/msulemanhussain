@@ -1,4 +1,4 @@
-export type ToolCategory = "spain" | "pickleball";
+export type ToolCategory = "wasup" | "downitx" | "pinquill" | "spain" | "pickleball";
 
 export type ToolLocaleCopy = {
   name: string;
@@ -26,13 +26,66 @@ export type Tool = {
   es: ToolLocaleCopy;
 };
 
+export type ToolPlaceholder = {
+  id: string;
+  category: ToolCategory;
+  accent: string;
+  relatedProductUrl: string;
+  relatedProductLabel: string;
+  en: { name: string; benefit: string; status: string };
+  es: { name: string; benefit: string; status: string };
+};
+
 export const toolCategories: {
   id: ToolCategory;
   en: { name: string; blurb: string };
   es: { name: string; blurb: string };
+  productUrl: string;
+  productLabel: string;
 }[] = [
   {
+    id: "wasup",
+    productUrl: "https://wasup.app/es",
+    productLabel: "Wasup",
+    en: {
+      name: "Wasup tools",
+      blurb: "Free WhatsApp utilities for operators who need links, QR, and cleaner lead intake.",
+    },
+    es: {
+      name: "Herramientas Wasup",
+      blurb: "Utilidades gratis de WhatsApp para operadores que necesitan enlaces, QR y captación más limpia.",
+    },
+  },
+  {
+    id: "downitx",
+    productUrl: "https://downitx.com/",
+    productLabel: "DownitX",
+    en: {
+      name: "DownitX tools",
+      blurb: "Creator utilities that sit next to bulk download and Long→Short pipelines.",
+    },
+    es: {
+      name: "Herramientas DownitX",
+      blurb: "Utilidades para creadores junto a pipelines de descarga bulk y Long→Short.",
+    },
+  },
+  {
+    id: "pinquill",
+    productUrl: "https://pinquill.com/en",
+    productLabel: "PinQuill",
+    en: {
+      name: "PinQuill tools",
+      blurb: "Pinterest-oriented helpers for pin canvas and composition checks.",
+    },
+    es: {
+      name: "Herramientas PinQuill",
+      blurb: "Ayudas orientadas a Pinterest para canvas y composición de pines.",
+    },
+  },
+  {
     id: "spain",
+    productUrl: "https://spaineats.info/",
+    productLabel: "Spain Eats",
     en: {
       name: "Spain travel tools",
       blurb: "Practical calculators for travelers and diners in Spain.",
@@ -44,6 +97,8 @@ export const toolCategories: {
   },
   {
     id: "pickleball",
+    productUrl: "https://pickleballdeutch.com/",
+    productLabel: "Pickleball Deutsch",
     en: {
       name: "Pickleball tools",
       blurb:
@@ -53,6 +108,43 @@ export const toolCategories: {
       name: "Herramientas de pickleball",
       blurb:
         "Buscadores de pistas para EE. UU., Canadá, Australia, Reino Unido, España y Alemania — más convertidores de medidas de pista.",
+    },
+  },
+];
+
+export const toolPlaceholders: ToolPlaceholder[] = [
+  {
+    id: "tiktok-reels-safe-zone",
+    category: "downitx",
+    accent: "#3d8bff",
+    relatedProductUrl: "https://downitx.com/",
+    relatedProductLabel: "DownitX",
+    en: {
+      name: "TikTok / Reels safe-zone checker",
+      benefit: "Preview caption and UI overlays so clips stay readable on vertical platforms.",
+      status: "COMING SOON",
+    },
+    es: {
+      name: "Checker de safe-zone TikTok / Reels",
+      benefit: "Previsualiza subtítulos y overlays de UI para que los clips se lean en vertical.",
+      status: "PRÓXIMAMENTE",
+    },
+  },
+  {
+    id: "pinterest-23-canvas",
+    category: "pinquill",
+    accent: "#e60023",
+    relatedProductUrl: "https://pinquill.com/en",
+    relatedProductLabel: "PinQuill",
+    en: {
+      name: "2:3 Pinterest canvas previewer",
+      benefit: "Check pin framing at the standard 2:3 ratio before you publish.",
+      status: "COMING SOON",
+    },
+    es: {
+      name: "Previewer de canvas Pinterest 2:3",
+      benefit: "Revisa el encuadre del pin en ratio 2:3 antes de publicar.",
+      status: "PRÓXIMAMENTE",
     },
   },
 ];
@@ -147,6 +239,81 @@ function regionalCourtTool(opts: {
 }
 
 export const tools: Tool[] = [
+  {
+    slug: "whatsapp-link-generator",
+    category: "wasup",
+    relatedProductSlug: "wasup",
+    relatedProductUrl: "https://wasup.app/es",
+    relatedProductLabel: "Wasup",
+    processing: "local",
+    accent: "#25d366",
+    en: {
+      name: "WhatsApp link & QR generator",
+      title: "WhatsApp Link & QR Generator — Free wa.me Builder",
+      description:
+        "Create a wa.me short link with a pre-filled message and download a QR code — 100% in your browser. Free, no signup.",
+      h1: "WhatsApp link & QR generator",
+      intro:
+        "Build a clickable WhatsApp link (wa.me) with country code, phone number, and optional pre-filled message. Preview and download a QR instantly — all client-side.",
+      benefit: "Generate wa.me links and QR codes for lead capture — no signup, runs locally.",
+      howTo: [
+        "Choose a country code and enter the phone number.",
+        "Optionally add a pre-filled message.",
+        "Copy the wa.me link or download the QR as PNG/SVG.",
+      ],
+      whatItDoes:
+        "Formats an international WhatsApp deep link and encodes it into a scannable QR code in your browser.",
+      whatItDoesNot:
+        "It does not send messages for you, validate WhatsApp account status, or store phone numbers on a server.",
+      tips: [
+        "Omit leading zeros from the national number after the country code.",
+        "Keep pre-filled messages short — long text makes ugly URLs and busy QR codes.",
+      ],
+      faq: [
+        {
+          q: "Is my number uploaded anywhere?",
+          a: "No. Link and QR generation happen entirely in your browser.",
+        },
+        {
+          q: "Does this replace a WhatsApp business inbox?",
+          a: "No. It creates an entry link. For AI drafts with human approval at scale, see Wasup.",
+        },
+      ],
+    },
+    es: {
+      name: "Generador de enlace y QR de WhatsApp",
+      title: "Generador de enlace y QR de WhatsApp — wa.me gratis",
+      description:
+        "Crea un enlace corto wa.me con mensaje precargado y descarga un código QR — 100% en tu navegador. Gratis, sin registro.",
+      h1: "Generador de enlace y QR de WhatsApp",
+      intro:
+        "Construye un enlace clicable de WhatsApp (wa.me) con código de país, número y mensaje opcional. Previsualiza y descarga el QR al instante — todo en el cliente.",
+      benefit: "Genera enlaces wa.me y QR para captar leads — sin registro, en local.",
+      howTo: [
+        "Elige el código de país e introduce el número.",
+        "Opcionalmente añade un mensaje precargado.",
+        "Copia el enlace wa.me o descarga el QR en PNG/SVG.",
+      ],
+      whatItDoes:
+        "Formatea un deep link internacional de WhatsApp y lo codifica en un QR escaneable en tu navegador.",
+      whatItDoesNot:
+        "No envía mensajes por ti, no valida cuentas de WhatsApp ni guarda números en un servidor.",
+      tips: [
+        "Quita ceros a la izquierda del número nacional después del código de país.",
+        "Mantén el mensaje corto — el texto largo ensucia la URL y el QR.",
+      ],
+      faq: [
+        {
+          q: "¿Se sube mi número a algún sitio?",
+          a: "No. El enlace y el QR se generan solo en tu navegador.",
+        },
+        {
+          q: "¿Sustituye a una bandeja de WhatsApp Business?",
+          a: "No. Crea un enlace de entrada. Para borradores con IA y aprobación humana a escala, mira Wasup.",
+        },
+      ],
+    },
+  },
   {
     slug: "spain-tip-calculator",
     category: "spain",

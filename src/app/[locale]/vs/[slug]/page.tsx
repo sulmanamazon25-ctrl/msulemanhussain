@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ComparisonFaq } from "@/components/vs/ComparisonFaq";
 import { ComparisonTable } from "@/components/vs/ComparisonTable";
+import { CompetitorSnapshot } from "@/components/vs/CompetitorSnapshot";
 import { RoiCalculator } from "@/components/vs/RoiCalculator";
 import { site } from "@/content/site";
 import {
@@ -105,7 +106,7 @@ export default async function ComparisonPage({
   };
 
   return (
-    <main>
+    <div>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
       <section className="relative overflow-hidden px-4 pb-14 pt-12 md:px-6 md:pb-16 md:pt-16">
@@ -165,6 +166,27 @@ export default async function ComparisonPage({
 
       <section className="border-t border-white/10 px-4 py-14 md:px-6">
         <div className="mx-auto max-w-6xl">
+          <h2 className="font-display text-2xl font-bold md:text-3xl">{dict.vs.atAGlance}</h2>
+          <div className="mt-8">
+            <CompetitorSnapshot
+              our={doc.our}
+              competitor={doc.competitor}
+              ourMeta={copy.ourMeta}
+              competitorMeta={copy.competitorMeta}
+              accent={doc.accent}
+              labels={{
+                forWhom: dict.vs.forWhom,
+                pricing: dict.vs.pricing,
+                pros: dict.vs.pros,
+                cons: dict.vs.cons,
+              }}
+            />
+          </div>
+        </div>
+      </section>
+
+      <section className="border-t border-white/10 px-4 py-14 md:px-6">
+        <div className="mx-auto max-w-6xl">
           <h2 className="font-display text-2xl font-bold md:text-3xl">{dict.vs.matrixTitle}</h2>
           <p className="mt-3 max-w-2xl text-sm text-bone-dim md:text-base">{copy.whySwitch}</p>
           <div className="mt-8">
@@ -173,6 +195,9 @@ export default async function ComparisonPage({
               ourName={doc.our.name}
               competitorName={doc.competitor.name}
               accent={doc.accent}
+              featureLabel={dict.vs.featureColumn}
+              yesLabel={dict.vs.yes}
+              noLabel={dict.vs.no}
             />
           </div>
         </div>
@@ -199,7 +224,7 @@ export default async function ComparisonPage({
         </div>
       </section>
 
-      <section className="border-t border-white/10 px-4 py-16 md:px-6">
+      <section className="border-t border-white/10 px-4 py-16 md:px-6 pb-28">
         <div className="mx-auto max-w-6xl border border-white/10 bg-white/[0.02] p-8 md:p-10">
           <h2 className="font-display text-2xl font-bold md:text-3xl">{copy.cta.heading}</h2>
           <div className="mt-6 flex flex-wrap gap-3">
@@ -221,6 +246,25 @@ export default async function ComparisonPage({
           </div>
         </div>
       </section>
-    </main>
+
+      <div className="fixed inset-x-0 bottom-0 z-40 border-t border-white/10 bg-ink/95 px-4 py-3 backdrop-blur-xl md:px-6">
+        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3">
+          <p className="text-sm text-bone-dim">
+            <span className="font-semibold text-bone">{doc.our.name}</span>
+            {" — "}
+            {copy.cta.badge ?? copy.cta.heading}
+          </p>
+          <a
+            href={copy.cta.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-5 py-2.5 text-sm font-semibold text-ink"
+            style={{ backgroundColor: doc.accent }}
+          >
+            {copy.cta.buttonLabel}
+          </a>
+        </div>
+      </div>
+    </div>
   );
 }

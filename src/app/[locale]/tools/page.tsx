@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { site } from "@/content/site";
-import { toolCategories, tools, toolCopy } from "@/content/tools";
+import { toolCategories, toolPlaceholders, tools, toolCopy } from "@/content/tools";
 import { alternateLanguages, isLocale, localePath, type Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
 
@@ -94,6 +94,8 @@ export default async function ToolsPillarPage({ params }: { params: Promise<{ lo
         <div className="mx-auto max-w-6xl space-y-16">
           {toolCategories.map((cat) => {
             const items = tools.filter((t) => t.category === cat.id);
+            const placeholders = toolPlaceholders.filter((p) => p.category === cat.id);
+            if (items.length === 0 && placeholders.length === 0) return null;
             return (
               <div key={cat.id}>
                 <h2 className="font-display text-3xl font-bold md:text-4xl">{cat[loc].name}</h2>
@@ -127,27 +129,38 @@ export default async function ToolsPillarPage({ params }: { params: Promise<{ lo
                       </li>
                     );
                   })}
+                  {placeholders.map((ph) => {
+                    const copy = ph[loc];
+                    return (
+                      <li key={ph.id}>
+                        <div
+                          className="flex h-full flex-col border border-dashed border-white/15 bg-ink-3/40 p-5 opacity-90"
+                          style={{ boxShadow: `inset 3px 0 0 ${ph.accent}` }}
+                        >
+                          <div className="flex flex-wrap items-center gap-2">
+                            <span className="border border-amber/40 px-2 py-0.5 font-mono text-[9px] tracking-wider text-amber">
+                              {copy.status}
+                            </span>
+                          </div>
+                          <h3 className="mt-4 font-display text-xl font-semibold text-bone">{copy.name}</h3>
+                          <p className="mt-2 flex-1 text-sm text-bone-dim">{copy.benefit}</p>
+                          <p className="mt-4 text-sm text-bone-faint">{dict.tools.placeholderHint}</p>
+                        </div>
+                      </li>
+                    );
+                  })}
                 </ul>
-                {cat.id === "spain" ? (
-                  <p className="mt-4 text-sm text-bone-faint">
-                    {dict.tools.relatedProduct}{" "}
-                    <a href="https://spaineats.info/" target="_blank" rel="noreferrer" className="text-phosphor hover:underline">
-                      Spain Eats →
-                    </a>
-                  </p>
-                ) : (
-                  <p className="mt-4 text-sm text-bone-faint">
-                    {dict.tools.relatedProduct}{" "}
-                    <a
-                      href="https://pickleballdeutch.com/"
-                      target="_blank"
-                      rel="noreferrer"
-                      className="text-phosphor hover:underline"
-                    >
-                      Pickleball Deutsch →
-                    </a>
-                  </p>
-                )}
+                <p className="mt-4 text-sm text-bone-faint">
+                  {dict.tools.relatedProduct}{" "}
+                  <a
+                    href={cat.productUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-phosphor hover:underline"
+                  >
+                    {cat.productLabel} →
+                  </a>
+                </p>
               </div>
             );
           })}
@@ -171,6 +184,9 @@ export default async function ToolsPillarPage({ params }: { params: Promise<{ lo
           </Link>
           <Link href={lp("/products")} className="text-sm text-phosphor hover:underline">
             {dict.tools.productsLink}
+          </Link>
+          <Link href={lp("/vs")} className="text-sm text-phosphor hover:underline">
+            {dict.tools.vsLink}
           </Link>
         </div>
       </section>

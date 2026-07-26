@@ -44,6 +44,32 @@
     "intro": "ManyChat is a cloud automation platform. Wasup is a desktop WhatsApp copiloto: AI drafts from your FAQs, you approve before send, sessions stay on your PC.",
     "heroBadges": ["Human approve", "BYOK AI", "Local session"],
     "whySwitch": "If you need WhatsApp replies with human control and local privacy — not another contact-tier chatbot cloud — Wasup is built for that loop.",
+    "ourMeta": {
+      "audience": "Operators who want WhatsApp speed with human approval",
+      "pricingModel": "Desktop app + Pro license; AI via your own OpenRouter keys (BYOK)",
+      "pros": [
+        "Human-in-the-loop draft queue",
+        "Local WhatsApp session on your PC",
+        "BYOK — no inference markup"
+      ],
+      "cons": [
+        "Windows desktop first",
+        "Not a multi-agent cloud CRM suite"
+      ]
+    },
+    "competitorMeta": {
+      "audience": "Teams building cloud chat funnels and automations",
+      "pricingModel": "SaaS tiers often tied to contacts / conversations",
+      "pros": [
+        "Mature cloud automation builder",
+        "Broad channel ecosystem"
+      ],
+      "cons": [
+        "Cloud-hosted conversations",
+        "Cost scales with contacts",
+        "Less emphasis on local privacy"
+      ]
+    },
     "categories": [
       {
         "id": "architecture",
@@ -171,6 +197,32 @@
     "intro": "ManyChat es una plataforma cloud de automatización. Wasup es un copiloto de WhatsApp en escritorio: borradores con IA desde tus FAQs, tú apruebas antes de enviar, la sesión queda en tu PC.",
     "heroBadges": ["Aprobación humana", "BYOK IA", "Sesión local"],
     "whySwitch": "Si necesitas respuestas de WhatsApp con control humano y privacidad local — no otro chatbot cloud por contactos — Wasup está hecho para ese loop.",
+    "ourMeta": {
+      "audience": "Operadores que quieren velocidad en WhatsApp con aprobación humana",
+      "pricingModel": "App de escritorio + licencia Pro; IA con tus keys de OpenRouter (BYOK)",
+      "pros": [
+        "Cola de borradores con humano en el loop",
+        "Sesión de WhatsApp local en tu PC",
+        "BYOK — sin markup de inferencia"
+      ],
+      "cons": [
+        "Windows primero",
+        "No es un CRM cloud multi-agente"
+      ]
+    },
+    "competitorMeta": {
+      "audience": "Equipos que construyen funnels y automatizaciones en la nube",
+      "pricingModel": "Tiers SaaS ligados a contactos / conversaciones",
+      "pros": [
+        "Constructor maduro de automatización cloud",
+        "Ecosistema amplio de canales"
+      ],
+      "cons": [
+        "Conversaciones alojadas en la nube",
+        "El coste escala con contactos",
+        "Menos foco en privacidad local"
+      ]
+    },
     "categories": [
       {
         "id": "architecture",

@@ -20,6 +20,10 @@ const PickleballCourtDimensions = dynamic(
     import("@/components/tools/PickleballCourtDimensions").then((m) => m.PickleballCourtDimensions),
   { ssr: false, loading: () => <ToolSkeleton /> },
 );
+const WhatsAppLinkGenerator = dynamic(
+  () => import("@/components/tools/WhatsAppLinkGenerator").then((m) => m.WhatsAppLinkGenerator),
+  { ssr: false, loading: () => <ToolSkeleton /> },
+);
 
 function ToolSkeleton() {
   return <div className="min-h-48 animate-pulse border border-white/10 bg-ink-3/50" />;
@@ -35,6 +39,7 @@ const COURT_SLUG_COUNTRY: Record<string, CountryCode> = {
 };
 
 export function ToolInteractive({ slug, locale }: { slug: string; locale: "en" | "es" }) {
+  if (slug === "whatsapp-link-generator") return <WhatsAppLinkGenerator locale={locale} />;
   if (slug === "spain-tip-calculator") return <SpainTipCalculator locale={locale} />;
   if (slug === "menu-del-dia-calculator") return <MenuDelDiaCalculator locale={locale} />;
   if (slug === "pickleball-court-dimensions") return <PickleballCourtDimensions locale={locale} />;
