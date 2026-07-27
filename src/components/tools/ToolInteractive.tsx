@@ -92,6 +92,46 @@ const DueDateCalculator = dynamic(
   () => import("@/components/tools/DueDateCalculator").then((m) => m.DueDateCalculator),
   { ssr: false, loading: () => <ToolSkeleton /> },
 );
+const IvaCalculator = dynamic(
+  () => import("@/components/tools/IvaCalculator").then((m) => m.IvaCalculator),
+  { ssr: false, loading: () => <ToolSkeleton /> },
+);
+const IbanEsTool = dynamic(() => import("@/components/tools/IbanEsTool").then((m) => m.IbanEsTool), {
+  ssr: false,
+  loading: () => <ToolSkeleton />,
+});
+const IrpfWithholdingCalculator = dynamic(
+  () => import("@/components/tools/IrpfWithholdingCalculator").then((m) => m.IrpfWithholdingCalculator),
+  { ssr: false, loading: () => <ToolSkeleton /> },
+);
+const BillSplitCalculator = dynamic(
+  () => import("@/components/tools/BillSplitCalculator").then((m) => m.BillSplitCalculator),
+  { ssr: false, loading: () => <ToolSkeleton /> },
+);
+const CoverLetterGenerator = dynamic(
+  () => import("@/components/tools/CoverLetterGenerator").then((m) => m.CoverLetterGenerator),
+  { ssr: false, loading: () => <ToolSkeleton /> },
+);
+const TripFuelCalculator = dynamic(
+  () => import("@/components/tools/TripFuelCalculator").then((m) => m.TripFuelCalculator),
+  { ssr: false, loading: () => <ToolSkeleton /> },
+);
+const HomeBuyingCostCalculator = dynamic(
+  () => import("@/components/tools/HomeBuyingCostCalculator").then((m) => m.HomeBuyingCostCalculator),
+  { ssr: false, loading: () => <ToolSkeleton /> },
+);
+const MexicoIvaCalculator = dynamic(
+  () => import("@/components/tools/MexicoIvaCalculator").then((m) => m.MexicoIvaCalculator),
+  { ssr: false, loading: () => <ToolSkeleton /> },
+);
+const LatAmSalaryCalculator = dynamic(
+  () => import("@/components/tools/LatAmTools").then((m) => m.LatAmSalaryCalculator),
+  { ssr: false, loading: () => <ToolSkeleton /> },
+);
+const LatAmIdValidator = dynamic(
+  () => import("@/components/tools/LatAmTools").then((m) => m.LatAmIdValidator),
+  { ssr: false, loading: () => <ToolSkeleton /> },
+);
 
 function ToolSkeleton() {
   return <div className="min-h-48 animate-pulse border border-white/10 bg-ink-3/50" />;
@@ -106,7 +146,7 @@ const COURT_SLUG_COUNTRY: Record<string, CountryCode> = {
   "pickleball-courts-uk": "UK",
 };
 
-const SPAIN_LIFE: Record<string, React.ComponentType<{ locale: "en" | "es" }>> = {
+const SIMPLE: Record<string, React.ComponentType<{ locale: "en" | "es" }>> = {
   "crear-cv-profesional": CvBuilder,
   "calculadora-evau-2026": EvauCalculator,
   "calculadora-nota-media": GradeAverageCalculator,
@@ -120,6 +160,14 @@ const SPAIN_LIFE: Record<string, React.ComponentType<{ locale: "en" | "es" }>> =
   "calculadora-de-finiquito": SeveranceCalculator,
   "cuota-de-autonomos": AutonomoCuotaCalculator,
   "calculadora-fecha-de-parto": DueDateCalculator,
+  "calculadora-iva": IvaCalculator,
+  "validador-iban-es": IbanEsTool,
+  "calculadora-irpf-retencion": IrpfWithholdingCalculator,
+  "dividir-cuenta": BillSplitCalculator,
+  "carta-de-presentacion": CoverLetterGenerator,
+  "calculadora-coste-viaje": TripFuelCalculator,
+  "coste-compra-vivienda": HomeBuyingCostCalculator,
+  "iva-mexico": MexicoIvaCalculator,
 };
 
 export function ToolInteractive({ slug, locale }: { slug: string; locale: "en" | "es" }) {
@@ -131,8 +179,17 @@ export function ToolInteractive({ slug, locale }: { slug: string; locale: "en" |
   if (slug === "spain-tip-calculator") return <SpainTipCalculator locale={locale} />;
   if (slug === "menu-del-dia-calculator") return <MenuDelDiaCalculator locale={locale} />;
   if (slug === "pickleball-court-dimensions") return <PickleballCourtDimensions locale={locale} />;
-  const SpainLife = SPAIN_LIFE[slug];
-  if (SpainLife) return <SpainLife locale={locale} />;
+
+  if (slug === "salario-neto-mexico") return <LatAmSalaryCalculator locale={locale} country="mx" />;
+  if (slug === "salario-neto-colombia") return <LatAmSalaryCalculator locale={locale} country="co" />;
+  if (slug === "salario-neto-argentina") return <LatAmSalaryCalculator locale={locale} country="ar" />;
+  if (slug === "validador-rfc-mexico") return <LatAmIdValidator locale={locale} country="mx" />;
+  if (slug === "validador-rut-colombia") return <LatAmIdValidator locale={locale} country="co" />;
+  if (slug === "validador-cuit-argentina") return <LatAmIdValidator locale={locale} country="ar" />;
+
+  const Simple = SIMPLE[slug];
+  if (Simple) return <Simple locale={locale} />;
+
   const country = COURT_SLUG_COUNTRY[slug];
   if (country) return <PickleballCourtsFinder locale={locale} country={country} />;
   return null;

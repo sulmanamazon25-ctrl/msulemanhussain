@@ -1,6 +1,7 @@
 import { spainLifeTools } from "./spain-life-tools";
+import { expansionTools } from "./expansion-tools";
 
-export type ToolCategory = "wasup" | "downitx" | "pinquill" | "spain" | "pickleball";
+export type ToolCategory = "wasup" | "downitx" | "pinquill" | "spain" | "pickleball" | "latam";
 
 export type ToolLocaleCopy = {
   name: string;
@@ -112,6 +113,19 @@ export const toolCategories: {
       name: "Herramientas de pickleball",
       blurb:
         "Buscadores de pistas para EE. UU., Canadá, Australia, Reino Unido, España y Alemania — más convertidores de medidas de pista.",
+    },
+  },
+  {
+    id: "latam",
+    productUrl: "https://msulemanhussain.com/es/tools",
+    productLabel: "Tools Lab",
+    en: {
+      name: "LatAm tools",
+      blurb: "Free salary and ID helpers for Mexico, Colombia, and Argentina — on-device estimates.",
+    },
+    es: {
+      name: "Herramientas LatAm",
+      blurb: "Salario y documentos para México, Colombia y Argentina — estimaciones en local.",
     },
   },
 ];
@@ -907,6 +921,7 @@ export const tools: Tool[] = [
     },
   },
   ...spainLifeTools,
+  ...expansionTools,
 ];
 
 export function getTool(slug: string) {
