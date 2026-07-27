@@ -53,7 +53,7 @@ export function Header() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-[100] flex flex-col overflow-y-auto bg-ink text-bone xl:hidden"
+            className="fixed inset-0 z-[100] flex flex-col overflow-y-auto bg-ink text-bone 2xl:hidden"
             style={{
               paddingTop: "max(1.5rem, env(safe-area-inset-top))",
               paddingBottom: "max(1.5rem, env(safe-area-inset-bottom))",
@@ -117,7 +117,7 @@ export function Header() {
   return (
     <>
       <header className="sticky top-0 z-50 border-b border-white/10 bg-ink/90 backdrop-blur-xl">
-        <div className="mx-auto flex h-[4.25rem] max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto flex h-[4.25rem] max-w-screen-2xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
           <Link href={href("/")} className="flex min-w-0 shrink-0 items-center gap-2.5 sm:gap-3">
             <Image
               src="/brand/mark.png"
@@ -128,37 +128,38 @@ export function Header() {
               priority
             />
             <span className="hidden font-display text-sm font-bold tracking-[0.12em] text-bone sm:inline">
-              <span className="xl:hidden">SULEMAN</span>
-              <span className="hidden xl:inline">SULEMAN HUSSAIN</span>
+              <span className="2xl:hidden">SULEMAN</span>
+              <span className="hidden 2xl:inline">SULEMAN HUSSAIN</span>
             </span>
           </Link>
 
-          {/* Full nav only when there is room — avoids cramped iPad / small laptop bars */}
-          <nav className="hidden min-w-0 flex-1 items-center justify-end xl:flex">
-            <ul className="flex flex-wrap items-center justify-end gap-x-5 gap-y-2 2xl:gap-x-7">
+          {/* Full nav only when there is guaranteed room for the longer ES labels too — same breakpoint for every locale. */}
+          <nav className="hidden min-w-0 flex-1 items-center justify-end 2xl:flex">
+            <ul className="flex flex-nowrap items-center justify-end gap-x-4">
               {nav.map((item) => (
-                <li key={item.href}>
+                <li key={item.href} className="shrink-0">
                   <Link
                     href={item.href}
-                    className="inline-block whitespace-nowrap px-1 py-2 text-[11px] font-medium tracking-[0.1em] text-bone-dim transition hover:text-phosphor 2xl:text-xs 2xl:tracking-[0.12em]"
+                    className="inline-block whitespace-nowrap px-1 py-2 text-xs font-medium tracking-[0.1em] text-bone-dim transition hover:text-phosphor"
                   >
                     {item.label}
                   </Link>
                 </li>
               ))}
             </ul>
-            <div className="ml-6 flex shrink-0 items-center gap-4 border-l border-white/15 pl-6 2xl:ml-8 2xl:gap-5 2xl:pl-8">
+            <div className="ml-6 flex shrink-0 items-center gap-4 border-l border-white/15 pl-6">
               <LanguageSwitcher />
               <Link
                 href={href("/contact")}
-                className="whitespace-nowrap bg-signal px-4 py-2.5 text-[11px] font-semibold tracking-[0.1em] text-bone transition hover:bg-signal-hot 2xl:px-5 2xl:text-xs"
+                className="whitespace-nowrap bg-signal px-4 py-2.5 text-xs font-semibold tracking-[0.1em] text-bone transition hover:bg-signal-hot"
               >
                 {dict.nav.letsBuild}
               </Link>
             </div>
           </nav>
 
-          <div className="flex items-center gap-3 xl:hidden">
+          {/* Below 2xl every locale gets the same portal menu — no partial/wrapped nav rows. */}
+          <div className="flex items-center gap-3 2xl:hidden">
             <LanguageSwitcher />
             <button
               type="button"
