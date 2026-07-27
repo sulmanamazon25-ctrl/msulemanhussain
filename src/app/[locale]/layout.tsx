@@ -8,6 +8,7 @@ import { site } from "@/content/site";
 import { alternateLanguages, isLocale, locales, type Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
 import { LocaleProvider } from "@/i18n/LocaleProvider";
+import { AiSearchLazy } from "@/components/ai/AiSearchLazy";
 
 const syne = Syne({
   variable: "--font-syne",
@@ -101,6 +102,7 @@ export default async function LocaleLayout({
           <Header />
           <main className="flex-1">{children}</main>
           <Footer />
+          <AiSearchLazy />
         </LocaleProvider>
       </body>
     </html>

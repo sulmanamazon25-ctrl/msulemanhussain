@@ -1,0 +1,90 @@
+# Shared AI Search stack — separate from product apps.
+# Resource limits keep this from starving Coolify SaaS on the same Hetzner box.
+# Ollama is NOT included by default (RAM-safe). Set LLM_BASE_URL to a remote
+# OpenAI-compatible endpoint or enable the optional ollama profile later.
+
+services:
+  redis:
+    image: redis:7-alpine
+    container_name: ai-search-redis
+    restart: unless-stopped
+    command: ["redis-server", "--save", "", "--appendonly", "no", "--maxmemory", "64mb", "--maxmemory-policy", "allkeys-lru"]
+    mem_limit: 96m
+    cpus: "0.25"
+    networks:
+      - ai-search
+
+  qdrant:
+    image: qdrant/qdrant:v1.13.2
+    container_name: ai-search-qdrant
+    restart: unless-stopped
+    mem_limit: 512m
+    cpus: "0.50"
+    volumes:
+      - ai_qdrant_data:/qdrant/storage
+    networks:
+      - ai-search
+
+  api:
+    build: .
+    image: ai-search-api:latest
+    container_name: ai-search-api
+    restart: unless-stopped
+    depends_on:
+      - redis
+      - qdrant
+    environment:
+      - REDIS_URL=redis://redis:6379/0
+      - QDRANT_URL=http://qdrant:6333
+      - DATA_DIR=/data
+      - SQLITE_PATH=/data/ai_search.db
+      - HF_HOME=/data/models
+      - FASTEMBED_CACHE_PATH=/data/models
+      - OMP_NUM_THREADS=1
+      - ADMIN_API_KEY=${ADMIN_API_KEY:-change-me-admin}
+      - PUBLIC_WIDGET_KEYS=${PUBLIC_WIDGET_KEYS:-portfolio:portfolio-public-key}
+      - ALLOWED_ORIGINS=${ALLOWED_ORIGINS:-https://msulemanhussain.com,https://www.msulemanhussain.com}
+      - PORTFOLIO_SITEMAP=https://msulemanhussain.com/sitemap.xml
+      - LLM_BASE_URL=${LLM_BASE_URL:-}
+      - LLM_API_KEY=${LLM_API_KEY:-}
+      - LLM_MODEL=${LLM_MODEL:-llama3.2:3b}
+      - RATE_LIMIT_PER_MINUTE=${RATE_LIMIT_PER_MINUTE:-20}
+    volumes:
+      - ai_api_data:/data
+    mem_limit: 900m
+    cpus: "1.0"
+    ports:
+      - "8090:8080"
+    networks:
+      - ai-search
+      - coolify
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=g5t1u52ej20yqweuarrspujb
+      - traefik.http.middlewares.ai-strip.stripprefix.prefixes=/ai-api
+      - traefik.http.routers.ai-search.rule=Host(`msulemanhussain.com`) && PathPrefix(`/ai-api`)
+      - traefik.http.routers.ai-search.entryPoints=https
+      - traefik.http.routers.ai-search.tls=true
+      - traefik.http.routers.ai-search.tls.certresolver=letsencrypt
+      - traefik.http.routers.ai-search.middlewares=ai-strip
+      - traefik.http.routers.ai-search.priority=100
+      - traefik.http.routers.ai-search.service=ai-search
+      - traefik.http.services.ai-search.loadbalancer.server.port=8080
+      - traefik.http.routers.ai-search-www.rule=Host(`www.msulemanhussain.com`) && PathPrefix(`/ai-api`)
+      - traefik.http.routers.ai-search-www.entryPoints=https
+      - traefik.http.routers.ai-search-www.tls=true
+      - traefik.http.routers.ai-search-www.tls.certresolver=letsencrypt
+      - traefik.http.routers.ai-search-www.middlewares=ai-strip
+      - traefik.http.routers.ai-search-www.priority=100
+      - traefik.http.routers.ai-search-www.service=ai-search
+
+networks:
+  ai-search:
+    driver: bridge
+  coolify:
+    external: true
+    name: g5t1u52ej20yqweuarrspujb
+
+volumes:
+  ai_qdrant_data:
+  ai_api_data:
