@@ -53,7 +53,7 @@ export function Header() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-[100] flex flex-col overflow-y-auto bg-ink text-bone lg:hidden"
+            className="fixed inset-0 z-[100] flex flex-col overflow-y-auto bg-ink text-bone xl:hidden"
             style={{
               paddingTop: "max(1.5rem, env(safe-area-inset-top))",
               paddingBottom: "max(1.5rem, env(safe-area-inset-bottom))",
@@ -70,14 +70,14 @@ export function Header() {
                   height={32}
                   className="h-8 w-8 shrink-0 border border-white/15 object-cover"
                 />
-                <span className="truncate font-display text-sm font-bold tracking-[0.2em] text-bone">
+                <span className="truncate font-display text-sm font-bold tracking-[0.14em] text-bone">
                   SULEMAN HUSSAIN
                 </span>
               </div>
               <button
                 type="button"
                 onClick={() => setOpen(false)}
-                className="shrink-0 border border-white/20 px-3 py-2 text-xs font-semibold tracking-[0.2em] text-phosphor hover:border-phosphor"
+                className="shrink-0 border border-white/20 px-3 py-2 text-xs font-semibold tracking-[0.16em] text-phosphor hover:border-phosphor"
               >
                 {dict.nav.close}
               </button>
@@ -97,13 +97,13 @@ export function Header() {
             </nav>
 
             <div className="mt-8 flex flex-col gap-4">
-              <div className="flex justify-center border border-white/10 px-3 py-2">
+              <div className="flex justify-center border border-white/10 px-3 py-3">
                 <LanguageSwitcher />
               </div>
               <Link
                 href={href("/contact")}
                 onClick={() => setOpen(false)}
-                className="bg-signal py-4 text-center text-sm font-semibold tracking-[0.18em] text-bone transition hover:bg-signal-hot"
+                className="bg-signal py-4 text-center text-sm font-semibold tracking-[0.14em] text-bone transition hover:bg-signal-hot"
               >
                 {dict.nav.letsBuild}
               </Link>
@@ -116,9 +116,9 @@ export function Header() {
 
   return (
     <>
-      <header className="sticky top-0 z-50 border-b border-white/5 bg-ink/75 backdrop-blur-xl">
-        <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 md:px-6">
-          <Link href={href("/")} className="flex min-w-0 items-center gap-3">
+      <header className="sticky top-0 z-50 border-b border-white/10 bg-ink/90 backdrop-blur-xl">
+        <div className="mx-auto flex h-[4.25rem] max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
+          <Link href={href("/")} className="flex min-w-0 shrink-0 items-center gap-2.5 sm:gap-3">
             <Image
               src="/brand/mark.png"
               alt="Suleman Hussain"
@@ -127,35 +127,42 @@ export function Header() {
               className="h-9 w-9 shrink-0 border border-white/10 object-cover"
               priority
             />
-            <span className="truncate font-display text-sm font-bold tracking-[0.2em] text-bone">
-              SULEMAN HUSSAIN
+            <span className="hidden font-display text-sm font-bold tracking-[0.12em] text-bone sm:inline">
+              <span className="xl:hidden">SULEMAN</span>
+              <span className="hidden xl:inline">SULEMAN HUSSAIN</span>
             </span>
           </Link>
 
-          <nav className="hidden items-center gap-6 lg:flex">
-            {nav.map((item) => (
+          {/* Full nav only when there is room — avoids cramped iPad / small laptop bars */}
+          <nav className="hidden min-w-0 flex-1 items-center justify-end xl:flex">
+            <ul className="flex flex-wrap items-center justify-end gap-x-5 gap-y-2 2xl:gap-x-7">
+              {nav.map((item) => (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    className="inline-block whitespace-nowrap px-1 py-2 text-[11px] font-medium tracking-[0.1em] text-bone-dim transition hover:text-phosphor 2xl:text-xs 2xl:tracking-[0.12em]"
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <div className="ml-6 flex shrink-0 items-center gap-4 border-l border-white/15 pl-6 2xl:ml-8 2xl:gap-5 2xl:pl-8">
+              <LanguageSwitcher />
               <Link
-                key={item.href}
-                href={item.href}
-                className="text-xs tracking-[0.16em] text-bone-dim transition hover:text-phosphor"
+                href={href("/contact")}
+                className="whitespace-nowrap bg-signal px-4 py-2.5 text-[11px] font-semibold tracking-[0.1em] text-bone transition hover:bg-signal-hot 2xl:px-5 2xl:text-xs"
               >
-                {item.label}
+                {dict.nav.letsBuild}
               </Link>
-            ))}
-            <LanguageSwitcher />
-            <Link
-              href={href("/contact")}
-              className="bg-signal px-4 py-2 text-xs font-semibold tracking-[0.14em] text-bone transition hover:bg-signal-hot"
-            >
-              {dict.nav.letsBuild}
-            </Link>
+            </div>
           </nav>
 
-          <div className="flex items-center gap-2 lg:hidden">
+          <div className="flex items-center gap-3 xl:hidden">
             <LanguageSwitcher />
             <button
               type="button"
-              className="border border-white/15 px-3 py-1.5 text-[11px] tracking-[0.2em] text-phosphor"
+              className="border border-white/20 px-3.5 py-2 text-[11px] font-semibold tracking-[0.14em] text-phosphor transition hover:border-phosphor"
               onClick={() => setOpen(true)}
               aria-label={dict.nav.menu}
               aria-expanded={open}

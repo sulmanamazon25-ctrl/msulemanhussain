@@ -19,7 +19,7 @@ export function LanguageSwitcher() {
   const pathname = usePathname() || `/${locale}`;
 
   return (
-    <div className="flex items-center gap-1" role="group" aria-label={dict.lang.label}>
+    <div className="flex items-center gap-1.5" role="group" aria-label={dict.lang.label}>
       {locales.map((loc) => {
         const active = loc === locale;
         return (
@@ -27,8 +27,8 @@ export function LanguageSwitcher() {
             key={loc}
             href={swapLocale(pathname, loc)}
             hrefLang={loc}
-            className={`px-2 py-1 font-mono text-[10px] tracking-[0.16em] transition ${
-              active ? "bg-white/10 text-phosphor" : "text-bone-faint hover:text-bone"
+            className={`px-2.5 py-1.5 font-mono text-[11px] tracking-[0.12em] transition ${
+              active ? "bg-white/10 text-phosphor" : "text-bone-dim hover:text-bone"
             }`}
             aria-current={active ? "true" : undefined}
           >

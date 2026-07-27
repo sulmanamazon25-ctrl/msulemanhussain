@@ -77,14 +77,15 @@ export default async function ToolsPillarPage({ params }: { params: Promise<{ lo
               {dict.tools.aboutCta}
             </Link>
           </div>
-          <div className="mt-10 flex flex-wrap gap-2">
+          <div className="mt-10 flex flex-wrap gap-2.5 sm:gap-3">
             {toolCategories.map((c) => (
-              <span
+              <a
                 key={c.id}
-                className="border border-white/10 px-3 py-1.5 font-mono text-[10px] tracking-wider text-bone-faint"
+                href={`#cat-${c.id}`}
+                className="border border-white/20 bg-ink-3/80 px-3.5 py-2 font-mono text-[11px] tracking-wide text-bone-dim transition hover:border-phosphor/50 hover:text-phosphor"
               >
                 {c[loc].name}
-              </span>
+              </a>
             ))}
           </div>
         </div>
@@ -97,7 +98,7 @@ export default async function ToolsPillarPage({ params }: { params: Promise<{ lo
             const placeholders = toolPlaceholders.filter((p) => p.category === cat.id);
             if (items.length === 0 && placeholders.length === 0) return null;
             return (
-              <div key={cat.id}>
+              <div key={cat.id} id={`cat-${cat.id}`} className="scroll-mt-28">
                 <h2 className="font-display text-3xl font-bold md:text-4xl">{cat[loc].name}</h2>
                 <p className="mt-2 max-w-xl text-bone-dim">{cat[loc].blurb}</p>
                 <ul className="mt-8 grid gap-4 sm:grid-cols-2">
