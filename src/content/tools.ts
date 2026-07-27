@@ -1,3 +1,5 @@
+import { spainLifeTools } from "./spain-life-tools";
+
 export type ToolCategory = "wasup" | "downitx" | "pinquill" | "spain" | "pickleball";
 
 export type ToolLocaleCopy = {
@@ -87,12 +89,14 @@ export const toolCategories: {
     productUrl: "https://spaineats.info/",
     productLabel: "Spain Eats",
     en: {
-      name: "Spain travel tools",
-      blurb: "Practical calculators for travelers and diners in Spain.",
+      name: "Spain life & travel tools",
+      blurb:
+        "Free calculators for Spain: salary, mortgage, DNI/NIE, EvAU, CV, diet, budget, shipping, and travel dining helpers.",
     },
     es: {
-      name: "Herramientas para viajar por España",
-      blurb: "Calculadoras prácticas para viajeros y comensales en España.",
+      name: "Herramientas de vida y viaje en España",
+      blurb:
+        "Calculadoras gratis para España: salario, hipoteca, DNI/NIE, EvAU, CV, dieta, presupuesto, envíos y comidas de viaje.",
     },
   },
   {
@@ -902,6 +906,7 @@ export const tools: Tool[] = [
       ],
     },
   },
+  ...spainLifeTools,
 ];
 
 export function getTool(slug: string) {
