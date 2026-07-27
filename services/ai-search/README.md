@@ -42,16 +42,19 @@ DELETE /ai-api/v1/admin/documents/{doc_id}
 
 ## Deploy on Hetzner / Coolify host
 ```bash
-cd /opt/ai-search
-cp .env.example .env   # set strong ADMIN_API_KEY + widget key
+cd /opt/msulemanhussain/services/ai-search
+# create .env with strong ADMIN_API_KEY + PUBLIC_WIDGET_KEYS
 docker compose up -d --build
 curl -fsS http://127.0.0.1:8090/health
-# Trigger first crawl
-curl -X POST http://127.0.0.1:8090/v1/admin/crawl \
-  -H "Authorization: Bearer $ADMIN_API_KEY"
+
+# Coolify Traefik file route (Docker labels alone may lose to PathPrefix(`/`))
+bash scripts/install-traefik-route.sh
+
+# Index portfolio sitemap
+bash scripts/crawl-and-smoke.sh
 ```
 
-Public path via Traefik: `https://msulemanhussain.com/ai-api/...`
+Public path: `https://msulemanhussain.com/ai-api/...` (Traefik file provider → host `:8090`)
 
 ## Tests
 ```bash
