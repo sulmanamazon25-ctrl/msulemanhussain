@@ -17,6 +17,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/vs",
     "/projects",
     "/expertise",
+    "/expertise/ai-calling-agents",
     "/build-log",
     "/insights",
     "/about",
@@ -30,7 +31,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${base}/${locale}${path}`,
       lastModified: new Date(),
       changeFrequency: "weekly" as const,
-      priority: path === "" ? 1 : path === "/tools" || path === "/vs" ? 0.85 : 0.7,
+      priority:
+        path === ""
+          ? 1
+          : path === "/tools" || path === "/vs" || path === "/expertise/ai-calling-agents"
+            ? 0.85
+            : 0.7,
       alternates: {
         languages: {
           en: `${base}/en${path}`,
