@@ -7,7 +7,15 @@ export const productGrowthLinks: Record<
   { toolSlugs: string[]; comparisonSlugs: string[] }
 > = {
   wasup: {
-    toolSlugs: ["whatsapp-link-generator"],
+    toolSlugs: [
+      "whatsapp-link-generator",
+      "upwork-fiverr-payout-calculator-pakistan",
+      "fbr-freelance-tax-calculator-pakistan",
+      "invoice-generator-pakistan",
+      "daraz-profit-calculator-pakistan",
+      "meta-tiktok-ad-roas-calculator-pakistan",
+      "youtube-reels-cpm-estimator-pakistan",
+    ],
     comparisonSlugs: ["wasup-vs-manychat"],
   },
   downitx: {

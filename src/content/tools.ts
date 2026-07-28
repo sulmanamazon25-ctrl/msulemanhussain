@@ -1,7 +1,8 @@
 import { spainLifeTools } from "./spain-life-tools";
 import { expansionTools } from "./expansion-tools";
+import { pakistanTools } from "./pakistan-tools";
 
-export type ToolCategory = "wasup" | "downitx" | "pinquill" | "spain" | "pickleball" | "latam";
+export type ToolCategory = "wasup" | "downitx" | "pinquill" | "spain" | "pickleball" | "latam" | "pakistan";
 
 export type ToolLocaleCopy = {
   name: string;
@@ -126,6 +127,21 @@ export const toolCategories: {
     es: {
       name: "Herramientas LatAm",
       blurb: "Salario y documentos para México, Colombia y Argentina — estimaciones en local.",
+    },
+  },
+  {
+    id: "pakistan",
+    productUrl: "https://wasup.app/es",
+    productLabel: "Wasup",
+    en: {
+      name: "Pakistan tools",
+      blurb:
+        "Free tools for Pakistani freelancers, Daraz sellers, and creators — Upwork/Fiverr payouts, FBR estimates, invoices, margins, and ad ROAS in PKR. Also try our WhatsApp link & QR generator.",
+    },
+    es: {
+      name: "Herramientas Pakistán",
+      blurb:
+        "Herramientas gratis para freelancers, sellers Daraz y creadores en Pakistán — cobros Upwork/Fiverr, FBR, facturas, márgenes y ROAS en PKR. También el generador de enlaces y QR de WhatsApp.",
     },
   },
 ];
@@ -922,6 +938,7 @@ export const tools: Tool[] = [
   },
   ...spainLifeTools,
   ...expansionTools,
+  ...pakistanTools,
 ];
 
 export function getTool(slug: string) {

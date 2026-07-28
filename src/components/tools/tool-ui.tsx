@@ -49,3 +49,17 @@ export function money(n: number, locale: "en" | "es") {
     maximumFractionDigits: 2,
   }).format(n);
 }
+
+export function moneyFx(
+  n: number,
+  currency: "PKR" | "USD" | "AED" | "EUR",
+  locale: "en" | "es" = "en",
+) {
+  const tag =
+    currency === "PKR" ? "en-PK" : currency === "AED" ? "en-AE" : locale === "es" ? "es-ES" : "en-US";
+  return new Intl.NumberFormat(tag, {
+    style: "currency",
+    currency,
+    maximumFractionDigits: currency === "PKR" ? 0 : 2,
+  }).format(n);
+}

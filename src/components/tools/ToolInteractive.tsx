@@ -132,6 +132,30 @@ const LatAmIdValidator = dynamic(
   () => import("@/components/tools/LatAmTools").then((m) => m.LatAmIdValidator),
   { ssr: false, loading: () => <ToolSkeleton /> },
 );
+const FreelancePayoutCalculator = dynamic(
+  () => import("@/components/tools/FreelancePayoutCalculator").then((m) => m.FreelancePayoutCalculator),
+  { ssr: false, loading: () => <ToolSkeleton /> },
+);
+const FbrWithholdingCalculator = dynamic(
+  () => import("@/components/tools/FbrWithholdingCalculator").then((m) => m.FbrWithholdingCalculator),
+  { ssr: false, loading: () => <ToolSkeleton /> },
+);
+const PakistanInvoiceGenerator = dynamic(
+  () => import("@/components/tools/PakistanInvoiceGenerator").then((m) => m.PakistanInvoiceGenerator),
+  { ssr: false, loading: () => <ToolSkeleton /> },
+);
+const DarazProfitCalculator = dynamic(
+  () => import("@/components/tools/DarazProfitCalculator").then((m) => m.DarazProfitCalculator),
+  { ssr: false, loading: () => <ToolSkeleton /> },
+);
+const PkAdRoasCalculator = dynamic(
+  () => import("@/components/tools/PkAdRoasCalculator").then((m) => m.PkAdRoasCalculator),
+  { ssr: false, loading: () => <ToolSkeleton /> },
+);
+const PkYoutubeCpmEstimator = dynamic(
+  () => import("@/components/tools/PkYoutubeCpmEstimator").then((m) => m.PkYoutubeCpmEstimator),
+  { ssr: false, loading: () => <ToolSkeleton /> },
+);
 
 function ToolSkeleton() {
   return <div className="min-h-48 animate-pulse border border-white/10 bg-ink-3/50" />;
@@ -168,6 +192,12 @@ const SIMPLE: Record<string, React.ComponentType<{ locale: "en" | "es" }>> = {
   "calculadora-coste-viaje": TripFuelCalculator,
   "coste-compra-vivienda": HomeBuyingCostCalculator,
   "iva-mexico": MexicoIvaCalculator,
+  "upwork-fiverr-payout-calculator-pakistan": FreelancePayoutCalculator,
+  "fbr-freelance-tax-calculator-pakistan": FbrWithholdingCalculator,
+  "invoice-generator-pakistan": PakistanInvoiceGenerator,
+  "daraz-profit-calculator-pakistan": DarazProfitCalculator,
+  "meta-tiktok-ad-roas-calculator-pakistan": PkAdRoasCalculator,
+  "youtube-reels-cpm-estimator-pakistan": PkYoutubeCpmEstimator,
 };
 
 export function ToolInteractive({ slug, locale }: { slug: string; locale: "en" | "es" }) {
