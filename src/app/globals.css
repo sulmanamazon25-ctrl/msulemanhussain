@@ -1,25 +1,32 @@
 @import "tailwindcss";
 
-/* Signal Foundry — unique Founder OS palette (not purple-glow / cream-terracotta) */
+/* Signal Foundry × Scene — dark forest base, acid-lime accent (Jitter moodboard upgrade) */
 :root {
-  --ink: #07090c;
-  --ink-2: #0c1118;
-  --ink-3: #121a24;
-  --ink-4: #1a2433;
-  --bone: #f0ebe0;
-  --bone-dim: #a8a194;
-  --bone-faint: #6b655c;
-  --signal: #ff3d1f;
-  --signal-hot: #ff6a3d;
-  --phosphor: #5dff9a;
-  --phosphor-dim: #2a9a5c;
+  --ink: #050806;
+  --ink-2: #0a120e;
+  --ink-3: #101a14;
+  --ink-4: #18241c;
+  --bone: #eef2e8;
+  --bone-dim: #9aa894;
+  --bone-faint: #657060;
+  --forest: #0d3b2e;
+  --forest-deep: #061a14;
+  --sage: #c5d4c0;
+  --signal: #c6ff2e;
+  --signal-hot: #d9ff6a;
+  --phosphor: #b8ff3d;
+  --phosphor-dim: #6a9a22;
   --cobalt: #3d8bff;
   --amber: #ffb020;
   --orchid: #e85dff;
-  --grid-line: rgba(93, 255, 154, 0.07);
-  --glow-signal: rgba(255, 61, 31, 0.35);
-  --glow-phosphor: rgba(93, 255, 154, 0.25);
-  --glow-cobalt: rgba(61, 139, 255, 0.3);
+  --ember: #ff4d2e;
+  --grid-line: rgba(184, 255, 61, 0.07);
+  --glow-signal: rgba(198, 255, 46, 0.28);
+  --glow-phosphor: rgba(184, 255, 61, 0.22);
+  --glow-cobalt: rgba(61, 139, 255, 0.22);
+  --glow-forest: rgba(13, 59, 46, 0.55);
+  --radius-panel: 0.75rem;
+  --radius-pill: 999px;
   --background: var(--ink);
   --foreground: var(--bone);
 }
@@ -32,6 +39,9 @@
   --color-bone: var(--bone);
   --color-bone-dim: var(--bone-dim);
   --color-bone-faint: var(--bone-faint);
+  --color-forest: var(--forest);
+  --color-forest-deep: var(--forest-deep);
+  --color-sage: var(--sage);
   --color-signal: var(--signal);
   --color-signal-hot: var(--signal-hot);
   --color-phosphor: var(--phosphor);
@@ -39,11 +49,14 @@
   --color-cobalt: var(--cobalt);
   --color-amber: var(--amber);
   --color-orchid: var(--orchid);
+  --color-ember: var(--ember);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-display: var(--font-syne);
   --font-sans: var(--font-dm);
   --font-mono: var(--font-jet);
+  --radius-panel: var(--radius-panel);
+  --radius-pill: var(--radius-pill);
 }
 
 html {
@@ -58,17 +71,17 @@ body {
 }
 
 ::selection {
-  background: var(--signal);
-  color: var(--bone);
+  background: var(--phosphor);
+  color: var(--ink);
 }
 
-/* Atmospheric mesh — interactive color fields */
+/* Atmospheric mesh — forest + lime fields (Scene) */
 .foundry-bg {
   background-color: var(--ink);
   background-image:
-    radial-gradient(ellipse 80% 50% at 10% -10%, rgba(255, 61, 31, 0.18), transparent 55%),
-    radial-gradient(ellipse 60% 40% at 90% 10%, rgba(61, 139, 255, 0.14), transparent 50%),
-    radial-gradient(ellipse 50% 50% at 50% 100%, rgba(93, 255, 154, 0.08), transparent 55%),
+    radial-gradient(ellipse 80% 50% at 8% -8%, rgba(198, 255, 46, 0.12), transparent 55%),
+    radial-gradient(ellipse 55% 40% at 92% 8%, rgba(13, 59, 46, 0.55), transparent 52%),
+    radial-gradient(ellipse 50% 45% at 50% 100%, rgba(184, 255, 61, 0.06), transparent 55%),
     linear-gradient(180deg, var(--ink) 0%, var(--ink-2) 100%);
 }
 
@@ -80,6 +93,88 @@ body {
   mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, black, transparent);
 }
 
+/* Scene geometric block pattern */
+.scene-geo {
+  background-color: var(--forest);
+  background-image:
+    linear-gradient(90deg, var(--phosphor) 0 12%, transparent 12% 100%),
+    linear-gradient(0deg, rgba(5, 8, 6, 0.35) 0 18%, transparent 18% 40%, rgba(198, 255, 46, 0.35) 40% 52%, transparent 52% 70%, rgba(5, 8, 6, 0.5) 70% 100%),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 28px,
+      rgba(198, 255, 46, 0.18) 28px 32px,
+      transparent 32px 64px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0 24px,
+      rgba(5, 8, 6, 0.4) 24px 28px,
+      transparent 28px 56px
+    );
+}
+
+.scene-stripe {
+  position: relative;
+}
+
+.scene-stripe::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--phosphor), var(--signal-hot) 50%, var(--phosphor));
+  pointer-events: none;
+  z-index: 2;
+}
+
+.panel {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: color-mix(in srgb, var(--ink-3) 88%, transparent);
+  border-radius: var(--radius-panel);
+}
+
+.pill {
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 0.4rem 0.9rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
+}
+
+.pill-active {
+  background: var(--forest);
+  border-color: var(--phosphor);
+  color: var(--phosphor);
+}
+
+.cta-primary {
+  background: var(--signal);
+  color: var(--ink);
+  font-weight: 600;
+  transition: background 0.15s ease;
+}
+
+.cta-primary:hover {
+  background: var(--signal-hot);
+}
+
+.cta-secondary {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--bone);
+  font-weight: 600;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.cta-secondary:hover {
+  border-color: var(--phosphor);
+  color: var(--phosphor);
+}
+
 .text-balance {
   text-wrap: balance;
 }
@@ -87,7 +182,7 @@ body {
 .status-live {
   color: var(--phosphor);
   border-color: var(--phosphor-dim);
-  background: rgba(93, 255, 154, 0.08);
+  background: rgba(184, 255, 61, 0.08);
 }
 
 .status-building {
@@ -97,9 +192,9 @@ body {
 }
 
 .status-sale {
-  color: var(--signal-hot);
-  border-color: rgba(255, 61, 31, 0.45);
-  background: rgba(255, 61, 31, 0.1);
+  color: var(--ember);
+  border-color: rgba(255, 77, 46, 0.45);
+  background: rgba(255, 77, 46, 0.1);
 }
 
 .status-experiment {
@@ -110,8 +205,8 @@ body {
 
 .status-paused {
   color: var(--bone-dim);
-  border-color: rgba(168, 161, 148, 0.35);
-  background: rgba(168, 161, 148, 0.08);
+  border-color: rgba(154, 168, 148, 0.35);
+  background: rgba(154, 168, 148, 0.08);
 }
 
 .live-dot {
@@ -119,19 +214,19 @@ body {
   height: 6px;
   border-radius: 999px;
   background: var(--phosphor);
-  box-shadow: 0 0 0 0 rgba(93, 255, 154, 0.55);
+  box-shadow: 0 0 0 0 rgba(184, 255, 61, 0.55);
   animation: live-pulse 2s ease-out infinite;
 }
 
 @keyframes live-pulse {
   0% {
-    box-shadow: 0 0 0 0 rgba(93, 255, 154, 0.55);
+    box-shadow: 0 0 0 0 rgba(184, 255, 61, 0.55);
   }
   70% {
-    box-shadow: 0 0 0 8px rgba(93, 255, 154, 0);
+    box-shadow: 0 0 0 8px rgba(184, 255, 61, 0);
   }
   100% {
-    box-shadow: 0 0 0 0 rgba(93, 255, 154, 0);
+    box-shadow: 0 0 0 0 rgba(184, 255, 61, 0);
   }
 }
 

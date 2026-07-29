@@ -78,7 +78,7 @@ ${name}`;
             <textarea value={why} onChange={(e) => setWhy(e.target.value)} rows={2} className={inputClass} />
           </Field>
           <div className="flex flex-wrap gap-2">
-            <button type="button" onClick={copy} className="bg-signal px-4 py-2 text-sm font-semibold text-bone hover:bg-signal-hot">
+            <button type="button" onClick={copy} className="bg-signal px-4 py-2 text-sm font-semibold text-ink hover:bg-signal-hot">
               {es ? "Copiar" : "Copy"}
             </button>
             <button type="button" onClick={download} className="border border-white/20 px-4 py-2 text-sm font-semibold text-bone hover:border-phosphor hover:text-phosphor">

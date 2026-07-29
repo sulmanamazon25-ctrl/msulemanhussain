@@ -9,9 +9,10 @@ export function FutureSection() {
 
   return (
     <section className="px-4 pb-24 pt-8 md:px-6">
-      <div className="relative mx-auto max-w-6xl overflow-hidden px-6 py-14 md:px-12 md:py-16">
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-signal/20 via-transparent to-cobalt/15" />
+      <div className="relative mx-auto max-w-6xl overflow-hidden rounded-2xl border border-white/10 px-6 py-14 md:px-12 md:py-16">
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-phosphor/15 via-transparent to-forest/40" />
         <div className="pointer-events-none absolute inset-0 foundry-grid opacity-50" />
+        <div className="pointer-events-none absolute right-0 top-0 h-32 w-24 scene-geo opacity-50" aria-hidden />
         <div className="relative">
           <p className="font-mono text-[11px] tracking-[0.28em] text-phosphor">{dict.future.eyebrow}</p>
           <h2 className="mt-4 max-w-3xl font-display text-3xl font-bold md:text-5xl">{dict.future.title}</h2>
@@ -28,17 +29,17 @@ export function FutureSection() {
           <div className="mt-12 flex flex-wrap gap-3">
             <Link
               href={href("/build-log")}
-              className="border border-phosphor/40 px-5 py-3 text-sm font-semibold text-phosphor hover:bg-phosphor/10"
+              className="rounded-md border border-phosphor/40 px-5 py-3 text-sm font-semibold text-phosphor hover:bg-phosphor/10"
             >
               {dict.future.follow}
             </Link>
-            <Link href={href("/tools")} className="border border-white/20 px-5 py-3 text-sm font-semibold hover:border-phosphor hover:text-phosphor">
+            <Link href={href("/tools")} className="rounded-md border border-white/20 px-5 py-3 text-sm font-semibold hover:border-phosphor hover:text-phosphor">
               {dict.future.toolsCta}
             </Link>
-            <Link href={href("/vs")} className="border border-white/20 px-5 py-3 text-sm font-semibold hover:border-phosphor hover:text-phosphor">
+            <Link href={href("/vs")} className="rounded-md border border-white/20 px-5 py-3 text-sm font-semibold hover:border-phosphor hover:text-phosphor">
               {dict.future.vsCta}
             </Link>
-            <Link href={href("/contact")} className="bg-signal px-5 py-3 text-sm font-semibold hover:bg-signal-hot">
+            <Link href={href("/contact")} className="rounded-md bg-signal px-5 py-3 text-sm font-semibold text-ink hover:bg-signal-hot">
               {dict.future.build}
             </Link>
           </div>

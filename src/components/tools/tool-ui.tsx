@@ -1,5 +1,9 @@
 export function ToolShell({ children }: { children: React.ReactNode }) {
-  return <div className="border border-white/10 bg-ink-3/80 p-5 md:p-6">{children}</div>;
+  return (
+    <div className="scene-stripe overflow-hidden rounded-xl border border-white/10 bg-ink-3/80 p-5 md:p-6">
+      {children}
+    </div>
+  );
 }
 
 export function Field({
@@ -18,7 +22,7 @@ export function Field({
 }
 
 export const inputClass =
-  "w-full border border-white/15 bg-ink px-3 py-2.5 text-bone outline-none focus:border-phosphor";
+  "w-full rounded-md border border-white/15 bg-ink px-3 py-2.5 text-bone outline-none focus:border-phosphor";
 
 export function ResultBlock({
   eyebrow,

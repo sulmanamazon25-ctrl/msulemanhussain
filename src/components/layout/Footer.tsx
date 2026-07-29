@@ -9,7 +9,7 @@ export function Footer() {
   const { dict, href } = useLocale();
 
   return (
-    <footer className="mt-8 border-t border-white/5 bg-ink-2/80">
+    <footer className="mt-8 border-t border-white/5 bg-ink-2/80 scene-stripe">
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 md:grid-cols-4 md:px-6">
         <div className="md:col-span-1">
           <div className="flex items-center gap-3">
@@ -18,7 +18,7 @@ export function Footer() {
               alt=""
               width={40}
               height={40}
-              className="h-10 w-10 border border-white/10 object-cover"
+              className="h-10 w-10 rounded-md border border-phosphor/25 object-cover"
             />
             <p className="font-display text-lg font-semibold">{site.name}</p>
           </div>

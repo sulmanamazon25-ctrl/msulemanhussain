@@ -138,7 +138,7 @@ export function WhatsAppLinkGenerator({ locale }: { locale: "en" | "es" }) {
                 <button
                   type="button"
                   onClick={copyLink}
-                  className="bg-signal px-4 py-2.5 text-sm font-semibold hover:bg-signal-hot"
+                  className="bg-signal px-4 py-2.5 text-sm font-semibold text-ink hover:bg-signal-hot"
                 >
                   {copied
                     ? es

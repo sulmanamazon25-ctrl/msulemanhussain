@@ -126,14 +126,14 @@ export default async function ProductPage({
                     href={product.liveUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-signal px-5 py-3 text-sm font-semibold hover:bg-signal-hot"
+                    className="bg-signal px-5 py-3 text-sm font-semibold text-ink hover:bg-signal-hot"
                   >
                     {dict.products.openLive}
                   </a>
                 ) : (
                   <Link
                     href={lp("/contact")}
-                    className="bg-signal px-5 py-3 text-sm font-semibold hover:bg-signal-hot"
+                    className="bg-signal px-5 py-3 text-sm font-semibold text-ink hover:bg-signal-hot"
                   >
                     {dict.products.talk}
                   </Link>

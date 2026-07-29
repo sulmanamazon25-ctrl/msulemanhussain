@@ -83,7 +83,7 @@ export function IntentForm() {
           ))}
           <button
             type="submit"
-            className="mt-2 bg-signal px-5 py-3 text-sm font-semibold text-bone hover:bg-signal-hot"
+            className="mt-2 bg-signal px-5 py-3 text-sm font-semibold text-ink hover:bg-signal-hot"
           >
             Send — let's build
           </button>

@@ -67,12 +67,12 @@ export default async function ToolsPillarPage({ params }: { params: Promise<{ lo
           <h1 className="mt-4 max-w-3xl font-display text-4xl font-bold md:text-6xl">{dict.tools.title}</h1>
           <p className="mt-5 max-w-2xl text-base leading-relaxed text-bone-dim md:text-lg">{dict.tools.intro}</p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <a href="#categories" className="bg-signal px-5 py-3 text-sm font-semibold hover:bg-signal-hot">
+            <a href="#categories" className="rounded-md bg-signal px-5 py-3 text-sm font-semibold text-ink hover:bg-signal-hot">
               {dict.tools.exploreCta}
             </a>
             <Link
               href={lp("/about")}
-              className="border border-white/20 px-5 py-3 text-sm font-semibold hover:border-phosphor hover:text-phosphor"
+              className="rounded-md border border-white/20 px-5 py-3 text-sm font-semibold hover:border-phosphor hover:text-phosphor"
             >
               {dict.tools.aboutCta}
             </Link>
@@ -82,7 +82,7 @@ export default async function ToolsPillarPage({ params }: { params: Promise<{ lo
               <a
                 key={c.id}
                 href={`#cat-${c.id}`}
-                className="border border-white/20 bg-ink-3/80 px-3.5 py-2 font-mono text-[11px] tracking-wide text-bone-dim transition hover:border-phosphor/50 hover:text-phosphor"
+                className="rounded-full border border-white/20 bg-ink-3/80 px-3.5 py-2 font-mono text-[11px] tracking-wide text-bone-dim transition hover:border-phosphor/50 hover:bg-forest/50 hover:text-phosphor"
               >
                 {c[loc].name}
               </a>
@@ -108,7 +108,7 @@ export default async function ToolsPillarPage({ params }: { params: Promise<{ lo
                       <li key={tool.slug}>
                         <Link
                           href={lp(`/tools/${tool.slug}`)}
-                          className="group flex h-full flex-col border border-white/10 bg-ink-3/60 p-5 transition hover:-translate-y-0.5 hover:border-white/25"
+                          className="group flex h-full flex-col rounded-xl border border-white/10 bg-ink-3/60 p-5 transition hover:-translate-y-0.5 hover:border-phosphor/35"
                           style={{ boxShadow: `inset 3px 0 0 ${tool.accent}` }}
                         >
                           <div className="flex flex-wrap items-center gap-2">

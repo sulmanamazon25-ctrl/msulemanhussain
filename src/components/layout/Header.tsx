@@ -103,7 +103,7 @@ export function Header() {
               <Link
                 href={href("/contact")}
                 onClick={() => setOpen(false)}
-                className="bg-signal py-4 text-center text-sm font-semibold tracking-[0.14em] text-bone transition hover:bg-signal-hot"
+                className="rounded-md bg-signal py-4 text-center text-sm font-semibold tracking-[0.14em] text-ink transition hover:bg-signal-hot"
               >
                 {dict.nav.letsBuild}
               </Link>
@@ -116,7 +116,7 @@ export function Header() {
 
   return (
     <>
-      <header className="sticky top-0 z-50 border-b border-white/10 bg-ink/90 backdrop-blur-xl">
+      <header className="sticky top-0 z-50 border-b border-white/10 bg-ink/90 backdrop-blur-xl scene-stripe">
         <div className="mx-auto flex h-[4.25rem] max-w-screen-2xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
           <Link href={href("/")} className="flex min-w-0 shrink-0 items-center gap-2.5 sm:gap-3">
             <Image
@@ -124,7 +124,7 @@ export function Header() {
               alt="Suleman Hussain"
               width={36}
               height={36}
-              className="h-9 w-9 shrink-0 border border-white/10 object-cover"
+              className="h-9 w-9 shrink-0 rounded-md border border-phosphor/25 object-cover"
               priority
             />
             <span className="hidden font-display text-sm font-bold tracking-[0.12em] text-bone sm:inline">
@@ -151,7 +151,7 @@ export function Header() {
               <LanguageSwitcher />
               <Link
                 href={href("/contact")}
-                className="whitespace-nowrap bg-signal px-4 py-2.5 text-xs font-semibold tracking-[0.1em] text-bone transition hover:bg-signal-hot"
+                className="whitespace-nowrap rounded-md bg-signal px-4 py-2.5 text-xs font-semibold tracking-[0.1em] text-ink transition hover:bg-signal-hot"
               >
                 {dict.nav.letsBuild}
               </Link>
@@ -163,7 +163,7 @@ export function Header() {
             <LanguageSwitcher />
             <button
               type="button"
-              className="border border-white/20 px-3.5 py-2 text-[11px] font-semibold tracking-[0.14em] text-phosphor transition hover:border-phosphor"
+              className="rounded-md border border-white/20 px-3.5 py-2 text-[11px] font-semibold tracking-[0.14em] text-phosphor transition hover:border-phosphor"
               onClick={() => setOpen(true)}
               aria-label={dict.nav.menu}
               aria-expanded={open}

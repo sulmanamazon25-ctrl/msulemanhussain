@@ -26,7 +26,7 @@ function ProductPreview({ product }: { product: Product }) {
   return (
     <div className="relative min-h-[300px] overflow-hidden bg-ink md:min-h-[380px]">
       <div className="flex items-center gap-2 border-b border-white/10 bg-ink-3/95 px-3 py-2">
-        <span className="h-2.5 w-2.5 rounded-full bg-signal/80" />
+        <span className="h-2.5 w-2.5 rounded-full bg-ember/80" />
         <span className="h-2.5 w-2.5 rounded-full bg-amber/80" />
         <span className="h-2.5 w-2.5 rounded-full bg-phosphor/80" />
         <p className="ml-2 truncate font-mono text-[10px] text-bone-faint">
@@ -175,7 +175,7 @@ export function ProductWorld({ showHeading = true }: { showHeading?: boolean }) 
                         href={product.liveUrl}
                         target="_blank"
                         rel="noreferrer"
-                        className="inline-flex bg-signal px-5 py-3 text-sm font-semibold hover:bg-signal-hot"
+                        className="inline-flex rounded-md bg-signal px-5 py-3 text-sm font-semibold text-ink hover:bg-signal-hot"
                       >
                         {dict.products.openLive}
                       </a>

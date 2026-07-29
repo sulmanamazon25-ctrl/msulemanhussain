@@ -48,7 +48,7 @@ export default async function ExpertisePage({ params }: { params: Promise<{ loca
         </p>
         <Link
           href={lp("/expertise/ai-calling-agents")}
-          className="group mt-4 flex flex-col gap-4 border border-white/15 bg-white/[0.02] p-6 transition hover:border-phosphor md:flex-row md:items-center md:justify-between md:p-8"
+          className="group mt-4 flex flex-col gap-4 rounded-xl border border-white/15 bg-white/[0.02] p-6 transition hover:border-phosphor md:flex-row md:items-center md:justify-between md:p-8 scene-stripe"
           style={{ borderLeftColor: aiCallingAgents.accent, borderLeftWidth: 3 }}
         >
           <div>
@@ -60,7 +60,7 @@ export default async function ExpertisePage({ params }: { params: Promise<{ loca
             </span>
             <p className="mt-2 max-w-xl text-sm text-bone-dim md:text-base">{pillarCopy.card.blurb}</p>
           </div>
-          <span className="shrink-0 border border-white/20 px-4 py-2 text-xs font-semibold tracking-[0.1em] text-bone group-hover:border-phosphor group-hover:text-phosphor">
+          <span className="shrink-0 rounded-md border border-white/20 px-4 py-2 text-xs font-semibold tracking-[0.1em] text-bone group-hover:border-phosphor group-hover:text-phosphor">
             {loc === "es" ? "Ver detalles →" : "See details →"}
           </span>
         </Link>

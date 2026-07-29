@@ -142,7 +142,7 @@ export function PakistanInvoiceGenerator({ locale }: { locale: "en" | "es" }) {
           <button
             type="button"
             onClick={printPdf}
-            className="bg-signal px-4 py-2.5 text-sm font-semibold text-bone hover:bg-signal-hot"
+            className="bg-signal px-4 py-2.5 text-sm font-semibold text-ink hover:bg-signal-hot"
           >
             {es ? "Imprimir / Guardar PDF" : "Print / Save as PDF"}
           </button>

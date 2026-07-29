@@ -24,10 +24,11 @@ export function FounderWorldHero() {
 
   return (
     <section className="relative overflow-hidden px-4 pb-16 pt-12 md:px-6 md:pb-24 md:pt-16">
-      <div className="pointer-events-none absolute -left-24 top-0 h-80 w-80 rounded-full bg-signal/20 blur-[120px]" />
-      <div className="pointer-events-none absolute right-0 top-20 h-72 w-72 rounded-full bg-cobalt/15 blur-[100px]" />
+      <div className="pointer-events-none absolute -left-24 top-0 h-80 w-80 rounded-full bg-phosphor/15 blur-[120px]" />
+      <div className="pointer-events-none absolute right-0 top-20 h-72 w-72 rounded-full bg-forest/40 blur-[100px]" />
+      <div className="pointer-events-none absolute bottom-0 left-1/3 hidden h-40 w-40 scene-geo opacity-40 lg:block" />
 
-      <div className="relative mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14">
+      <div className="relative mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14">
         <motion.div
           initial={{ opacity: 0, scale: 0.96 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -35,12 +36,15 @@ export function FounderWorldHero() {
           className="relative order-2 lg:order-1"
         >
           <div className="relative mx-auto w-full max-w-lg lg:max-w-none">
+            <div className="absolute -left-3 top-8 hidden h-28 w-16 scene-geo rounded-md opacity-80 lg:block" aria-hidden />
+            <div className="absolute -right-4 bottom-16 hidden h-20 w-20 rounded-md border border-phosphor/30 bg-forest/60 lg:block" aria-hidden />
+
             <div
-              className="relative overflow-hidden border border-white/15 bg-ink-3 shadow-[0_30px_80px_rgba(0,0,0,0.5)]"
+              className="scene-stripe relative overflow-hidden rounded-xl border border-white/15 bg-ink-3 shadow-[0_30px_80px_rgba(0,0,0,0.5)]"
               style={{ boxShadow: featured ? `0 24px 70px ${featured.accentSoft}` : undefined }}
             >
               <div className="flex items-center gap-2 border-b border-white/10 bg-ink/90 px-3 py-2">
-                <span className="h-2.5 w-2.5 rounded-full bg-signal/80" />
+                <span className="h-2.5 w-2.5 rounded-full bg-ember/80" />
                 <span className="h-2.5 w-2.5 rounded-full bg-amber/80" />
                 <span className="h-2.5 w-2.5 rounded-full bg-phosphor/80" />
                 <p className="ml-2 truncate font-mono text-[10px] text-bone-faint">
@@ -84,7 +88,7 @@ export function FounderWorldHero() {
                     ) : null}
                     <span className="font-display text-sm font-semibold text-bone drop-shadow">{featured.name}</span>
                     <span
-                      className="ml-auto rounded border px-1.5 py-0.5 font-mono text-[9px] tracking-wider"
+                      className="ml-auto rounded-full border px-2 py-0.5 font-mono text-[9px] tracking-wider"
                       style={{
                         color: featured.accent,
                         borderColor: `${featured.accent}66`,
@@ -105,7 +109,7 @@ export function FounderWorldHero() {
                   type="button"
                   onClick={() => setSlide(i)}
                   aria-label={`Show ${p.name}`}
-                  className="relative h-14 w-24 shrink-0 overflow-hidden border transition sm:h-16 sm:w-28"
+                  className="relative h-14 w-24 shrink-0 overflow-hidden rounded-md border transition sm:h-16 sm:w-28"
                   style={{
                     borderColor: i === slide ? p.accent : "rgba(255,255,255,0.12)",
                     boxShadow: i === slide ? `0 0 0 1px ${p.accent}` : undefined,
@@ -160,13 +164,13 @@ export function FounderWorldHero() {
           >
             <Link
               href={href("/#now")}
-              className="bg-signal px-6 py-3.5 text-sm font-semibold tracking-wide text-bone hover:bg-signal-hot"
+              className="rounded-md bg-signal px-6 py-3.5 text-sm font-semibold tracking-wide text-ink hover:bg-signal-hot"
             >
               {dict.hero.ctaExplore}
             </Link>
             <Link
               href={href("/#think")}
-              className="border border-white/20 px-6 py-3.5 text-sm font-semibold tracking-wide text-bone hover:border-phosphor hover:text-phosphor"
+              className="rounded-md border border-white/20 px-6 py-3.5 text-sm font-semibold tracking-wide text-bone hover:border-phosphor hover:text-phosphor"
             >
               {dict.hero.ctaThink}
             </Link>
