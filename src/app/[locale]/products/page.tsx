@@ -30,11 +30,11 @@ export default async function ProductsPage({ params }: { params: Promise<{ local
 
   return (
     <div className="pt-10">
-      <div className="mx-auto max-w-6xl px-4 md:px-6">
-        <p className="font-mono text-[11px] tracking-[0.28em] text-signal">{dict.nav.products}</p>
-        <h1 className="mt-3 font-display text-4xl font-bold md:text-6xl">{dict.products.pageTitle}</h1>
-        <p className="mt-4 max-w-2xl text-bone-dim">{dict.products.pageBlurb}</p>
-        <div className="mt-6 flex flex-wrap gap-4 text-sm">
+      <div className="mx-auto max-w-5xl px-4 md:px-6">
+        <p className="font-mono text-[11px] tracking-[0.28em] text-phosphor">{dict.nav.products}</p>
+        <h1 className="mt-3 font-display text-4xl font-bold md:text-5xl">{dict.products.pageTitle}</h1>
+        <p className="mt-4 max-w-xl text-bone-dim">{dict.products.pageBlurb}</p>
+        <div className="mt-5 flex flex-wrap gap-5 text-sm">
           <Link href={localePath(raw as Locale, "/tools")} className="text-phosphor hover:underline">
             {dict.products.growthAllTools}
           </Link>

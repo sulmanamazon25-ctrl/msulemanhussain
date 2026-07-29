@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { products, statusClass } from "@/content/products";
 import type { Product } from "@/content/site";
@@ -13,7 +13,7 @@ function ProductPreview({ product }: { product: Product }) {
   if (!product.previewImage) {
     return (
       <div
-        className="relative flex min-h-[300px] items-center justify-center md:min-h-[380px]"
+        className="flex aspect-[16/10] items-center justify-center rounded-t-xl"
         style={{ background: product.accentSoft }}
       >
         <p className="font-display text-3xl font-bold" style={{ color: product.accent }}>
@@ -24,47 +24,23 @@ function ProductPreview({ product }: { product: Product }) {
   }
 
   return (
-    <div className="relative min-h-[300px] overflow-hidden bg-ink md:min-h-[380px]">
-      <div className="flex items-center gap-2 border-b border-white/10 bg-ink-3/95 px-3 py-2">
-        <span className="h-2.5 w-2.5 rounded-full bg-ember/80" />
-        <span className="h-2.5 w-2.5 rounded-full bg-amber/80" />
-        <span className="h-2.5 w-2.5 rounded-full bg-phosphor/80" />
+    <div className="overflow-hidden rounded-t-xl border-b border-white/10 bg-ink">
+      <div className="flex items-center gap-2 bg-ink-3/90 px-3 py-2">
+        <span className="h-2 w-2 rounded-full bg-ember/80" />
+        <span className="h-2 w-2 rounded-full bg-amber/80" />
+        <span className="h-2 w-2 rounded-full bg-phosphor/80" />
         <p className="ml-2 truncate font-mono text-[10px] text-bone-faint">
           {product.liveUrl?.replace(/^https?:\/\//, "") ?? `${product.slug}.product`}
         </p>
-        {product.logo ? (
-          <Image
-            src={product.logo}
-            alt=""
-            width={18}
-            height={18}
-            className="ml-auto h-4 w-4 object-contain opacity-80"
-            unoptimized={product.logo.endsWith(".svg")}
-          />
-        ) : null}
       </div>
-      <div className="relative aspect-[16/11] w-full md:aspect-auto md:min-h-[340px]">
-        <motion.div
-          key={product.slug}
-          initial={{ opacity: 0, scale: 1.03 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5 }}
-          className="absolute inset-0"
-        >
-          <Image
-            src={product.previewImage}
-            alt={`${product.name} product screenshot`}
-            fill
-            className="object-cover object-top"
-            sizes="(max-width: 1024px) 100vw, 55vw"
-            priority={product.status === "LIVE"}
-          />
-        </motion.div>
-        <div
-          className="pointer-events-none absolute inset-0"
-          style={{
-            background: `linear-gradient(to top, ${product.accentSoft}, transparent 40%)`,
-          }}
+      <div className="relative aspect-[16/10] w-full">
+        <Image
+          src={product.previewImage}
+          alt={`${product.name} product screenshot`}
+          fill
+          className="object-cover object-top"
+          sizes="(max-width: 1024px) 100vw, 720px"
+          priority={product.status === "LIVE"}
         />
       </div>
     </div>
@@ -72,126 +48,113 @@ function ProductPreview({ product }: { product: Product }) {
 }
 
 export function ProductWorld({ showHeading = true }: { showHeading?: boolean }) {
-  const [active, setActive] = useState(0);
-  const product = products[active];
+  const [active, setActive] = useState(() => {
+    const live = products.findIndex((p) => p.status === "LIVE");
+    return live >= 0 ? live : 0;
+  });
+  const product = products[active] as Product;
   const { dict, href } = useLocale();
 
-  useEffect(() => {
-    const liveIndexes = products
-      .map((p, i) => (p.status === "LIVE" ? i : -1))
-      .filter((i) => i >= 0);
-    if (liveIndexes.length < 2) return;
-    const id = window.setInterval(() => {
-      setActive((current) => {
-        const pos = liveIndexes.indexOf(current);
-        const next = pos < 0 ? liveIndexes[0] : liveIndexes[(pos + 1) % liveIndexes.length];
-        return next;
-      });
-    }, 5500);
-    return () => window.clearInterval(id);
-  }, []);
-
   return (
-    <section id="products-world" className="scroll-mt-24 border-y border-white/5 bg-ink-2/40 px-4 py-20 md:px-6 md:py-28">
-      <div className="mx-auto max-w-6xl">
-        {showHeading && (
-          <>
-            <p className="font-mono text-[11px] tracking-[0.28em] text-cobalt">{dict.products.eyebrow}</p>
-            <h2 className="mt-4 max-w-3xl font-display text-4xl font-bold md:text-5xl">
-              {dict.products.title}
-            </h2>
-            <p className="mt-4 max-w-xl text-bone-dim">{dict.products.blurb}</p>
-          </>
-        )}
+    <section
+      id="products-world"
+      className="scroll-mt-24 border-y border-white/5 px-4 py-16 md:px-6 md:py-24"
+    >
+      <div className="mx-auto max-w-5xl">
+        {showHeading ? (
+          <div className="max-w-2xl">
+            <p className="font-mono text-[11px] tracking-[0.28em] text-phosphor">{dict.products.eyebrow}</p>
+            <h2 className="mt-3 font-display text-3xl font-bold md:text-5xl">{dict.products.title}</h2>
+            <p className="mt-4 text-bone-dim">{dict.products.blurb}</p>
+          </div>
+        ) : null}
 
-        <div className="mt-12 grid gap-8 lg:grid-cols-[240px_1fr]">
-          <div className="flex gap-2 overflow-x-auto pb-2 lg:flex-col lg:overflow-visible lg:pb-0" role="tablist">
-            {products.map((p, i) => (
+        {/* Compact product switcher */}
+        <div
+          className={cn(
+            "flex gap-2 overflow-x-auto pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden",
+            showHeading ? "mt-10" : "mt-2",
+          )}
+          role="tablist"
+          aria-label={dict.products.title}
+        >
+          {products.map((p, i) => {
+            const selected = i === active;
+            return (
               <button
                 key={p.slug}
                 type="button"
                 role="tab"
-                aria-selected={i === active}
+                aria-selected={selected}
                 onClick={() => setActive(i)}
-                className="flex shrink-0 items-center gap-3 border px-4 py-3 text-left text-sm transition lg:w-full"
-                style={{
-                  borderColor: i === active ? p.accent : "rgba(255,255,255,0.1)",
-                  color: i === active ? p.accent : "var(--bone-dim)",
-                  background: i === active ? p.accentSoft : "transparent",
-                }}
-              >
-                {p.logo && (
-                  <Image
-                    src={p.logo}
-                    alt=""
-                    width={24}
-                    height={24}
-                    className="h-6 w-6 object-contain"
-                    unoptimized={p.logo.endsWith(".svg")}
-                  />
+                className={cn(
+                  "shrink-0 rounded-full border px-4 py-2 text-left transition",
+                  selected
+                    ? "border-phosphor/50 bg-forest text-phosphor"
+                    : "border-white/10 text-bone-dim hover:border-white/25 hover:text-bone",
                 )}
-                <span>
-                  <span className="block font-display font-semibold">{p.name}</span>
-                  <span className="mt-1 block text-[10px] tracking-wider opacity-70">{p.status}</span>
-                </span>
+              >
+                <span className="block font-display text-sm font-semibold">{p.name}</span>
+                <span className="mt-0.5 block font-mono text-[9px] tracking-wider opacity-70">{p.status}</span>
               </button>
-            ))}
-          </div>
+            );
+          })}
+        </div>
 
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={product.slug}
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -8 }}
-              transition={{ duration: 0.35 }}
-              className="relative overflow-hidden border border-white/10"
-              style={{ boxShadow: `0 0 80px ${product.accentSoft}` }}
-            >
-              <div className="grid gap-0 lg:grid-cols-[1.15fr_0.85fr]">
-                <ProductPreview product={product} />
-                <div className="flex flex-col justify-between bg-ink-3/80 p-6 md:p-8">
-                  <div>
-                    <div className="flex flex-wrap items-center gap-2">
-                      <span className={cn("border px-2 py-0.5 text-[10px] tracking-wider", statusClass(product.status))}>
-                        {product.status}
-                      </span>
-                      {product.multilingual && (
-                        <span className="border border-phosphor/40 px-2 py-0.5 text-[10px] tracking-wider text-phosphor">
-                          {dict.products.multilingual}
-                        </span>
-                      )}
-                    </div>
-                    <h3 className="mt-4 font-display text-3xl font-bold md:text-4xl" style={{ color: product.accent }}>
-                      {product.name}
-                    </h3>
-                    <p className="mt-3 text-bone-dim">{product.tagline}</p>
-                    <p className="mt-4 text-sm text-bone-faint">{product.problem}</p>
-                    <p className="mt-4 font-mono text-[11px] text-bone-faint">{product.stack.join(" · ")}</p>
-                  </div>
-                  <div className="mt-8 flex flex-wrap gap-3">
-                    {product.liveUrl ? (
-                      <a
-                        href={product.liveUrl}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="inline-flex rounded-md bg-signal px-5 py-3 text-sm font-semibold text-ink hover:bg-signal-hot"
-                      >
-                        {dict.products.openLive}
-                      </a>
-                    ) : null}
-                    <Link
-                      href={href(`/products/${product.slug}`)}
-                      className="inline-flex border border-white/20 px-5 py-3 text-sm font-semibold hover:border-phosphor hover:text-phosphor"
+        <AnimatePresence mode="wait">
+          <motion.article
+            key={product.slug}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -6 }}
+            transition={{ duration: 0.28 }}
+            className="mt-8 overflow-hidden rounded-xl border border-white/10 bg-ink-3/50"
+          >
+            <ProductPreview product={product} />
+
+            <div className="grid gap-8 p-6 md:grid-cols-[1.2fr_0.8fr] md:p-8 lg:p-10">
+              <div>
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className={cn("rounded-full border px-2.5 py-0.5 text-[10px] tracking-wider", statusClass(product.status))}>
+                    {product.status}
+                  </span>
+                  {product.multilingual ? (
+                    <span className="rounded-full border border-phosphor/35 px-2.5 py-0.5 text-[10px] tracking-wider text-phosphor">
+                      {dict.products.multilingual}
+                    </span>
+                  ) : null}
+                </div>
+                <h3 className="mt-4 font-display text-3xl font-bold text-bone md:text-4xl">{product.name}</h3>
+                <p className="mt-3 text-base text-bone-dim">{product.tagline}</p>
+                <p className="mt-4 max-w-xl text-sm leading-relaxed text-bone-faint">{product.problem}</p>
+              </div>
+
+              <div className="flex flex-col justify-between gap-6 md:items-end md:text-right">
+                <p className="font-mono text-[11px] leading-relaxed tracking-wide text-bone-faint">
+                  {product.stack.join(" · ")}
+                </p>
+                <div className="flex flex-wrap gap-3 md:justify-end">
+                  {product.liveUrl ? (
+                    <a
+                      href={product.liveUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex rounded-md bg-signal px-5 py-3 text-sm font-semibold text-ink hover:bg-signal-hot"
                     >
-                      {dict.products.enter} {product.name}
-                    </Link>
-                  </div>
+                      {dict.products.openLive}
+                    </a>
+                  ) : null}
+                  <Link
+                    href={href(`/products/${product.slug}`)}
+                    className="inline-flex rounded-md border border-white/20 px-5 py-3 text-sm font-semibold text-bone hover:border-phosphor hover:text-phosphor"
+                  >
+                    {dict.products.enter} {product.name}
+                  </Link>
                 </div>
               </div>
-            </motion.div>
-          </AnimatePresence>
-        </div>
+            </div>
+          </motion.article>
+        </AnimatePresence>
       </div>
     </section>
   );
