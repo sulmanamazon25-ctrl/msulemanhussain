@@ -9,6 +9,7 @@ services:
       - NODE_ENV=production
       - PORT=3000
       - HOSTNAME=0.0.0.0
+      - INDEXNOW_KEY=msholh73faen85mw9vpczj2bkq1
     labels:
       - traefik.enable=true
       - traefik.http.middlewares.gzip.compress=true
