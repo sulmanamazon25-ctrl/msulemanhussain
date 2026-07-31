@@ -189,6 +189,9 @@ export default async function ToolsPillarPage({ params }: { params: Promise<{ lo
           <Link href={lp("/vs")} className="text-sm text-phosphor hover:underline">
             {dict.tools.vsLink}
           </Link>
+          <a href={`mailto:${site.emails.support}`} className="text-sm text-phosphor hover:underline">
+            {locale === "es" ? "Soporte" : "Support"}: {site.emails.support}
+          </a>
         </div>
       </section>
     </div>

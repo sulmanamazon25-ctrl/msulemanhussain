@@ -206,6 +206,10 @@ export default async function ToolPage({
           <Link href={lp("/vs")} className="hover:text-bone">
             {dict.tools.vsLink}
           </Link>
+          {" · "}
+          <a href={`mailto:${site.emails.support}`} className="hover:text-phosphor">
+            {site.emails.support}
+          </a>
         </p>
       </section>
 

@@ -107,9 +107,14 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
         ))}
       </ul>
 
-      <Link href={lp("/contact")} className="mt-14 inline-block bg-signal px-5 py-3 text-sm font-semibold text-ink hover:bg-signal-hot">
-        {dict.about.cta}
-      </Link>
+      <div className="mt-14 flex flex-wrap items-center gap-4">
+        <Link href={lp("/contact")} className="inline-block bg-signal px-5 py-3 text-sm font-semibold text-ink hover:bg-signal-hot">
+          {dict.about.cta}
+        </Link>
+        <a href={`mailto:${site.emails.hello}`} className="text-sm text-phosphor hover:underline">
+          {site.emails.hello}
+        </a>
+      </div>
     </div>
   );
 }

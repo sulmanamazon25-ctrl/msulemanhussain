@@ -64,7 +64,8 @@ function buildLlmsMarkdown() {
     `- [YouTube](${site.social.youtube})`,
     "",
     "## Contact",
-    `- Email: ${site.email}`,
+    `- General: ${site.emails.hello}`,
+    `- Support (tools / products): ${site.emails.support}`,
     `- [Contact form EN](${base}/en/contact) · [Contact form ES](${base}/es/contact)`,
     "",
   );

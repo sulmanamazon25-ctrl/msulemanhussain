@@ -88,6 +88,16 @@ export function Footer() {
           <p className="mb-3 text-[10px] tracking-[0.22em] text-signal">{dict.footer.connect}</p>
           <ul className="space-y-2 text-sm text-bone-dim">
             <li>
+              <a href={`mailto:${site.emails.hello}`} className="hover:text-phosphor">
+                {site.emails.hello}
+              </a>
+            </li>
+            <li>
+              <a href={`mailto:${site.emails.support}`} className="hover:text-phosphor">
+                {site.emails.support}
+              </a>
+            </li>
+            <li>
               <a href={site.social.linkedin} target="_blank" rel="noreferrer" className="hover:text-bone">
                 LinkedIn
               </a>

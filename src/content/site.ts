@@ -4,7 +4,14 @@ export const site = {
   description:
     "Enter Founder World — software, AI products, SaaS systems, and digital businesses from a founder who is always building something.",
   url: "https://msulemanhussain.com",
+  /** Primary public inbox — partnerships, builds, general hello */
   email: "hello@msulemanhussain.com",
+  emails: {
+    hello: "hello@msulemanhussain.com",
+    support: "support@msulemanhussain.com",
+    /** Automated/system only — do not publish as a reply-to contact */
+    noreply: "noreply@msulemanhussain.com",
+  },
   social: {
     linkedin: "https://www.linkedin.com/in/msulemanhussain/",
     youtube: "https://www.youtube.com/@msulemanhussain",
