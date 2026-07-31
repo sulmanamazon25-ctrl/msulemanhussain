@@ -34,7 +34,6 @@ export function Header() {
     { href: href("/products"), label: dict.nav.products },
     { href: href("/tools"), label: dict.nav.tools },
     { href: href("/vs"), label: dict.nav.vs },
-    { href: href("/build-log"), label: dict.nav.buildLog },
     { href: href("/expertise"), label: dict.nav.expertise },
     { href: href("/about"), label: dict.nav.about },
   ];

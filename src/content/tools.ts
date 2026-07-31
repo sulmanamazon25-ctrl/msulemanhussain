@@ -195,12 +195,16 @@ function regionalCourtTool(opts: {
       ],
       faq: [
         {
-          q: "Is this a complete directory?",
-          a: "No. It is a curated metro-hub starter list for discovery — expand your search with local clubs after you pick a city.",
+          q: `Is this a complete ${countryEn} pickleball directory?`,
+          a: `No. It is a curated metro-hub starter list for ${countryEn} — expand with local clubs after you pick a city.`,
         },
         {
-          q: "Can I book a court here?",
+          q: `Can I book a ${countryEn} court here?`,
           a: "No. Booking stays with the venue or club.",
+        },
+        {
+          q: "Is data uploaded?",
+          a: "No. Filtering runs in your browser against a static curated list.",
         },
       ],
     },
@@ -225,12 +229,16 @@ function regionalCourtTool(opts: {
       ],
       faq: [
         {
-          q: "¿Es un directorio completo?",
-          a: "No. Es una lista curada de hubs para empezar — amplía con clubs locales cuando elijas ciudad.",
+          q: `¿Es un directorio completo de ${countryEs}?`,
+          a: `No. Es una lista curada de hubs en ${countryEs} para empezar — amplía con clubs locales cuando elijas ciudad.`,
         },
         {
-          q: "¿Puedo reservar aquí?",
+          q: `¿Puedo reservar una pista en ${countryEs} aquí?`,
           a: "No. La reserva es con el club o instalación.",
+        },
+        {
+          q: "¿Se suben datos?",
+          a: "No. El filtro corre en tu navegador sobre una lista estática curada.",
         },
       ],
     },

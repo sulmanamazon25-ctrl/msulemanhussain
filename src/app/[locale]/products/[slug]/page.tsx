@@ -7,7 +7,7 @@ import { comparisonsForProduct, toolsForProduct } from "@/content/growth-links";
 import { getProduct, products, statusClass } from "@/content/products";
 import { getProject } from "@/content/projects";
 import { site } from "@/content/site";
-import { alternateLanguages, isLocale, localePath, type Locale } from "@/i18n/config";
+import { enOnlyAlternates, isLocale, localePath, type Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
 import { cn } from "@/lib/utils";
 
@@ -24,17 +24,23 @@ export async function generateMetadata({
   const product = getProduct(slug);
   if (!product || !isLocale(raw)) return {};
   const locale = raw as Locale;
+  const title = product.seoTitle ?? `${product.name} — ${product.tagline}`;
+  const description = product.seoDescription ?? product.tagline;
+  // Portfolio body is EN-only today — index EN; noindex ES until translated.
+  const comingSoon = product.status === "COMING SOON";
+  const esUntranslated = locale === "es" && !comingSoon;
   return {
-    title: product.name,
-    description: product.tagline,
-    robots: product.status === "COMING SOON" ? { index: false, follow: true } : undefined,
+    title,
+    description,
+    robots: comingSoon || esUntranslated ? { index: false, follow: true } : undefined,
     alternates: {
-      canonical: `https://msulemanhussain.com/${locale}/products/${slug}`,
-      languages: alternateLanguages(`/products/${slug}`),
+      canonical: `https://msulemanhussain.com/en/products/${slug}`,
+      languages: enOnlyAlternates(`/products/${slug}`),
     },
     openGraph: {
-      title: product.name,
-      description: product.tagline,
+      title,
+      description,
+      url: `https://msulemanhussain.com/${locale}/products/${slug}`,
       images: product.previewImage ? [product.previewImage] : undefined,
     },
   };
@@ -61,7 +67,7 @@ export default async function ProductPage({
   const growthTools = toolsForProduct(product.slug, loc);
   const growthComparisons = comparisonsForProduct(product.slug, loc);
 
-  const jsonLd = productPageJsonLd(product);
+  const jsonLd = productPageJsonLd(product, locale);
 
   return (
     <article>

@@ -39,6 +39,9 @@ export const products: Product[] = [
     ],
     relatedProjectSlugs: ["ops-automation"],
     featured: true,
+    seoTitle: "DownitX — Bulk YouTube & TikTok Download + Long→Short",
+    seoDescription:
+      "Windows creator app for YouTube, TikTok, Facebook, X & Shorts: paste-link downloads, channel bulk, and Long → Short clips with captions.",
   },
   {
     slug: "pinquill",
@@ -78,6 +81,9 @@ export const products: Product[] = [
     ],
     relatedProjectSlugs: ["growth-sites"],
     featured: true,
+    seoTitle: "PinQuill — Local-First Pinterest Pin Generator (BYOK)",
+    seoDescription:
+      "Desktop Pinterest studio: blog URL to SEO pins, sitemap bulk, trends, and decay tracking — your API keys, no cloud lock-in.",
   },
   {
     slug: "wasup",
@@ -117,6 +123,9 @@ export const products: Product[] = [
     ],
     relatedProjectSlugs: ["voice-agent-lab"],
     featured: true,
+    seoTitle: "Wasup — WhatsApp Copilot with Human Approval (BYOK)",
+    seoDescription:
+      "Windows WhatsApp assistant that drafts from your FAQs — you approve before send. Local sessions, OpenRouter BYOK.",
   },
   {
     slug: "pickleball-deutsch",
@@ -156,6 +165,9 @@ export const products: Product[] = [
     ],
     relatedProjectSlugs: ["client-growth"],
     featured: true,
+    seoTitle: "Pickleball Deutsch — Germany Pickleball Guides & Courts",
+    seoDescription:
+      "Expert-reviewed pickleball rules, gear, courses, and 30+ city guides for Germany — live since 2023.",
   },
   {
     slug: "spain-eats",
@@ -195,6 +207,9 @@ export const products: Product[] = [
     ],
     relatedProjectSlugs: ["client-growth"],
     featured: true,
+    seoTitle: "Spain Eats — English Guide to Spanish Food & Regions",
+    seoDescription:
+      "Regional Spanish cuisine guide: dishes, ingredients, recipes, drinks, places, and free cooking tools in English.",
   },
   {
     slug: "bokily",
@@ -234,6 +249,9 @@ export const products: Product[] = [
     ],
     relatedProjectSlugs: ["mvp-kit"],
     featured: true,
+    seoTitle: "Bokily — Swap Books with People Nearby (Spain)",
+    seoDescription:
+      "Local book swap app: list books, match by distance, chat in-app, QR meetup — free to join, Spain first.",
   },
   {
     slug: "reelerx",

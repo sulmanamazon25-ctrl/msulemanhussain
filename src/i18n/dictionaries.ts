@@ -2,9 +2,9 @@ import type { Locale } from "./config";
 
 const en = {
   meta: {
-    title: "Suleman Hussain — Founder World · Always Building",
+    title: "Suleman Hussain — AI Products, SaaS & Free Tools",
     description:
-      "Enter Founder World — software, AI products, SaaS systems, and digital businesses from a founder who is always building something.",
+      "Founder of DownitX, Wasup, PinQuill & more. Free creator tools, product comparisons, and AI calling agents — EN/ES.",
   },
   nav: {
     now: "NOW",
@@ -115,13 +115,15 @@ const en = {
     ai: "AI & Automation",
     growth: "Growth",
     product: "Product",
+    design: "Design",
+    callingAgents: "AI Calling Agents",
     contact: "Contact",
     privacy: "Privacy",
     terms: "Terms",
   },
   about: {
     eyebrow: "ABOUT",
-    title: "Who I am",
+    title: "About Suleman Hussain — Founder & Builder",
     who: "I'm Suleman Hussain — a multidisciplinary founder and product builder. I am not presenting a finished career. I am actively building.",
     whatTitle: "What I build",
     what:
@@ -139,12 +141,12 @@ const en = {
   },
   contact: {
     eyebrow: "CONTACT",
-    title: "Let's build",
+    title: "Contact Suleman Hussain — Builds & Partnerships",
     blurb: "Tell me why you're here. The form adapts — so the conversation starts in the right place.",
   },
   expertise: {
     eyebrow: "EXPERTISE",
-    title: "Not a skill dump. An overlap system.",
+    title: "Expertise — AI Calling Agents, SaaS, Growth & Product",
     blurb: "Capabilities that connect — so the journey from problem to product to growth stays in one head.",
     ecosystems: "ECOSYSTEMS",
   },
@@ -248,9 +250,9 @@ export type Dictionary = DeepStringify<typeof en>;
 
 const es: Dictionary = {
   meta: {
-    title: "Suleman Hussain — Founder World · Siempre construyendo",
+    title: "Suleman Hussain — Productos IA, SaaS y herramientas gratis",
     description:
-      "Entra en Founder World — software, productos de IA, sistemas SaaS y negocios digitales de un founder que siempre está construyendo.",
+      "Founder de DownitX, Wasup, PinQuill y más. Herramientas gratis, comparativas y agentes de llamadas con IA — EN/ES.",
   },
   nav: {
     now: "AHORA",
@@ -361,13 +363,15 @@ const es: Dictionary = {
     ai: "IA y Automatización",
     growth: "Crecimiento",
     product: "Producto",
+    design: "Diseño",
+    callingAgents: "AI Calling Agents",
     contact: "Contacto",
     privacy: "Privacidad",
     terms: "Términos",
   },
   about: {
     eyebrow: "SOBRE MÍ",
-    title: "Quién soy",
+    title: "Sobre Suleman Hussain — Founder y Builder",
     who: "Soy Suleman Hussain — founder multidisciplinar y product builder. No presento una carrera terminada. Estoy construyendo activamente.",
     whatTitle: "Qué construyo",
     what:
@@ -385,12 +389,12 @@ const es: Dictionary = {
   },
   contact: {
     eyebrow: "CONTACTO",
-    title: "Construyamos",
+    title: "Contactar a Suleman Hussain — Builds y partnerships",
     blurb: "Dime por qué estás aquí. El formulario se adapta — para que la conversación empiece en el lugar correcto.",
   },
   expertise: {
     eyebrow: "EXPERTISE",
-    title: "No es una lista de skills. Es un sistema de solapamiento.",
+    title: "Expertise — AI Calling Agents, SaaS, Growth y Producto",
     blurb: "Capacidades que se conectan — para que el viaje del problema al producto al crecimiento viva en una sola cabeza.",
     ecosystems: "ECOSISTEMAS",
   },

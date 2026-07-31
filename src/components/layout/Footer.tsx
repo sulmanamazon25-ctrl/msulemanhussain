@@ -82,6 +82,16 @@ export function Footer() {
                 {dict.footer.product}
               </Link>
             </li>
+            <li>
+              <Link href={href("/expertise/design-experience")} className="hover:text-bone">
+                {dict.footer.design}
+              </Link>
+            </li>
+            <li>
+              <Link href={href("/expertise/ai-calling-agents")} className="hover:text-bone">
+                {dict.footer.callingAgents}
+              </Link>
+            </li>
           </ul>
         </div>
         <div>

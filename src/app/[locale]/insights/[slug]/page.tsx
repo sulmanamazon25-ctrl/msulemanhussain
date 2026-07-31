@@ -5,7 +5,7 @@ import { articleJsonLd } from "@/content/owned-brands";
 import { getInsight, insights } from "@/content/insights";
 import { readingTime } from "@/lib/utils";
 import { site } from "@/content/site";
-import { alternateLanguages, isLocale, localePath, type Locale } from "@/i18n/config";
+import { enOnlyAlternates, isLocale, localePath, type Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
 
 export function generateStaticParams() {
@@ -23,9 +23,11 @@ export async function generateMetadata({
   return {
     title: post.title,
     description: post.excerpt,
+    // Stub-length EN body on both locales — do not index until expanded.
+    robots: { index: false, follow: true },
     alternates: {
-      canonical: `https://msulemanhussain.com/${raw}/insights/${slug}`,
-      languages: alternateLanguages(`/insights/${slug}`),
+      canonical: `https://msulemanhussain.com/en/insights/${slug}`,
+      languages: enOnlyAlternates(`/insights/${slug}`),
     },
   };
 }

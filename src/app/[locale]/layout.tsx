@@ -5,7 +5,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { personEntityJsonLd } from "@/content/owned-brands";
 import { site } from "@/content/site";
-import { alternateLanguages, isLocale, locales, type Locale } from "@/i18n/config";
+import { isLocale, locales, type Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
 import { LocaleProvider } from "@/i18n/LocaleProvider";
 import { AiSearchLazy } from "@/components/ai/AiSearchLazy";
@@ -47,22 +47,19 @@ export async function generateMetadata({
       template: `%s · ${site.name}`,
     },
     description: dict.meta.description,
-    alternates: {
-      canonical: `https://msulemanhussain.com/${locale}`,
-      languages: alternateLanguages(""),
-    },
+    // Do NOT set canonical/hreflang here — they bleed onto every child page
+    // that omits alternates (privacy, terms, projects). Home sets its own.
     openGraph: {
       title: dict.meta.title,
       description: dict.meta.description,
-      url: `https://msulemanhussain.com/${locale}`,
       siteName: site.name,
       locale: locale === "es" ? "es_ES" : "en_US",
       alternateLocale: locale === "es" ? ["en_US"] : ["es_ES"],
       type: "website",
-      images: [{ url: "/brand/mark.png", width: 1024, height: 1024, alt: site.name }],
+      images: [{ url: "/brand/mark.png", width: 1200, height: 630, alt: site.name }],
     },
     twitter: {
-      card: "summary",
+      card: "summary_large_image",
       title: dict.meta.title,
       description: dict.meta.description,
       images: ["/brand/mark.png"],

@@ -5,7 +5,7 @@ import { articleJsonLd } from "@/content/owned-brands";
 import { buildLog, getBuildLogPost } from "@/content/build-log";
 import { readingTime } from "@/lib/utils";
 import { site } from "@/content/site";
-import { alternateLanguages, isLocale, localePath, type Locale } from "@/i18n/config";
+import { enOnlyAlternates, isLocale, localePath, type Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
 
 export function generateStaticParams() {
@@ -23,9 +23,10 @@ export async function generateMetadata({
   return {
     title: post.title,
     description: post.excerpt,
+    robots: { index: false, follow: true },
     alternates: {
-      canonical: `https://msulemanhussain.com/${raw}/build-log/${slug}`,
-      languages: alternateLanguages(`/build-log/${slug}`),
+      canonical: `https://msulemanhussain.com/en/build-log/${slug}`,
+      languages: enOnlyAlternates(`/build-log/${slug}`),
     },
   };
 }

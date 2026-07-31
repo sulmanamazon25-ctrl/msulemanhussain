@@ -40,13 +40,34 @@ function copy(
       h1: h1En,
       intro: introEn,
       benefit: benefitEn,
-      howTo: ["Open the calculator.", "Enter your values.", "Read the result — all on-device."],
-      whatItDoes: "Runs a free client-side estimate in your browser.",
-      whatItDoesNot: "Does not replace official tax/legal advice.",
-      tips: ["Double-check inputs.", "Use as orientation before professional advice."],
+      howTo: [
+        `Open the ${nameEn}.`,
+        "Enter your values carefully.",
+        "Read the on-device result — nothing is uploaded.",
+      ],
+      whatItDoes: `${nameEn} runs a free client-side estimate in your browser.`,
+      whatItDoesNot: `The ${nameEn} does not replace official tax, payroll, or legal advice.`,
+      tips: [
+        `Use the ${nameEn} for orientation before you file or invoice.`,
+        "Double-check rates and inputs against your latest official tables.",
+      ],
       faq: [
-        { q: "Is it free?", a: "Yes — free, no signup." },
-        { q: "Is data uploaded?", a: "No. Calculations stay in your browser." },
+        {
+          q: `What does the ${nameEn} calculate?`,
+          a: descEn,
+        },
+        {
+          q: `Is the ${nameEn} free?`,
+          a: "Yes — free, no signup, runs entirely in your browser.",
+        },
+        {
+          q: "Is my data uploaded?",
+          a: "No. Inputs and results stay on your device.",
+        },
+        {
+          q: "Is this an official government tool?",
+          a: "No. It is an orientation calculator for planning — verify with AEAT, your gestor, or the relevant authority before filing.",
+        },
       ],
     },
     es: {
@@ -56,13 +77,34 @@ function copy(
       h1: h1Es,
       intro: introEs,
       benefit: benefitEs,
-      howTo: ["Abre la calculadora.", "Introduce tus datos.", "Lee el resultado — todo en local."],
-      whatItDoes: "Calcula una estimación gratis en tu navegador.",
-      whatItDoesNot: "No sustituye asesoría fiscal/legal oficial.",
-      tips: ["Revisa los datos.", "Úsalo como orientación antes de un profesional."],
+      howTo: [
+        `Abre ${nameEs}.`,
+        "Introduce tus datos con cuidado.",
+        "Lee el resultado en local — no se sube nada.",
+      ],
+      whatItDoes: `${nameEs} calcula una estimación gratis en tu navegador.`,
+      whatItDoesNot: `${nameEs} no sustituye asesoría fiscal, laboral o legal oficial.`,
+      tips: [
+        `Usa ${nameEs} como orientación antes de facturar o declarar.`,
+        "Contrasta tipos y datos con las tablas oficiales vigentes.",
+      ],
       faq: [
-        { q: "¿Es gratis?", a: "Sí — gratis, sin registro." },
-        { q: "¿Se suben datos?", a: "No. El cálculo queda en tu navegador." },
+        {
+          q: `¿Qué calcula ${nameEs}?`,
+          a: descEs,
+        },
+        {
+          q: `¿${nameEs} es gratis?`,
+          a: "Sí — gratis, sin registro, todo en tu navegador.",
+        },
+        {
+          q: "¿Se suben mis datos?",
+          a: "No. Los datos y resultados quedan en tu dispositivo.",
+        },
+        {
+          q: "¿Es una herramienta oficial?",
+          a: "No. Es una calculadora orientativa — verifica con AEAT, tu gestor o la autoridad correspondiente antes de presentar nada.",
+        },
       ],
     },
   };

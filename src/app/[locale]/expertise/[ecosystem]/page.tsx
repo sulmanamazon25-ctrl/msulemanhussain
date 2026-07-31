@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ecosystems, getEcosystem } from "@/content/expertise";
-import { alternateLanguages, isLocale, localePath, type Locale } from "@/i18n/config";
+import { enOnlyAlternates, isLocale, localePath, type Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
 
 export function generateStaticParams() {
@@ -20,9 +20,11 @@ export async function generateMetadata({
   return {
     title: item.name,
     description: item.blurb,
+    // Doorway-thin skill lists — noindex until real pillar copy ships.
+    robots: { index: false, follow: true },
     alternates: {
-      canonical: `https://msulemanhussain.com/${raw}/expertise/${ecosystem}`,
-      languages: alternateLanguages(`/expertise/${ecosystem}`),
+      canonical: `https://msulemanhussain.com/en/expertise/${ecosystem}`,
+      languages: enOnlyAlternates(`/expertise/${ecosystem}`),
     },
   };
 }
@@ -48,6 +50,33 @@ export default async function EcosystemPage({
         {item.name}
       </h1>
       <p className="mt-4 max-w-2xl text-lg text-bone-dim">{item.blurb}</p>
+      <p className="mt-6 max-w-2xl text-sm text-bone-faint">
+        {locale === "es" ? (
+          <>
+            Página de resumen. Profundiza en{" "}
+            <Link href={localePath(locale, "/expertise/ai-calling-agents")} className="text-phosphor hover:underline">
+              AI Calling Agents
+            </Link>{" "}
+            o en el{" "}
+            <Link href={localePath(locale, "/expertise")} className="text-phosphor hover:underline">
+              hub de expertise
+            </Link>
+            .
+          </>
+        ) : (
+          <>
+            Summary page. Go deeper on{" "}
+            <Link href={localePath(locale, "/expertise/ai-calling-agents")} className="text-phosphor hover:underline">
+              AI Calling Agents
+            </Link>{" "}
+            or the{" "}
+            <Link href={localePath(locale, "/expertise")} className="text-phosphor hover:underline">
+              expertise hub
+            </Link>
+            .
+          </>
+        )}
+      </p>
       <ul className="mt-10 grid gap-3 sm:grid-cols-2">
         {item.skills.map((skill) => (
           <li

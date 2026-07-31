@@ -76,18 +76,23 @@ export function personEntityJsonLd() {
   };
 }
 
-export function productPageJsonLd(product: {
-  name: string;
-  slug: string;
-  tagline: string;
-  liveUrl?: string;
-  logo?: string;
-  status?: string;
-  category?: string;
-  stack?: string[];
-}) {
+export function productPageJsonLd(
+  product: {
+    name: string;
+    slug: string;
+    tagline: string;
+    liveUrl?: string;
+    logo?: string;
+    status?: string;
+    category?: string;
+    stack?: string[];
+    seoDescription?: string;
+  },
+  locale: "en" | "es" = "en",
+) {
   const personId = `${site.url}/#person`;
-  const portfolioUrl = `${site.url}/products/${product.slug}`;
+  const websiteId = `${site.url}/#website`;
+  const portfolioUrl = `${site.url}/${locale}/products/${product.slug}`;
   const orgUrl = product.liveUrl?.replace(/\/$/, "") ?? portfolioUrl;
   const appCategory =
     product.category?.toLowerCase().includes("video")
@@ -100,6 +105,13 @@ export function productPageJsonLd(product: {
     "@context": "https://schema.org",
     "@graph": [
       {
+        "@type": "WebSite",
+        "@id": websiteId,
+        name: site.name,
+        url: site.url,
+        publisher: { "@id": personId },
+      },
+      {
         "@type": "Person",
         "@id": personId,
         name: site.name,
@@ -110,7 +122,7 @@ export function productPageJsonLd(product: {
         "@id": `${orgUrl}/#organization`,
         name: product.name,
         url: product.liveUrl ?? portfolioUrl,
-        description: product.tagline,
+        description: product.seoDescription ?? product.tagline,
         logo: product.logo ? `${site.url}${product.logo}` : undefined,
         founder: { "@id": personId },
         sameAs: [portfolioUrl, site.url],
@@ -119,7 +131,7 @@ export function productPageJsonLd(product: {
         "@type": "SoftwareApplication",
         "@id": `${orgUrl}/#software`,
         name: product.name,
-        description: product.tagline,
+        description: product.seoDescription ?? product.tagline,
         applicationCategory: appCategory,
         operatingSystem: product.stack?.some((s) => /windows|desktop/i.test(s))
           ? "Windows, Web"
@@ -128,10 +140,11 @@ export function productPageJsonLd(product: {
         image: product.logo ? `${site.url}${product.logo}` : undefined,
         inLanguage: ["en", "es"],
         author: { "@id": personId },
+        // Free trial / freemium portfolio pages — avoid fake "price 0" as sole Offer.
         offers: {
           "@type": "Offer",
-          price: "0",
-          priceCurrency: "USD",
+          availability: "https://schema.org/InStock",
+          url: product.liveUrl ?? portfolioUrl,
         },
       },
       {
@@ -139,10 +152,11 @@ export function productPageJsonLd(product: {
         "@id": `${portfolioUrl}#webpage`,
         url: portfolioUrl,
         name: `${product.name} · ${site.name}`,
-        description: product.tagline,
+        description: product.seoDescription ?? product.tagline,
         about: { "@id": `${orgUrl}/#organization` },
         author: { "@id": personId },
-        isPartOf: { "@id": `${site.url}/#website` },
+        isPartOf: { "@id": websiteId },
+        inLanguage: locale,
       },
     ],
   };
@@ -156,13 +170,14 @@ export function articleJsonLd(post: {
   pathPrefix: "build-log" | "insights";
 }) {
   const personId = `${site.url}/#person`;
-  const url = `${site.url}/${post.pathPrefix}/${post.slug}`;
+  const url = `${site.url}/en/${post.pathPrefix}/${post.slug}`;
   return {
     "@context": "https://schema.org",
     "@type": "Article",
     headline: post.title,
     description: post.excerpt,
     datePublished: post.date,
+    inLanguage: "en",
     author: {
       "@type": "Person",
       "@id": personId,

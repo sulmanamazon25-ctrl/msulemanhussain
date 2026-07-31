@@ -11,11 +11,18 @@ export function localePath(locale: Locale, path = "") {
   return `/${locale}${clean}`;
 }
 
-export function alternateLanguages(path = "") {
+/** Build hreflang map. Pass `locales: ["en"]` when ES body is not a real translation. */
+export function alternateLanguages(path = "", opts?: { locales?: readonly Locale[] }) {
   const clean = path === "/" ? "" : path;
-  return {
-    en: `https://msulemanhussain.com/en${clean}`,
-    es: `https://msulemanhussain.com/es${clean}`,
-    "x-default": `https://msulemanhussain.com/en${clean}`,
-  };
+  const wanted = opts?.locales ?? locales;
+  const languages: Record<string, string> = {};
+  if (wanted.includes("en")) languages.en = `https://msulemanhussain.com/en${clean}`;
+  if (wanted.includes("es")) languages.es = `https://msulemanhussain.com/es${clean}`;
+  languages["x-default"] = `https://msulemanhussain.com/en${clean}`;
+  return languages;
+}
+
+/** EN-only alternates — use until a page has a real Spanish body. */
+export function enOnlyAlternates(path = "") {
+  return alternateLanguages(path, { locales: ["en"] });
 }

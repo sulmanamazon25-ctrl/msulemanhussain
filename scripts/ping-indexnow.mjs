@@ -1,7 +1,7 @@
 /**
- * Ping IndexNow with priority EN/ES discovery URLs.
+ * Ping IndexNow with priority money URLs (hubs + products + vs + calling agents).
  * Usage: INDEXNOW_KEY=... node scripts/ping-indexnow.mjs
- * Or: SITE_URL=https://msulemanhussain.com node scripts/ping-indexnow.mjs (posts to live /api/indexnow)
+ * Or: SITE_URL=https://msulemanhussain.com node scripts/ping-indexnow.mjs
  */
 const key = process.env.INDEXNOW_KEY?.trim();
 const siteUrl = (process.env.SITE_URL || "https://msulemanhussain.com").replace(/\/$/, "");
@@ -14,18 +14,27 @@ const urlList = [
   `${siteUrl}/en/products/downitx`,
   `${siteUrl}/en/products/wasup`,
   `${siteUrl}/en/products/pinquill`,
-  `${siteUrl}/es/products/downitx`,
-  `${siteUrl}/es/products/wasup`,
-  `${siteUrl}/es/products/pinquill`,
+  `${siteUrl}/en/products/bokily`,
+  `${siteUrl}/en/products/spain-eats`,
+  `${siteUrl}/en/products/pickleball-deutsch`,
   `${siteUrl}/en/tools`,
   `${siteUrl}/es/tools`,
   `${siteUrl}/en/tools/whatsapp-link-generator`,
   `${siteUrl}/en/tools/tiktok-reels-safe-zone`,
   `${siteUrl}/en/tools/pinterest-23-canvas`,
+  `${siteUrl}/en/tools/calculadora-iva`,
+  `${siteUrl}/es/tools/calculadora-iva`,
   `${siteUrl}/en/vs`,
   `${siteUrl}/es/vs`,
   `${siteUrl}/en/vs/wasup-vs-manychat`,
+  `${siteUrl}/es/vs/wasup-vs-manychat`,
   `${siteUrl}/en/vs/downitx-vs-4kdownloader`,
+  `${siteUrl}/es/vs/downitx-vs-4kdownloader`,
+  `${siteUrl}/en/expertise`,
+  `${siteUrl}/en/expertise/ai-calling-agents`,
+  `${siteUrl}/es/expertise/ai-calling-agents`,
+  `${siteUrl}/en/about`,
+  `${siteUrl}/en/contact`,
   `${siteUrl}/llms.txt`,
   `${siteUrl}/sitemap.xml`,
 ];

@@ -65,6 +65,10 @@ export type Product = {
   locales?: string[];
   logo?: string;
   previewImage?: string;
+  /** SERP title override (without site template suffix). */
+  seoTitle?: string;
+  /** SERP / OG description override. */
+  seoDescription?: string;
 };
 
 export type ProjectStatus = "LIVE" | "SHIPPED" | "BUILDING" | "EXPERIMENT" | "ACQUIRED" | "ARCHIVED";

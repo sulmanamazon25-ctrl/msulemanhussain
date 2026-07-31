@@ -42,6 +42,10 @@ export const productGrowthLinks: Record<
     ],
     comparisonSlugs: [],
   },
+  bokily: {
+    toolSlugs: ["crear-cv-profesional", "planificador-de-presupuesto"],
+    comparisonSlugs: [],
+  },
 };
 
 /** Canonical live product URLs (external) — keep in sync with products.ts. */
