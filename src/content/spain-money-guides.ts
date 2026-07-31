@@ -53,7 +53,7 @@ export const spainMoneyGuides: SpainMoneyGuidesDoc = {
     meta: {
       title: "Spain Salary, IRPF, Finiquito & Autónomos Guides — Free Calculators",
       description:
-        "Practical EN/ES guides for Spain: turn a gross job offer into net pay, estimate finiquito, plan autónomo cuota and IVA on invoices — with free on-device calculators.",
+        "Practical EN/ES guides for Spain: salary net, finiquito, autónomos, home buying costs, DNI/IBAN checks, and EvAU score planning — with free on-device calculators.",
     },
     hero: {
       eyebrow: "SPAIN MONEY GUIDES",
@@ -196,6 +196,36 @@ export const spainMoneyGuides: SpainMoneyGuidesDoc = {
           },
         ],
       },
+      {
+        id: "educacion",
+        heading: "Cluster 6 — EvAU / Selectividad and household budget",
+        problem:
+          "Families plan degrees around notas de corte they do not yet have, while students burn time guessing Bach media and específicas weights. Separately, a Spanish net paycheck can look fine until rent + bills leave nothing.",
+        solution:
+          "Simulate access/admission with Bach + general + weighted específicas, track media early, and pressure-test the household month on net income — not bruto.",
+        mistakes: [
+          "Picking específicas without checking the degree's ponderaciones table",
+          "Ignoring Bach media until June (it is ~60% of access)",
+          "Budgeting rent on bruto salary",
+        ],
+        tools: [
+          {
+            slug: "calculadora-evau-2026",
+            label: "EvAU 2026 score calculator",
+            why: "Access + admission scenarios before exam day.",
+          },
+          {
+            slug: "calculadora-nota-media",
+            label: "Grade average calculator",
+            why: "Estimate Bach/ESO/FP media while the expediente catches up.",
+          },
+          {
+            slug: "planificador-de-presupuesto",
+            label: "Household budget planner",
+            why: "See what remains after rent and bills on Spanish net pay.",
+          },
+        ],
+      },
     ],
     how: {
       heading: "How to use this hub",
@@ -252,7 +282,7 @@ export const spainMoneyGuides: SpainMoneyGuidesDoc = {
     meta: {
       title: "Guías salario, IRPF, finiquito y autónomos España — Calculadoras gratis",
       description:
-        "Guías prácticas EN/ES: de bruto a neto, estimar finiquito, planificar cuota de autónomos e IVA en facturas — con calculadoras gratis en el navegador.",
+        "Guías prácticas EN/ES: salario neto, finiquito, autónomos, costes de compraventa, DNI/IBAN y nota EvAU — con calculadoras gratis en el navegador.",
     },
     hero: {
       eyebrow: "GUÍAS DINERO ESPAÑA",
@@ -392,6 +422,36 @@ export const spainMoneyGuides: SpainMoneyGuidesDoc = {
             slug: "validador-iban-es",
             label: "Validador IBAN ES",
             why: "Comprueba IBAN ES / genera desde CCC en el dispositivo.",
+          },
+        ],
+      },
+      {
+        id: "educacion",
+        heading: "Cluster 6 — EvAU / Selectividad y presupuesto familiar",
+        problem:
+          "Las familias eligen grados con notas de corte que aún no tienen, y el alumnado pierde tiempo adivinando la media de Bach y las ponderaciones. En paralelo, un neto español puede parecer suficiente hasta que alquiler + facturas no dejan nada.",
+        solution:
+          "Simula acceso/admisión con Bach + general + específicas ponderadas, sigue la media pronto y estresa el mes familiar con ingresos netos — no el bruto.",
+        mistakes: [
+          "Elegir específicas sin mirar la tabla de ponderaciones del grado",
+          "Ignorar la media de Bach hasta junio (~60% del acceso)",
+          "Presupuestar el alquiler con el salario bruto",
+        ],
+        tools: [
+          {
+            slug: "calculadora-evau-2026",
+            label: "Calculadora EvAU 2026",
+            why: "Escenarios de acceso y admisión antes del examen.",
+          },
+          {
+            slug: "calculadora-nota-media",
+            label: "Calculadora de nota media",
+            why: "Estima media Bach/ESO/FP mientras llega el expediente.",
+          },
+          {
+            slug: "planificador-de-presupuesto",
+            label: "Planificador de presupuesto",
+            why: "Ve qué queda tras alquiler y facturas con el neto español.",
           },
         ],
       },

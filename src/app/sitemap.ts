@@ -69,11 +69,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
       "pinterest-23-canvas",
       "spain-tip-calculator",
       "calculadora-evau-2026",
+      "calculadora-nota-media",
       "calculadora-iva",
       "calculadora-de-salario",
       "calculadora-de-finiquito",
       "cuota-de-autonomos",
       "calculadora-irpf-retencion",
+      "calculadora-de-hipoteca",
+      "coste-compra-vivienda",
+      "validador-dni-nie",
+      "validador-iban-es",
+      "planificador-de-presupuesto",
       "upwork-fiverr-payout-calculator-pakistan",
     ];
     return money.includes(slug) ? 0.8 : 0.55;

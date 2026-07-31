@@ -66,38 +66,96 @@ export const spainLifeTools: Tool[] = [
     accent: "#a78bfa",
     en: {
       name: "EvAU 2026 score calculator",
-      title: "EvAU 2026 Calculator — University Admission Score Simulator Spain",
+      title: "EvAU 2026 Calculator — Access & Admission Score Before Selectividad",
       description:
-        "Calculate your EvAU 2026 admission grade from Bachillerato, general phase, and specific subjects with university weights.",
-      h1: "EvAU 2026 admission score calculator",
+        "Simulate your Spanish university access and admission grades for EvAU/EBAU 2026: Bachillerato + general phase + weighted específicas — free, on-device orientation.",
+      h1: "EvAU 2026 calculator — know your score before you pick específicas",
       intro:
-        "Simulate your Spanish university access and admission grades for 2026 using the standard 0.6×Bach + 0.4×general formula plus specific-phase weights.",
-      benefit: "Simulate EvAU access and admission scores instantly.",
-      howTo: ["Enter Bachillerato average.", "Add general EvAU grade.", "Set specific subjects and 0.1/0.2 weights."],
-      whatItDoes: "Computes access grade and admission grade up to 14.",
-      whatItDoesNot: "Does not replace official university cut-offs or convocatoria rules.",
-      tips: ["Confirm ponderaciones on your target degree page.", "Try multiple weight combinations."],
+        "Selectividad stress is usually about cut-offs you cannot see yet. This simulator applies the standard access formula (0.6×Bach + 0.4×general) and adds specific-phase subjects with 0.1/0.2 university weights so you can test which combination gets you closer to a degree's published nota de corte. Orientation only — official ponderaciones and cut-offs live on each university site.",
+      benefit: "Test admission scenarios before exam day.",
+      howTo: [
+        "Enter your Bachillerato average (media).",
+        "Add the general / mandatory EvAU phase grade.",
+        "Add up to two specific subjects and choose 0.1 or 0.2 weights from your target degree table.",
+        "Read access grade and admission grade (up to 14) — then compare with published cut-offs.",
+      ],
+      whatItDoes:
+        "Computes access and admission scores using the common Spanish weighting model and the subject weights you enter.",
+      whatItDoesNot:
+        "Does not publish official notas de corte, CCAA convocatoria rules, or guarantee a plaza. Weights must match your target faculty table.",
+      tips: [
+        "Confirm ponderaciones on the exact grado page — the same subject can be 0.2 for one degree and 0.1 for another.",
+        "Run best/worst Bach media scenarios if your expediente is still provisional.",
+        "Admission up to 14 needs two strong específicas with high weights — plan subjects early.",
+      ],
       faq: [
-        { q: "What is the max score?", a: "Admission can reach 14 with two highly weighted specific subjects." },
-        { q: "Is 2026 different?", a: "Core formula is stable; always verify weights for the convocatoria you sit." },
+        {
+          q: "What is the difference between access and admission?",
+          a: "Access (nota de acceso) mixes Bachillerato and the general phase. Admission adds weighted específicas and is what cut-offs usually refer to (scale up to 14).",
+        },
+        {
+          q: "Is EvAU the same as EBAU / Selectividad?",
+          a: "Names vary by comunidad, but the access/admission logic families are similar. Always verify your CCAA convocatoria wording.",
+        },
+        {
+          q: "Where do I get the 0.1 / 0.2 weights?",
+          a: "From the university's ponderaciones table for that degree and year — not from this site.",
+        },
+        {
+          q: "Does this replace the official university calculator?",
+          a: "No. Use it to explore scenarios; trust the faculty tools and published cut-offs for decisions.",
+        },
+        {
+          q: "Are my grades uploaded?",
+          a: "No — everything stays in your browser.",
+        },
       ],
     },
     es: {
       name: "Calculadora EvAU 2026",
-      title: "Calculadora EvAU 2026 — Simulador nota de admisión universidad",
+      title: "Calculadora EvAU 2026 — Nota de acceso y admisión antes de Selectividad",
       description:
-        "Calcula tu nota de admisión EvAU 2026 con Bachillerato, fase obligatoria y específicas con ponderaciones universitarias.",
-      h1: "Calculadora de nota EvAU 2026",
+        "Simula tu nota de acceso y admisión EvAU/EBAU 2026: Bachillerato + fase general + específicas ponderadas — orientación gratis en el navegador.",
+      h1: "Calculadora EvAU 2026 — conoce tu nota antes de elegir específicas",
       intro:
-        "Simula tu nota de acceso y admisión universitaria 2026 con la fórmula 0,6×Bach + 0,4×obligatoria más ponderaciones de la fase específica.",
-      benefit: "Simula notas de acceso y admisión EvAU al instante.",
-      howTo: ["Introduce la media de Bachillerato.", "Añade la fase obligatoria.", "Configura específicas y pesos 0,1/0,2."],
-      whatItDoes: "Calcula nota de acceso y de admisión (hasta 14).",
-      whatItDoesNot: "No sustituye notas de corte oficiales ni reglas de convocatoria.",
-      tips: ["Confirma ponderaciones en la web de tu grado.", "Prueba varias combinaciones de pesos."],
+        "El estrés de Selectividad suele ser por notas de corte que aún no ves. Este simulador aplica la fórmula habitual de acceso (0,6×Bach + 0,4×general) y suma específicas con pesos 0,1/0,2 para probar qué combinación te acerca al corte publicado de un grado. Solo orientación — las ponderaciones y cortes oficiales están en cada universidad.",
+      benefit: "Prueba escenarios de admisión antes del examen.",
+      howTo: [
+        "Introduce la media de Bachillerato.",
+        "Añade la nota de la fase general / obligatoria.",
+        "Añade hasta dos específicas y elige pesos 0,1 o 0,2 según la tabla del grado.",
+        "Lee nota de acceso y de admisión (hasta 14) — compáralas con los cortes publicados.",
+      ],
+      whatItDoes:
+        "Calcula acceso y admisión con el modelo de ponderación habitual y los pesos que introduces.",
+      whatItDoesNot:
+        "No publica notas de corte oficiales ni reglas de convocatoria autonómica. Los pesos deben coincidir con la tabla de tu facultad.",
+      tips: [
+        "Confirma ponderaciones en la ficha exacta del grado — la misma asignatura puede ser 0,2 en uno y 0,1 en otro.",
+        "Simula mejor/peor media de Bach si el expediente aún es provisional.",
+        "Llegar a 14 exige dos específicas fuertes con alto peso — elige asignaturas pronto.",
+      ],
       faq: [
-        { q: "¿Cuál es la nota máxima?", a: "La admisión puede llegar a 14 con dos específicas bien ponderadas." },
-        { q: "¿Cambia en 2026?", a: "La fórmula base es estable; verifica siempre los pesos de tu convocatoria." },
+        {
+          q: "¿Qué diferencia hay entre acceso y admisión?",
+          a: "La de acceso mezcla Bachillerato y fase general. La de admisión suma específicas ponderadas y es la que suelen usar los cortes (hasta 14).",
+        },
+        {
+          q: "¿EvAU es lo mismo que EBAU / Selectividad?",
+          a: "El nombre cambia según la comunidad, pero la lógica de acceso/admisión es familiar. Verifica siempre el texto de tu convocatoria.",
+        },
+        {
+          q: "¿De dónde salen los pesos 0,1 / 0,2?",
+          a: "De la tabla de ponderaciones de la universidad para ese grado y año — no de este sitio.",
+        },
+        {
+          q: "¿Sustituye a la calculadora oficial de la uni?",
+          a: "No. Úsala para explorar escenarios; decide con las herramientas de la facultad y los cortes publicados.",
+        },
+        {
+          q: "¿Se suben mis notas?",
+          a: "No — todo queda en tu navegador.",
+        },
       ],
     },
   }),
@@ -106,34 +164,96 @@ export const spainLifeTools: Tool[] = [
     accent: "#a78bfa",
     en: {
       name: "Grade average calculator",
-      title: "Grade Average Calculator — ESO, Bachillerato, FP & University",
-      description: "Calculate simple or weighted grade averages for ESO, Bachillerato, FP, or university courses — free and instant.",
-      h1: "Grade average calculator",
-      intro: "Paste your subject grades (and optional weights) to get an accurate arithmetic or weighted average for Spanish education tracks.",
-      benefit: "Fast averages for school, FP, and university.",
-      howTo: ["Enter grades separated by commas.", "Optionally add matching weights.", "Read the average."],
-      whatItDoes: "Computes simple or weighted means from your list.",
-      whatItDoesNot: "Does not certify official expediente grades.",
-      tips: ["Use weights for créditos ECTS.", "Keep the same grade scale (usually 0–10)."],
+      title: "Grade Average Calculator — Know Your Bachillerato Media Before EvAU",
+      description:
+        "Need your ESO or Bachillerato average for selectividad but the expediente is not updated yet? Calculate simple or weighted means for ESO, Bach, FP, or uni — free, instant, on-device.",
+      h1: "Grade average calculator — your media before the pressure hits",
+      intro:
+        "Your Bachillerato media feeds directly into the EvAU access formula (60% of the score). If you are tracking trimestre marks, recovering a suspenso, or weighting ECTS credits, this gives a quick arithmetic or weighted average — so you know where you stand before June. Orientation only; your centre's official expediente is what counts on exam day.",
+      benefit: "Estimate your media before EvAU and cut-off planning.",
+      howTo: [
+        "List subject grades on the same 0–10 scale, separated by commas.",
+        "For weighted averages (e.g. ECTS credits), add one weight per grade in the same order.",
+        "Read the simple or weighted mean.",
+        "Plug the result into the EvAU calculator or compare with your centre's provisional expediente.",
+      ],
+      whatItDoes:
+        "Computes arithmetic or credit-weighted averages from the grades and weights you enter.",
+      whatItDoesNot:
+        "Does not pull grades from your school's platform, apply suspenso recovery rules, or certify the official expediente académico.",
+      tips: [
+        "For Bachillerato, include all curricular subjects your centre counts — ask orientación if a recovered mark replaces the old one.",
+        "At university, match ECTS credits as weights (e.g. 6, 6, 3) so heavy subjects count more.",
+        "Round only at the end; use two decimals when comparing with published cut-offs.",
+      ],
       faq: [
-        { q: "Can I weight by credits?", a: "Yes — provide one weight per grade." },
-        { q: "Which levels?", a: "ESO, Bachillerato, FP, and university all work if grades share a scale." },
+        {
+          q: "Why does Bachillerato media matter for EvAU?",
+          a: "It is 60% of your access score (nota de acceso). A low media is hard to offset even with a strong general-phase mark — track it early.",
+        },
+        {
+          q: "Can I weight by ECTS credits?",
+          a: "Yes. Enter one weight per grade in the same order — typical for university trimestre or annual subject lists.",
+        },
+        {
+          q: "What if I have a suspenso?",
+          a: "This tool does not know your centre's recovery rules. Use the mark that will appear on the official expediente, or run best/worst scenarios manually.",
+        },
+        {
+          q: "Does it work for FP and ESO?",
+          a: "Yes, as long as all grades use the same scale (usually 0–10). FP higher-level averages follow the same math if you enter consistent weights.",
+        },
+        {
+          q: "Are my grades stored?",
+          a: "No. Calculations stay in your browser.",
+        },
       ],
     },
     es: {
       name: "Calculadora de nota media",
-      title: "Calculadora de nota media — ESO, Bachillerato, FP y universidad",
-      description: "Calcula la media aritmética o ponderada para ESO, Bachillerato, FP o universidad — gratis e inmediata.",
-      h1: "Calculadora de nota media",
-      intro: "Pega tus notas (y pesos opcionales) para obtener la media aritmética o ponderada en itinerarios educativos españoles.",
-      benefit: "Medias rápidas para colegio, FP y universidad.",
-      howTo: ["Introduce notas separadas por comas.", "Opcionalmente añade pesos.", "Lee la media."],
-      whatItDoes: "Calcula medias simples o ponderadas.",
-      whatItDoesNot: "No certifica el expediente oficial.",
-      tips: ["Usa pesos para créditos ECTS.", "Mantén la misma escala (normalmente 0–10)."],
+      title: "Calculadora de nota media — Tu media de Bachillerato antes del EvAU",
+      description:
+        "¿Necesitas la media de ESO o Bachillerato para la selectividad y el expediente aún no está actualizado? Calcula medias aritméticas o ponderadas para ESO, Bach, FP o uni — gratis, al instante, en tu dispositivo.",
+      h1: "Calculadora de nota media — tu media antes de que apriete",
+      intro:
+        "La media de Bachillerato entra directamente en la fórmula de acceso al EvAU (el 60%). Si vas apuntando notas de trimestre, recuperando un suspenso o ponderando créditos ECTS, aquí obtienes una media aritmética o ponderada rápida — para saber dónde estás antes de junio. Solo orientación; el expediente oficial del centro es el que cuenta el día del examen.",
+      benefit: "Estima tu media antes del EvAU y de mirar cortes.",
+      howTo: [
+        "Lista las notas en escala 0–10, separadas por comas.",
+        "Para media ponderada (p. ej. créditos ECTS), añade un peso por nota en el mismo orden.",
+        "Lee la media simple o ponderada.",
+        "Pasa el resultado a la calculadora EvAU o compáralo con el expediente provisional del instituto.",
+      ],
+      whatItDoes:
+        "Calcula medias aritméticas o ponderadas por créditos a partir de las notas y pesos que introduces.",
+      whatItDoesNot:
+        "No descarga notas de la plataforma del centro, no aplica reglas de recuperación de suspensos ni certifica el expediente académico oficial.",
+      tips: [
+        "En Bachillerato, incluye las asignaturas curriculares que cuenta tu centro — pregunta en orientación si una recuperación sustituye la nota anterior.",
+        "En la uni, usa los créditos ECTS como pesos (p. ej. 6, 6, 3) para que las asignaturas grandes pesen más.",
+        "Redondea solo al final; usa dos decimales al comparar con cortes publicados.",
+      ],
       faq: [
-        { q: "¿Puedo ponderar por créditos?", a: "Sí — un peso por cada nota." },
-        { q: "¿Qué niveles cubre?", a: "ESO, Bachillerato, FP y universidad si comparten escala." },
+        {
+          q: "¿Por qué importa la media de Bachillerato para el EvAU?",
+          a: "Es el 60% de la nota de acceso. Una media baja cuesta mucho compensar aunque saques buena nota en la fase general — conviene irla siguiendo.",
+        },
+        {
+          q: "¿Puedo ponderar por créditos ECTS?",
+          a: "Sí. Un peso por cada nota en el mismo orden — habitual en listados trimestrales o anuales de la universidad.",
+        },
+        {
+          q: "¿Y si tengo un suspenso?",
+          a: "La herramienta no conoce las reglas de recuperación de tu centro. Usa la nota que figurará en el expediente oficial, o prueba escenarios optimista/pesimista a mano.",
+        },
+        {
+          q: "¿Vale para FP y ESO?",
+          a: "Sí, si todas las notas comparten escala (normalmente 0–10). Las medias de FP superior siguen la misma lógica con pesos coherentes.",
+        },
+        {
+          q: "¿Se guardan mis notas?",
+          a: "No. El cálculo queda en tu navegador.",
+        },
       ],
     },
   }),
@@ -312,34 +432,96 @@ export const spainLifeTools: Tool[] = [
     accent: "#60a5fa",
     en: {
       name: "Budget planner",
-      title: "Free Budget Planner — Income, Expenses & Savings Rate",
-      description: "Manage monthly income and expenses, monitor spending categories, and calculate your savings rate — free.",
-      h1: "Budget planner",
-      intro: "Map income vs housing, food, transport, subscriptions, and other costs to see leftover cash and savings rate.",
-      benefit: "See spending and savings rate clearly.",
-      howTo: ["Enter net income.", "Fill expense categories.", "Read leftover + savings %."],
-      whatItDoes: "Sums categories and computes savings rate.",
-      whatItDoesNot: "Does not sync to banks.",
-      tips: ["Aim for ≥20% savings when possible.", "Cut subscriptions first."],
+      title: "Household Budget Planner — Does Your Net Pay Cover Rent in Spain?",
+      description:
+        "Rent, groceries, and transport eat most of a Spanish pay cheque — but where does the rest go? Map monthly net income vs housing, food, bills, and subscriptions to see leftover cash and savings rate. Free, private, no bank login.",
+      h1: "Budget planner — see what is left after rent and bills",
+      intro:
+        "Whether you are a student splitting a piso, a family on 12 vs 14 pagas, or relocating and guessing at Spanish living costs, the first question is the same: after net income hits the account, what actually remains? Enter your monthly take-home and realistic expenses to see surplus, deficit, and savings rate — orientation for planning, not accounting software.",
+      benefit: "Know if the month closes before you sign a lease or loan.",
+      howTo: [
+        "Enter net monthly income (salary, grants, family support — what actually lands in the account).",
+        "Fill housing, food, transport, utilities, subscriptions, and other categories with realistic figures.",
+        "Read leftover cash and savings rate (% of income not spent).",
+        "Adjust categories — e.g. lower rent target or cut subscriptions — until the month balances or hits your savings goal.",
+      ],
+      whatItDoes:
+        "Totals expense categories, subtracts from income, and calculates monthly surplus/deficit and savings rate.",
+      whatItDoesNot:
+        "Does not connect to banks, import transactions, file taxes, or tell you what you 'should' spend — amounts are whatever you enter.",
+      tips: [
+        "Use net pay, not gross: in Spain, IRPF and Social Security already reduced your transfer — budget on what you receive.",
+        "If your contract uses 14 pagas, either enter the average monthly deposit or budget the months when extras do not arrive.",
+        "Start with rent + groceries + transport (often 50–65% in cities); subscriptions and dining out are usually the fastest cuts.",
+      ],
       faq: [
-        { q: "Is data uploaded?", a: "No — calculations stay on-device." },
-        { q: "Currency?", a: "Euro-oriented formatting; amounts are whatever you enter." },
+        {
+          q: "Should I use gross or net salary?",
+          a: "Net — what hits your bank. Gross bruto mis-prices rent in Madrid, Barcelona, or any city where owners ask for 3× net income.",
+        },
+        {
+          q: "What is a healthy savings rate in Spain?",
+          a: "There is no single rule. Many planners aim for 10–20% of net if possible; students and new arrivals often start lower — the tool shows your actual % so you can set a realistic target.",
+        },
+        {
+          q: "Can students or families use it?",
+          a: "Yes. Add ERASMUS grants, beca MEC, parental support, or combined household income in the income field — then map shared rent and groceries.",
+        },
+        {
+          q: "Does it connect to my bank?",
+          a: "No. Nothing is uploaded. You type amounts manually — useful if you want privacy or are planning before moving to Spain.",
+        },
+        {
+          q: "12 or 14 pagas — how do I enter income?",
+          a: "Either spread annual net over 12 equal months, or enter the lower months and keep a separate buffer for July/December extras. Consistency matters more than the method.",
+        },
       ],
     },
     es: {
       name: "Planificador de presupuesto",
-      title: "Planificador de presupuesto gratis — Ingresos, gastos y tasa de ahorro",
-      description: "Gestiona ingresos y gastos mensuales, controla categorías y calcula tu tasa de ahorro — gratis.",
-      h1: "Planificador de presupuesto",
-      intro: "Compara ingresos con vivienda, comida, transporte, suscripciones y otros para ver el sobrante y la tasa de ahorro.",
-      benefit: "Gastos y tasa de ahorro claros.",
-      howTo: ["Introduce ingresos netos.", "Rellena categorías.", "Mira sobrante + % ahorro."],
-      whatItDoes: "Suma categorías y calcula la tasa de ahorro.",
-      whatItDoesNot: "No se conecta a bancos.",
-      tips: ["Objetivo ≥20% si puedes.", "Recorta suscripciones primero."],
+      title: "Planificador de presupuesto familiar — ¿Te llega el neto para el alquiler?",
+      description:
+        "Alquiler, compra y transporte se llevan gran parte del sueldo — ¿y el resto? Reparte ingresos netos mensuales vs vivienda, comida, facturas y suscripciones para ver el sobrante y la tasa de ahorro. Gratis, privado, sin banco.",
+      h1: "Planificador de presupuesto — lo que queda tras alquiler y facturas",
+      intro:
+        "Ya seas estudiante en un piso compartido, familia con 12 o 14 pagas, o recién llegado estimando costes en España, la pregunta es la misma: cuando entra el neto en cuenta, ¿qué queda de verdad? Introduce ingresos y gastos realistas para ver superávit, déficit y tasa de ahorro — orientación para planificar, no un programa de contabilidad.",
+      benefit: "Comprueba si cierras el mes antes de firmar un alquiler o un préstamo.",
+      howTo: [
+        "Introduce ingresos netos mensuales (nómina, becas, ayuda familiar — lo que entra en cuenta).",
+        "Rellena vivienda, comida, transporte, suministros, suscripciones y otros gastos con cifras realistas.",
+        "Lee el sobrante y la tasa de ahorro (% del ingreso no gastado).",
+        "Ajusta categorías — p. ej. bajar objetivo de alquiler o recortar suscripciones — hasta equilibrar o alcanzar tu meta de ahorro.",
+      ],
+      whatItDoes:
+        "Suma categorías de gasto, resta del ingreso y calcula superávit/déficit mensual y tasa de ahorro.",
+      whatItDoesNot:
+        "No se conecta al banco, no importa movimientos, no presenta impuestos ni dice cuánto 'deberías' gastar — los importes son los que tú pongas.",
+      tips: [
+        "Presupuesta en neto, no en bruto: IRPF y SS ya restaron antes de la transferencia.",
+        "Con 14 pagas, mete el ingreso medio mensual o planifica los meses sin paga extra.",
+        "Empieza por alquiler + compra + transporte (a menudo 50–65% en ciudades); suscripciones y comer fuera suelen ser los recortes más rápidos.",
+      ],
       faq: [
-        { q: "¿Se suben datos?", a: "No — el cálculo es local." },
-        { q: "¿Moneda?", a: "Formato en euros; los importes son los que introduzcas." },
+        {
+          q: "¿Pongo bruto o neto?",
+          a: "Neto — lo que entra en el banco. Presupuestar en bruto distorsiona el alquiler en Madrid, Barcelona o donde pidan 3× ingresos netos.",
+        },
+        {
+          q: "¿Qué tasa de ahorro es razonable en España?",
+          a: "No hay una cifra única. Muchas familias apuntan al 10–20% del neto si pueden; estudiantes y recién llegados suelen empezar más bajo — la herramienta muestra tu % real para fijar una meta posible.",
+        },
+        {
+          q: "¿Sirve para estudiantes o familias?",
+          a: "Sí. Suma becas ERASMUS, MEC, ayuda de padres o ingresos del hogar — y reparte alquiler y compra compartidos.",
+        },
+        {
+          q: "¿Se conecta a mi banco?",
+          a: "No. No se sube nada. Tú introduces las cifras — útil si quieres privacidad o planificas antes de mudarte a España.",
+        },
+        {
+          q: "¿12 o 14 pagas — cómo meto el sueldo?",
+          a: "Reparte el neto anual en 12 meses iguales, o pon los meses bajos y guarda colchón para julio/diciembre. Lo importante es ser coherente.",
+        },
       ],
     },
   }),
@@ -384,34 +566,96 @@ export const spainLifeTools: Tool[] = [
     accent: "#f472b6",
     en: {
       name: "Mortgage calculator",
-      title: "Spain Mortgage Calculator — Monthly Payment, Interest & Euribor",
-      description: "Calculate monthly mortgage payments, total interest, and LTV for fixed or Euribor + spread variable loans in Spain.",
-      h1: "Mortgage calculator",
-      intro: "Estimate Spanish home-loan monthly payments for fixed rates or variable Euribor + differential, including total interest and LTV.",
-      benefit: "Monthly quota, interest, and LTV in seconds.",
-      howTo: ["Enter price and down payment.", "Set term years.", "Choose fixed or variable rate inputs."],
-      whatItDoes: "Uses standard amortization math.",
-      whatItDoesNot: "Excludes insurance, fees, and ITP/AJD taxes.",
-      tips: ["Stress-test +1% rate.", "Keep LTV ≤80% when possible."],
+      title: "Spain Mortgage Calculator — Monthly Cuota, Euribor & LTV Estimate",
+      description:
+        "Estimate your Spanish mortgage monthly payment, total interest, and LTV for fixed or Euribor + spread variable loans — free orientation before you visit the bank.",
+      h1: "Spain mortgage calculator (cuota & LTV)",
+      intro:
+        "Banks sell you a monthly cuota, but affordability is more than that number. You still need cash for ITP or VAT, notary, registry, and often a 20% down payment — none of which appear in the loan quote. Use this to model principal, monthly payment, total interest, and LTV for fixed or variable (Euribor + spread) Spanish mortgages. Orientation only: your bank's FEIN and notary breakdown are what you sign.",
+      benefit: "See cuota, LTV, and total interest before the bank meeting.",
+      howTo: [
+        "Enter the purchase price and your planned down payment (entrada).",
+        "Set the loan term in years — 25–30 is common in Spain.",
+        "Pick fixed rate or variable (Euribor + bank spread).",
+        "Read monthly cuota, LTV, and total interest — then stress-test +1% on the rate.",
+      ],
+      whatItDoes:
+        "Applies standard French amortization to the loan principal (price minus down payment), showing monthly payment, total interest paid, and LTV percentage.",
+      whatItDoesNot:
+        "Does not include home insurance, life insurance, opening fees, ITP/AJD/VAT purchase taxes, or notary costs. Not a bank binding offer (FEIN).",
+      tips: [
+        "Pair with a purchase-cost calculator — cuota alone hides €15k–€30k+ in upfront taxes and closing.",
+        "Stress-test variable loans at Euribor +1% — Spanish variable mortgages review annually.",
+        "Ask the bank what LTV they will actually grant; above 80% often means higher spread or mandatory linked products.",
+      ],
       faq: [
-        { q: "Variable formula?", a: "Annual rate ≈ Euribor + spread, then monthly amortization." },
-        { q: "Includes bank fees?", a: "No — add opening fees separately." },
+        {
+          q: "Why is my bank cuota different from this estimate?",
+          a: "Banks add insurance bundles, use their own rounding, and may cap the term or principal differently. This tool uses pure amortization math — compare directionally, then read the FEIN.",
+        },
+        {
+          q: "Fixed vs variable — which should I model?",
+          a: "Model both. Fixed gives predictable cuota; variable starts from Euribor + spread and resets periodically. Neither is 'official' — the bank sets the spread and conditions.",
+        },
+        {
+          q: "Does this include ITP, notary, or AJD?",
+          a: "No. Purchase taxes and closing costs are paid upfront, outside the mortgage. Budget them separately before you fix your entrada.",
+        },
+        {
+          q: "What LTV do Spanish banks typically accept?",
+          a: "First homes often aim for ≤80% LTV (20% entrada). Higher LTV may be possible but usually costs more — confirm with your bank, not this calculator.",
+        },
+        {
+          q: "Is my data uploaded?",
+          a: "No. Everything stays in your browser.",
+        },
       ],
     },
     es: {
       name: "Calculadora de hipoteca",
-      title: "Calculadora de hipoteca España — Cuota, intereses y Euribor",
-      description: "Calcula la cuota mensual, intereses totales y LTV para hipoteca fija o variable Euribor + diferencial.",
-      h1: "Calculadora de hipoteca",
-      intro: "Estima la cuota de hipoteca en España a tipo fijo o variable (Euribor + diferencial), con intereses totales y LTV.",
-      benefit: "Cuota, intereses y LTV en segundos.",
-      howTo: ["Introduce precio y entrada.", "Define plazo.", "Elige fijo o variable."],
-      whatItDoes: "Usa amortización francesa estándar.",
-      whatItDoesNot: "No incluye seguros, comisiones ni ITP/AJD.",
-      tips: ["Prueba +1% de tipo.", "Intenta LTV ≤80%."],
+      title: "Calculadora hipoteca España — Cuota mensual, Euribor y LTV",
+      description:
+        "Estima la cuota mensual, intereses totales y LTV de tu hipoteca a tipo fijo o variable (Euribor + diferencial) — orientación gratis antes de ir al banco.",
+      h1: "Calculadora de hipoteca (cuota y LTV)",
+      intro:
+        "El banco te enseña la cuota, pero la capacidad de pago no es solo ese número. Sigues necesitando efectivo para ITP o IVA, notaría, registro y, a menudo, un 20% de entrada — nada de eso sale en la oferta hipotecaria. Usa esta herramienta para modelar capital, cuota, intereses totales y LTV con hipoteca fija o variable (Euribor + diferencial). Solo orientación: lo que firmas es la FEIN del banco y el desglose del notario.",
+      benefit: "Cuota, LTV e intereses antes de la cita con el banco.",
+      howTo: [
+        "Introduce el precio de compra y la entrada que piensas aportar.",
+        "Define el plazo en años — 25–30 es lo habitual en España.",
+        "Elige tipo fijo o variable (Euribor + diferencial del banco).",
+        "Lee cuota, LTV e intereses totales — y prueba +1% en el tipo.",
+      ],
+      whatItDoes:
+        "Aplica amortización francesa sobre el capital prestado (precio menos entrada), mostrando cuota mensual, intereses totales y porcentaje de LTV.",
+      whatItDoesNot:
+        "No incluye seguros de hogar o vida, comisiones de apertura, ITP/AJD/IVA de compraventa ni gastos de notaría. No es una oferta vinculante (FEIN).",
+      tips: [
+        "Combínala con una calculadora de costes de compra — la cuota sola esconde 15.000–30.000 € o más en impuestos y cierres.",
+        "Estresa las variables con Euribor +1% — las hipotecas variables en España se revisan cada año.",
+        "Pregunta al banco qué LTV te conceden de verdad; por encima del 80% suele haber más diferencial o productos vinculados.",
+      ],
       faq: [
-        { q: "¿Variable?", a: "Tipo anual ≈ Euribor + diferencial, luego cuota mensual." },
-        { q: "¿Comisiones?", a: "No — súmalas aparte." },
+        {
+          q: "¿Por qué la cuota del banco no coincide?",
+          a: "Los bancos suman seguros vinculados, redondeos propios y pueden limitar plazo o capital. Esta herramienta usa matemática pura de amortización — compara en orientación y lee la FEIN.",
+        },
+        {
+          q: "¿Modelo fija o variable?",
+          a: "Las dos. La fija da cuota estable; la variable parte de Euribor + diferencial y se revisa periódicamente. Ninguna es 'oficial' — el banco fija el diferencial y las condiciones.",
+        },
+        {
+          q: "¿Incluye ITP, notaría o AJD?",
+          a: "No. Impuestos y gastos de cierre se pagan al contado, fuera de la hipoteca. Presupústalos aparte antes de cerrar la entrada.",
+        },
+        {
+          q: "¿Qué LTV suelen aceptar los bancos?",
+          a: "En vivienda habitual se apunta a ≤80% LTV (20% de entrada). Más LTV puede ser posible, pero suele encarecer — confírmalo con tu banco, no con esta calculadora.",
+        },
+        {
+          q: "¿Se suben mis datos?",
+          a: "No. Todo queda en tu navegador.",
+        },
       ],
     },
   }),
@@ -420,34 +664,96 @@ export const spainLifeTools: Tool[] = [
     accent: "#38bdf8",
     en: {
       name: "DNI / NIE validator",
-      title: "Spanish DNI / NIE Validator — Check or Calculate Control Letter",
-      description: "Validate Spanish DNI or NIE numbers or calculate the correct control letter securely in your browser — free.",
+      title: "Spanish DNI / NIE Validator — Check Control Letter Before Forms",
+      description:
+        "Catch DNI and NIE typos before HR, landlords, or online portals reject your form. Checksum validation and control-letter calculation run in your browser — free, no upload.",
       h1: "DNI / NIE validator",
-      intro: "Check DNI and NIE checksum letters locally using the official modulo-23 alphabet. Nothing is uploaded.",
-      benefit: "Validate or compute the control letter on-device.",
-      howTo: ["Paste DNI or NIE.", "See validity or expected letter.", "Fix typos before forms."],
-      whatItDoes: "Implements the standard letter algorithm.",
-      whatItDoesNot: "Does not verify identity with government databases.",
-      tips: ["NIE starts with X, Y, or Z.", "Works offline after page load."],
+      intro:
+        "Spanish portals, payroll, and rental forms often reject a DNI or NIE because the control letter is wrong — one swapped digit, a missing hyphen, or an old copy-paste. Run the standard modulo-23 checksum locally before you submit, so you fix typos instead of chasing a generic “invalid document” error.",
+      benefit: "Fix letter errors before a form blocks you.",
+      howTo: [
+        "Paste your DNI (8 digits + letter) or NIE (X/Y/Z + 7 digits + letter).",
+        "Read whether the checksum passes and which letter the algorithm expects.",
+        "If the letter is wrong, correct it in your draft — do not guess.",
+        "Submit the form only after the validator shows a valid checksum.",
+      ],
+      whatItDoes:
+        "Applies the published Spanish control-letter algorithm (modulo 23 over the numeric part) for DNI and NIE formats, including NIE prefixes X, Y, and Z.",
+      whatItDoesNot:
+        "Does not query Policía, AEAT, or any registry. It cannot confirm that the number belongs to you, is currently valid, or replace an official certificate.",
+      tips: [
+        "NIE always starts with X, Y, or Z — if yours does not, check whether you pasted a passport or NIF by mistake.",
+        "Store the number without spaces; many forms accept either, but copy-paste errors often hide an extra character.",
+        "If the checksum fails but the card looks correct, re-type from the physical document — OCR and PDF scans swap 0/O and 1/I often.",
+      ],
       faq: [
-        { q: "Is my ID sent anywhere?", a: "No — validation is 100% local." },
-        { q: "Can it invent a valid ID?", a: "It only checks/format-completes letters; it cannot create legal IDs." },
+        {
+          q: "Why did my NIE fail on a rental or HR form?",
+          a: "Usually a wrong control letter or a typo in the seven digits. This tool checks the math only — it does not know your personal record, but it catches the errors forms reject most often.",
+        },
+        {
+          q: "Is my DNI or NIE sent to a server?",
+          a: "No. Validation runs entirely in your browser; nothing is uploaded or stored.",
+        },
+        {
+          q: "Can this tool issue or renew a NIE?",
+          a: "No. It only validates format and checksum. Assignment and renewal stay with extranjería / the police — use this before filling their or third-party forms.",
+        },
+        {
+          q: "What is the difference between DNI and NIE here?",
+          a: "DNI is eight digits plus letter for Spanish nationals. NIE is X, Y, or Z plus seven digits plus letter for foreigners. Both use the same letter algorithm on the numeric part.",
+        },
+        {
+          q: "Is this an official government validator?",
+          a: "No. It is a free checksum helper for everyday forms — not certified by any authority. When a process requires an official extract, use the relevant government channel.",
+        },
       ],
     },
     es: {
       name: "Validador de DNI / NIE",
-      title: "Validador DNI / NIE — Comprueba o calcula la letra de control",
-      description: "Valida DNI o NIE españoles o calcula la letra correcta de forma segura en tu dispositivo — gratis.",
+      title: "Validador DNI / NIE — Comprueba la letra antes del trámite",
+      description:
+        "Detecta erratas en DNI y NIE antes de que RR. HH., el casero o un portal rechacen el formulario. Validación del dígito de control en tu navegador — gratis, sin subir datos.",
       h1: "Validador de DNI / NIE",
-      intro: "Comprueba la letra de control de DNI y NIE en local con el alfabeto módulo 23 oficial. No se sube nada.",
-      benefit: "Valida o calcula la letra en tu dispositivo.",
-      howTo: ["Pega el DNI o NIE.", "Mira validez o letra esperada.", "Corrige typos antes de formularios."],
-      whatItDoes: "Implementa el algoritmo estándar de letra.",
-      whatItDoesNot: "No verifica identidad en bases gubernamentales.",
-      tips: ["El NIE empieza por X, Y o Z.", "Funciona offline tras cargar."],
+      intro:
+        "Portales, nóminas y contratos de alquiler suelen rechazar un DNI o NIE cuando la letra de control no cuadra: un dígito cambiado, un guion mal puesto o un copiar-pegar antiguo. Pasa el checksum módulo 23 en local antes de enviar, y corrige la errata en lugar de pelearte con un “documento no válido” genérico.",
+      benefit: "Corrige la letra antes de que te bloqueen el formulario.",
+      howTo: [
+        "Pega tu DNI (8 dígitos + letra) o NIE (X/Y/Z + 7 dígitos + letra).",
+        "Mira si pasa el checksum y qué letra calcula el algoritmo.",
+        "Si la letra no coincide, corrige el borrador — no la adivines.",
+        "Envía el formulario solo cuando el validador marque checksum correcto.",
+      ],
+      whatItDoes:
+        "Aplica el algoritmo publicado de letra de control (módulo 23 sobre la parte numérica) para formatos DNI y NIE, incluidos los prefijos X, Y y Z.",
+      whatItDoesNot:
+        "No consulta Policía, AEAT ni ningún registro. No puede confirmar que el número sea tuyo, que siga vigente ni sustituir un certificado oficial.",
+      tips: [
+        "El NIE empieza siempre por X, Y o Z — si no es así, revisa si pegaste pasaporte o NIF por error.",
+        "Guarda el número sin espacios; muchos formularios admiten ambos formatos, pero en el copiar-pegar suele colarse un carácter de más.",
+        "Si falla el checksum pero la tarjeta se ve bien, vuelve a teclear desde el documento físico — OCR y PDF confunden 0/O y 1/I a menudo.",
+      ],
       faq: [
-        { q: "¿Se envía mi documento?", a: "No — 100% local." },
-        { q: "¿Puede inventar un DNI?", a: "Solo comprueba/completa la letra; no crea documentos legales." },
+        {
+          q: "¿Por qué me rechazan el NIE en un alquiler o en RR. HH.?",
+          a: "Casi siempre por letra de control incorrecta o un fallo en los siete dígitos. Esta herramienta solo comprueba la matemática — no conoce tu ficha, pero caza los errores que más bloquean formularios.",
+        },
+        {
+          q: "¿Se envía mi DNI o NIE a un servidor?",
+          a: "No. La validación es solo en tu navegador; no se sube ni guarda nada.",
+        },
+        {
+          q: "¿Puede tramitar o renovar un NIE?",
+          a: "No. Solo valida formato y checksum. La asignación y renovación son de extranjería / policía — úsalo antes de rellenar sus formularios o los de terceros.",
+        },
+        {
+          q: "¿Qué diferencia hay entre DNI y NIE aquí?",
+          a: "El DNI son 8 dígitos + letra para españoles. El NIE es X, Y o Z + 7 dígitos + letra para extranjeros. En ambos casos la letra sale del mismo algoritmo sobre la parte numérica.",
+        },
+        {
+          q: "¿Es un validador oficial del Gobierno?",
+          a: "No. Es una ayuda gratuita de checksum para formularios del día a día — no certificada por ninguna autoridad. Si el trámite exige un certificado oficial, usa la vía correspondiente.",
+        },
       ],
     },
   }),

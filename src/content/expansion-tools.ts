@@ -199,20 +199,100 @@ export const expansionTools: Tool[] = [
   tool({
     slug: "validador-iban-es",
     accent: "#38bdf8",
-    ...copy(
-      "Spanish IBAN validator & generator",
-      "Validador y generador IBAN ES",
-      "Spanish IBAN Validator — Check or Generate from CCC",
-      "Validador IBAN España — Comprueba o genera desde CCC",
-      "Validate Spanish IBAN checksums or generate IBAN from a 20-digit CCC — free, on-device.",
-      "Valida el dígito de control IBAN español o genera IBAN desde CCC de 20 dígitos — gratis, en local.",
-      "IBAN ES validator",
-      "Validador IBAN ES",
-      "ISO 13616 checks for ES IBANs, plus CCC → IBAN generation for Spanish accounts.",
-      "Control ISO 13616 para IBAN ES y generación CCC → IBAN para cuentas españolas.",
-      "Validate or build Spanish IBANs locally.",
-      "Valida o genera IBAN españoles en local.",
-    ),
+    en: {
+      name: "Spanish IBAN validator & generator",
+      title: "Spanish IBAN Validator — Check ES IBAN or Build from CCC",
+      description:
+        "Stop SEPA transfers and payroll rejections from a single wrong IBAN digit. Validate ES checksums or build IBAN from a 20-digit CCC — free, in your browser.",
+      h1: "IBAN ES validator",
+      intro:
+        "Banks and Bizum often bounce a transfer when the IBAN checksum fails — sometimes because the CCC was typed correctly but the ES prefix or check digits were not. Validate ISO 13616 checksums locally before you pay rent, invoice a client, or paste details into HR, or generate a full ES IBAN from the 20-digit cuenta corriente on your bank letter.",
+      benefit: "Catch bad IBANs before money leaves your account.",
+      howTo: [
+        "Paste a full ES IBAN (ES + 22 digits) or enter the 20-digit CCC from your bank details.",
+        "Run validation — the tool flags checksum errors and shows the expected structure.",
+        "If you only have CCC, generate the complete IBAN and copy it once the checksum passes.",
+        "Use the validated IBAN on the transfer screen; fix digits before confirming, not after a failed payment.",
+      ],
+      whatItDoes:
+        "Runs the ISO 13616 mod-97 checksum for Spanish IBANs and maps a valid CCC (entity, office, DC, account number) into ES… format.",
+      whatItDoesNot:
+        "Does not confirm the account exists, is open, or belongs to the payee. No connection to Banco de España or your bank — checksum only.",
+      tips: [
+        "Spanish IBAN is always ES + 22 characters (24 total) — if yours is shorter, you are probably missing the country code or check digits.",
+        "The two DC digits in the CCC are not the same as the IBAN check digits; do not copy only the CCC when a form asks explicitly for IBAN.",
+        "When invoicing as autónomo, validate the client's IBAN before you save it in your billing app — one wrong digit means chasing a refund.",
+      ],
+      faq: [
+        {
+          q: "Why was my transfer rejected with “invalid IBAN”?",
+          a: "Usually a transposed digit, a missing ES prefix, or a bad conversion from CCC. This tool checks the math locally so you can fix the string before submitting the payment.",
+        },
+        {
+          q: "Can I build an IBAN from the numbers on my bank card?",
+          a: "You need the full CCC (entity, branch, DC, account) from a statement or certificate — cards often show only part of the account. With all 20 digits, the generator adds ES and the IBAN check digits.",
+        },
+        {
+          q: "Does a valid checksum mean the account is real?",
+          a: "No. Checksum only proves the number is structurally valid. Whether the account exists and accepts transfers is confirmed only when the bank processes the payment.",
+        },
+        {
+          q: "Is my IBAN uploaded anywhere?",
+          a: "No. Validation and generation stay entirely in your browser.",
+        },
+        {
+          q: "Is this an official Banco de España tool?",
+          a: "No. It is a free helper for everyday payments and forms — not government certified. For disputes or formal certificates, use your bank or official channels.",
+        },
+      ],
+    },
+    es: {
+      name: "Validador y generador IBAN ES",
+      title: "Validador IBAN España — Comprueba IBAN ES o genera desde CCC",
+      description:
+        "Evita devoluciones en transferencias SEPA y nóminas por un solo dígito mal en el IBAN. Valida checksums ES o genera IBAN desde CCC de 20 dígitos — gratis, en tu navegador.",
+      h1: "Validador IBAN ES",
+      intro:
+        "Bancos y Bizum devuelven transferencias cuando falla el checksum del IBAN — a veces porque el CCC está bien pero faltó el prefijo ES o los dígitos de control. Valida ISO 13616 en local antes de pagar el alquiler, facturar a un cliente o pegar datos en RR. HH., o genera el IBAN completo desde la cuenta corriente de 20 dígitos de tu cartilla bancaria.",
+      benefit: "Detecta IBAN incorrectos antes de mandar el dinero.",
+      howTo: [
+        "Pega un IBAN ES completo (ES + 22 dígitos) o introduce el CCC de 20 dígitos de tus datos bancarios.",
+        "Ejecuta la validación — la herramienta señala errores de checksum y muestra la estructura esperada.",
+        "Si solo tienes CCC, genera el IBAN completo y cópialo cuando pase el checksum.",
+        "Usa el IBAN validado en la pantalla de transferencia; corrige dígitos antes de confirmar, no tras un pago devuelto.",
+      ],
+      whatItDoes:
+        "Aplica el checksum mod-97 ISO 13616 para IBAN españoles y convierte un CCC válido (entidad, oficina, DC, número de cuenta) al formato ES….",
+      whatItDoesNot:
+        "No confirma que la cuenta exista, esté abierta o sea del beneficiario. Sin conexión al Banco de España ni a tu banco — solo checksum.",
+      tips: [
+        "El IBAN español es siempre ES + 22 caracteres (24 en total) — si te falta longitud, probablemente falte el código país o los dígitos de control.",
+        "Los dos DC del CCC no son los mismos dígitos de control del IBAN; no pegues solo el CCC si el formulario pide IBAN expresamente.",
+        "Si facturas como autónomo, valida el IBAN del cliente antes de guardarlo en tu app — un dígito mal obliga a perseguir la devolución.",
+      ],
+      faq: [
+        {
+          q: "¿Por qué me rechazan la transferencia con “IBAN no válido”?",
+          a: "Casi siempre por un dígito cambiado, falta el prefijo ES o una mala conversión desde el CCC. Esta herramienta comprueba la matemática en local para que corrijas la cadena antes de enviar el pago.",
+        },
+        {
+          q: "¿Puedo montar el IBAN con los números de la tarjeta?",
+          a: "Necesitas el CCC completo (entidad, oficina, DC, cuenta) del extracto o certificado — la tarjeta suele mostrar solo parte. Con los 20 dígitos, el generador añade ES y los dígitos de control IBAN.",
+        },
+        {
+          q: "¿Checksum válido significa que la cuenta existe?",
+          a: "No. Solo demuestra que el número es estructuralmente correcto. Que la cuenta exista y acepte ingresos lo confirma el banco al procesar el pago.",
+        },
+        {
+          q: "¿Se sube mi IBAN a algún sitio?",
+          a: "No. Validación y generación quedan solo en tu navegador.",
+        },
+        {
+          q: "¿Es una herramienta oficial del Banco de España?",
+          a: "No. Es una ayuda gratuita para pagos y formularios cotidianos — no certificada por ninguna autoridad. Para reclamaciones o certificados formales, usa tu banco o las vías oficiales.",
+        },
+      ],
+    },
   }),
   tool({
     slug: "calculadora-irpf-retencion",
@@ -357,20 +437,100 @@ export const expansionTools: Tool[] = [
   tool({
     slug: "coste-compra-vivienda",
     accent: "#f472b6",
-    ...copy(
-      "Home buying cost calculator",
-      "Coste de compra de vivienda",
-      "Spain Home Buying Cost Calculator — ITP/VAT + Closing Fees",
-      "Calculadora coste compra vivienda — ITP/IVA + gastos de cierre",
-      "Ballpark Spanish purchase extras: ITP or new-build VAT plus notary, registry, and agency fees.",
-      "Estima extras de compraventa: ITP o IVA de obra nueva más notaría, registro y agencia.",
-      "Home purchase extras",
-      "Extras de compraventa",
-      "See all-in cost beyond the listing price for resale or new builds.",
-      "Ve el coste total más allá del precio de anuncio en segunda mano u obra nueva.",
-      "ITP/VAT + closing cost estimate.",
-      "Estimación ITP/IVA + gastos de cierre.",
-    ),
+    en: {
+      name: "Home buying cost calculator",
+      title: "Spain Home Buying Costs — ITP/VAT + Notary Beyond the Listing Price",
+      description:
+        "Ballpark Spanish purchase extras: ITP on resale or IVA on new builds, plus notary, registry, and agency fees — so savings targets match signing day.",
+      h1: "Home purchase cost calculator (Spain)",
+      intro:
+        "The Idealista price is not what you pay at the notary. Resale usually means ITP that varies by CCAA; obra nueva usually means IVA; both add notary, registry, and often agency. Use this to estimate all-in cash need beyond the mortgage principal. Orientation — confirm rates with your notary and gestoría.",
+      benefit: "See cash needed beyond the listing price.",
+      howTo: [
+        "Enter the agreed purchase price.",
+        "Choose resale (ITP %) or new build (IVA %) for your case.",
+        "Add estimated notary, registry, and agency fees (edit defaults).",
+        "Read extras total and all-in price — then compare with your entrada + savings.",
+      ],
+      whatItDoes:
+        "Sums purchase tax orientation (ITP or IVA) with editable closing fees to show extras and all-in cost.",
+      whatItDoesNot:
+        "Does not model AJD on the mortgage deed, age exemptions, or official tax filings. ITP bands differ by CCAA — verify locally.",
+      tips: [
+        "Ask which CCAA ITP tramo applies before you lock savings.",
+        "Pair with the mortgage calculator — cuota ≠ cash at signing.",
+        "Agency fees are often negotiable; notary/registry less so.",
+      ],
+      faq: [
+        {
+          q: "ITP or IVA — which one?",
+          a: "Resale homes typically use ITP (regional). New builds (obra nueva) typically use IVA. Your notary confirms which regime applies.",
+        },
+        {
+          q: "Does this include AJD on the mortgage?",
+          a: "No. AJD on the loan deed is separate and region-dependent — ask the bank/notary for that line.",
+        },
+        {
+          q: "Why do online estimates differ?",
+          a: "ITP rates and exemptions vary by comunidad and buyer profile. Treat any single % as a starting point.",
+        },
+        {
+          q: "Is this an official tax calculator?",
+          a: "No — orientation for budgeting. Filing and liquidation go through official channels / gestoría.",
+        },
+        {
+          q: "Is data uploaded?",
+          a: "No — local only.",
+        },
+      ],
+    },
+    es: {
+      name: "Coste de compra de vivienda",
+      title: "Coste compra vivienda España — ITP/IVA + notaría más allá del anuncio",
+      description:
+        "Estima extras de compraventa: ITP en segunda mano o IVA en obra nueva, más notaría, registro y agencia — para que el ahorro cuadre el día de la firma.",
+      h1: "Calculadora coste de compra de vivienda",
+      intro:
+        "El precio de Idealista no es lo que pagas en notaría. En segunda mano suele haber ITP (varía por CCAA); en obra nueva, IVA; y en ambos notaría, registro y a menudo agencia. Úsalo para estimar el efectivo total además del principal de la hipoteca. Orientación — confirma tipos con notario y gestoría.",
+      benefit: "Ve el efectivo necesario más allá del precio de anuncio.",
+      howTo: [
+        "Introduce el precio de compraventa.",
+        "Elige segunda mano (% ITP) u obra nueva (% IVA) según tu caso.",
+        "Añade notaría, registro y agencia estimados (puedes editar los valores).",
+        "Lee extras y precio all-in — compáralo con entrada + ahorro.",
+      ],
+      whatItDoes:
+        "Suma un impuesto de compra orientativo (ITP o IVA) con gastos de cierre editables para mostrar extras y coste total.",
+      whatItDoesNot:
+        "No modela AJD de la escritura de hipoteca, bonificaciones por edad ni liquidaciones oficiales. Los tramos de ITP cambian por CCAA — verifica en local.",
+      tips: [
+        "Pregunta qué tramo de ITP aplica en tu CCAA antes de fijar el ahorro.",
+        "Combínala con la calculadora de hipoteca — la cuota no es el efectivo en la firma.",
+        "La agencia a menudo se negocia; notaría/registro menos.",
+      ],
+      faq: [
+        {
+          q: "¿ITP o IVA?",
+          a: "Segunda mano suele ITP (autonómico). Obra nueva suele IVA. El notario confirma el régimen.",
+        },
+        {
+          q: "¿Incluye el AJD de la hipoteca?",
+          a: "No. El AJD de la escritura del préstamo es aparte y depende de la región — pídelo al banco/notario.",
+        },
+        {
+          q: "¿Por qué cambian las estimaciones online?",
+          a: "Tipos de ITP y exenciones varían por comunidad y perfil del comprador. Cualquier % es un punto de partida.",
+        },
+        {
+          q: "¿Es una calculadora fiscal oficial?",
+          a: "No — orientación para presupuestar. La liquidación va por canales oficiales / gestoría.",
+        },
+        {
+          q: "¿Se suben datos?",
+          a: "No — solo en local.",
+        },
+      ],
+    },
   }),
   // LatAm packs
   tool({
