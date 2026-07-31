@@ -44,6 +44,8 @@ export async function POST(request: NextRequest) {
           `${site.url}/en/vs/downitx-vs-4kdownloader`,
           `${site.url}/en/expertise/ai-calling-agents`,
           `${site.url}/es/expertise/ai-calling-agents`,
+          `${site.url}/en/expertise/spain-money-guides`,
+          `${site.url}/es/expertise/spain-money-guides`,
           `${site.url}/llms.txt`,
           `${site.url}/sitemap.xml`,
         ];

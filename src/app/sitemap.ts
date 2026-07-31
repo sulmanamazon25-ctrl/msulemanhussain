@@ -20,6 +20,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/projects", priority: 0.6, changeFrequency: "monthly" },
     { path: "/expertise", priority: 0.8, changeFrequency: "weekly" },
     { path: "/expertise/ai-calling-agents", priority: 0.9, changeFrequency: "weekly" },
+    { path: "/expertise/spain-money-guides", priority: 0.9, changeFrequency: "weekly" },
     { path: "/build-log", priority: 0.5, changeFrequency: "monthly" },
     { path: "/insights", priority: 0.5, changeFrequency: "monthly" },
     { path: "/about", priority: 0.7, changeFrequency: "monthly" },
@@ -69,6 +70,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
       "spain-tip-calculator",
       "calculadora-evau-2026",
       "calculadora-iva",
+      "calculadora-de-salario",
+      "calculadora-de-finiquito",
+      "cuota-de-autonomos",
+      "calculadora-irpf-retencion",
       "upwork-fiverr-payout-calculator-pakistan",
     ];
     return money.includes(slug) ? 0.8 : 0.55;

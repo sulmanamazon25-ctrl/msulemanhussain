@@ -115,20 +115,86 @@ export const expansionTools: Tool[] = [
   tool({
     slug: "calculadora-iva",
     accent: "#fbbf24",
-    ...copy(
-      "Spain VAT (IVA) calculator",
-      "Calculadora IVA España",
-      "Spain IVA Calculator — Add or Extract 4% / 10% / 21%",
-      "Calculadora IVA España — Añadir o extraer 4% / 10% / 21%",
-      "Free Spain VAT calculator: add IVA to a taxable base or extract IVA from a gross total at 4%, 10%, or 21%.",
-      "Calculadora IVA gratis: añade IVA a la base o extráelo del total al 4%, 10% o 21%.",
-      "IVA calculator (Spain)",
-      "Calculadora de IVA (España)",
-      "Convert between taxable base and gross with Spanish IVA rates for invoices and quotes.",
-      "Convierte entre base imponible y total con tipos de IVA españoles para facturas y presupuestos.",
-      "Add or extract Spanish IVA instantly.",
-      "Añade o extrae IVA español al instante.",
-    ),
+    en: {
+      name: "Spain VAT (IVA) calculator",
+      title: "Spain IVA Calculator — Add or Extract 4% / 10% / 21%",
+      description:
+        "Add Spanish IVA to a taxable base or extract IVA from a gross total at 4%, 10%, or 21%. Built for quotes and expense checks — free, on-device.",
+      h1: "IVA calculator (Spain)",
+      intro:
+        "Invoice math breaks when you treat a gross supermarket ticket like a net quote. Use 21% general, 10% reduced, or 4% super-reduced — add IVA to a base imponible, or extract base + IVA from a total that already includes tax.",
+      benefit: "Stop mixing base and gross on quotes.",
+      howTo: [
+        "Choose add IVA (from base) or extract IVA (from gross).",
+        "Pick 4%, 10%, or 21% to match the goods/services.",
+        "Enter the amount and read base, IVA, and total.",
+      ],
+      whatItDoes: "Converts between taxable base and gross using the three common Spanish IVA rates.",
+      whatItDoesNot: "Does not decide which rate your activity must use, and does not file modelo 303.",
+      tips: [
+        "If a client sends a gross total, extract before you book the expense base.",
+        "Keep IVA cash separate from personal net as an autónomo.",
+        "When unsure of the rate, check AEAT guidance or your gestoría — wrong rate is expensive.",
+      ],
+      faq: [
+        {
+          q: "When do I use 4%, 10%, or 21%?",
+          a: "21% is the general rate. 10% and 4% apply to specific reduced / super-reduced categories. If you are unsure which bucket your invoice falls into, confirm before you issue it.",
+        },
+        {
+          q: "Add vs extract — which one?",
+          a: "Add when you know the net base and need the customer total. Extract when you only have a gross ticket and need the base for bookkeeping.",
+        },
+        {
+          q: "Does this replace modelo 303?",
+          a: "No. It is a pocket calculator for quotes and checks. Filing stays with AEAT / your gestoría.",
+        },
+        {
+          q: "Is data uploaded?",
+          a: "No. Local only.",
+        },
+      ],
+    },
+    es: {
+      name: "Calculadora IVA España",
+      title: "Calculadora IVA España — Añadir o extraer 4% / 10% / 21%",
+      description:
+        "Añade IVA español a una base o extráelo de un total al 4%, 10% o 21%. Para presupuestos y gastos — gratis, en local.",
+      h1: "Calculadora de IVA (España)",
+      intro:
+        "Las facturas se tueren cuando tratas un ticket bruto como si fuera neto. Usa 21% general, 10% reducido o 4% superreducido — añade IVA a la base imponible, o extrae base + IVA de un total que ya lo incluye.",
+      benefit: "Deja de mezclar base y bruto en presupuestos.",
+      howTo: [
+        "Elige añadir IVA (desde base) o extraer IVA (desde bruto).",
+        "Escoge 4%, 10% o 21% según el bien/servicio.",
+        "Introduce el importe y lee base, IVA y total.",
+      ],
+      whatItDoes: "Convierte entre base imponible y total con los tres tipos habituales de IVA.",
+      whatItDoesNot: "No decide qué tipo debes aplicar ni presenta el modelo 303.",
+      tips: [
+        "Si el cliente manda un total bruto, extrae antes de contabilizar la base.",
+        "Separa la caja del IVA del neto personal si eres autónomo.",
+        "Si dudas del tipo, confirma con AEAT o gestoría — equivocarse sale caro.",
+      ],
+      faq: [
+        {
+          q: "¿Cuándo uso 4%, 10% o 21%?",
+          a: "El 21% es el general. El 10% y el 4% aplican a categorías reducidas / superreducidas concretas. Si no tienes claro el cajón, confírmalo antes de emitir.",
+        },
+        {
+          q: "¿Añadir o extraer?",
+          a: "Añade cuando conoces la base neta y necesitas el total al cliente. Extrae cuando solo tienes un ticket bruto y necesitas la base contable.",
+        },
+        {
+          q: "¿Sustituye al modelo 303?",
+          a: "No. Es una calculadora de bolsillo. La presentación sigue en AEAT / gestoría.",
+        },
+        {
+          q: "¿Se suben datos?",
+          a: "No. Solo en local.",
+        },
+      ],
+    },
   }),
   tool({
     slug: "validador-iban-es",
@@ -151,20 +217,88 @@ export const expansionTools: Tool[] = [
   tool({
     slug: "calculadora-irpf-retencion",
     accent: "#34d399",
-    ...copy(
-      "IRPF withholding calculator",
-      "Calculadora retención IRPF",
-      "Spain IRPF Withholding Calculator — Monthly Payroll Estimate",
-      "Calculadora retención IRPF — Estimación nómina mensual",
-      "Estimate Spanish IRPF withholding per pay period from gross annual salary — free orientation tool.",
-      "Estima la retención IRPF por paga a partir del bruto anual — herramienta orientativa gratis.",
-      "IRPF withholding estimate",
-      "Estimación retención IRPF",
-      "Simplified brackets for monthly withholding orientation alongside your salary calculator.",
-      "Tramos simplificados para orientar la retención mensual junto a la calculadora de salario.",
-      "Monthly IRPF withholding ballpark.",
-      "Orden de magnitud de retención IRPF mensual.",
-    ),
+    en: {
+      name: "IRPF withholding calculator",
+      title: "Spain IRPF Withholding Calculator — Per-Pay Estimate from Gross",
+      description:
+        "Estimate Spanish IRPF withholding per pay period from gross annual salary — so the net on your offer is not a surprise. Free orientation tool.",
+      h1: "IRPF withholding estimate (Spain)",
+      intro:
+        "Take-home is what remains after withholding. When an offer only shows bruto, this tool estimates the IRPF slice per paga using simplified brackets so you can sanity-check the monthly transfer alongside the net salary calculator.",
+      benefit: "See the tax slice before you accept.",
+      howTo: [
+        "Enter gross annual salary.",
+        "Choose how many pagas the contract uses.",
+        "Read estimated withholding per period and implied rate.",
+      ],
+      whatItDoes: "Maps annual gross into a simplified withholding orientation per pay period.",
+      whatItDoesNot:
+        "Ignores many personal/family situations, disability minimums, and multi-payer rules. Not a substitute for payroll software.",
+      tips: [
+        "Use with the net salary calculator — withholding is only one slice of the story.",
+        "Two payers in one year often changes real withholding.",
+        "Company benefits in kind can affect taxable base — ask HR.",
+      ],
+      faq: [
+        {
+          q: "Is this the same as my final renta?",
+          a: "No. Withholding is an advance. Your annual renta settlement can mean paying more or getting a refund.",
+        },
+        {
+          q: "Why does my payslip differ?",
+          a: "Payroll uses your full personal situation and company rules. This is a fast orientation for offer comparison.",
+        },
+        {
+          q: "Does CCAA matter?",
+          a: "Yes for the final tax picture. This tool stays nationally orientative.",
+        },
+        {
+          q: "Is data uploaded?",
+          a: "No — on-device only.",
+        },
+      ],
+    },
+    es: {
+      name: "Calculadora retención IRPF",
+      title: "Calculadora retención IRPF España — Estimación por paga desde el bruto",
+      description:
+        "Estima la retención IRPF por paga a partir del bruto anual — para que el neto de la oferta no sorprenda. Herramienta orientativa gratis.",
+      h1: "Estimación de retención IRPF (España)",
+      intro:
+        "El neto es lo que queda tras la retención. Si la oferta solo muestra bruto, esta herramienta estima el trozo de IRPF por paga con tramos simplificados para contrastar la transferencia mensual junto a la calculadora de salario neto.",
+      benefit: "Ve el trozo fiscal antes de aceptar.",
+      howTo: [
+        "Introduce el bruto anual.",
+        "Elige cuántas pagas tiene el contrato.",
+        "Lee la retención estimada por periodo y el tipo implícito.",
+      ],
+      whatItDoes: "Traduce el bruto anual a una retención orientativa por paga con tramos simplificados.",
+      whatItDoesNot:
+        "Ignora muchas situaciones personales/familiares, mínimos por discapacidad y reglas de varios pagadores. No sustituye al software de nómina.",
+      tips: [
+        "Úsala con la calculadora de salario neto — la retención es solo una parte.",
+        "Dos pagadores en el mismo año suelen cambiar la retención real.",
+        "La retribución en especie puede afectar la base — pregunta a RR. HH.",
+      ],
+      faq: [
+        {
+          q: "¿Es lo mismo que la renta final?",
+          a: "No. La retención es un anticipo. La declaración anual puede salir a pagar o a devolver.",
+        },
+        {
+          q: "¿Por qué mi nómina difiere?",
+          a: "Nómina usa tu situación completa y reglas de empresa. Esto es orientación rápida para comparar ofertas.",
+        },
+        {
+          q: "¿Importa la CCAA?",
+          a: "Sí en el cuadro fiscal final. Esta herramienta se queda en orientación estatal.",
+        },
+        {
+          q: "¿Se suben datos?",
+          a: "No — solo en el dispositivo.",
+        },
+      ],
+    },
   }),
   tool({
     slug: "dividir-cuenta",

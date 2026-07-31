@@ -64,6 +64,14 @@ export function personEntityJsonLd() {
           url: b.url,
         })),
       },
+      {
+        "@type": "WebSite",
+        "@id": `${site.url}/#website`,
+        name: site.name,
+        url: site.url,
+        publisher: { "@id": personId },
+        inLanguage: ["en", "es"],
+      },
       ...ownedBrands.map((b) => ({
         "@type": "Organization",
         "@id": `${b.url.replace(/\/$/, "")}/#organization`,

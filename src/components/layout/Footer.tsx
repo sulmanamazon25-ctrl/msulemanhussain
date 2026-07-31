@@ -92,6 +92,11 @@ export function Footer() {
                 {dict.footer.callingAgents}
               </Link>
             </li>
+            <li>
+              <Link href={href("/expertise/spain-money-guides")} className="hover:text-bone">
+                {dict.footer.spainMoney}
+              </Link>
+            </li>
           </ul>
         </div>
         <div>

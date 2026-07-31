@@ -71,6 +71,12 @@ export default async function ToolsPillarPage({ params }: { params: Promise<{ lo
               {dict.tools.exploreCta}
             </a>
             <Link
+              href={lp("/expertise/spain-money-guides")}
+              className="rounded-md border border-white/20 px-5 py-3 text-sm font-semibold hover:border-phosphor hover:text-phosphor"
+            >
+              {locale === "es" ? "Guías salario / IRPF / finiquito" : "Spain salary / IRPF / finiquito guides"}
+            </Link>
+            <Link
               href={lp("/about")}
               className="rounded-md border border-white/20 px-5 py-3 text-sm font-semibold hover:border-phosphor hover:text-phosphor"
             >

@@ -214,34 +214,96 @@ export const spainLifeTools: Tool[] = [
     accent: "#34d399",
     en: {
       name: "Spain salary calculator",
-      title: "Spain Net Salary Calculator — Gross to Net Monthly & Annual",
-      description: "Estimate net monthly and annual salary in Spain from gross pay with IRPF brackets and employee Social Security.",
-      h1: "Spain salary calculator (gross → net)",
-      intro: "Convert Spanish gross annual salary into estimated net monthly and annual pay with orientative IRPF and employee SS rates.",
-      benefit: "Quick gross-to-net estimate for Spain.",
-      howTo: ["Enter gross annual salary.", "Choose 12 or 14 payments.", "Adjust employee SS % if needed."],
-      whatItDoes: "Applies simplified IRPF brackets + SS employee share.",
-      whatItDoesNot: "Not a payroll engine — ignores many personal deductions.",
-      tips: ["Use 14 pagas if your contract has extras.", "Compare offers on net, not only gross."],
+      title: "Spain Net Salary Calculator 2026 — Gross to Net (12/14 Pagas)",
+      description:
+        "Turn a Spanish gross job offer into estimated net monthly and annual pay. Orientative IRPF brackets + employee Social Security — free, on-device.",
+      h1: "Spain net salary calculator (bruto → neto)",
+      intro:
+        "Spanish offers are quoted in bruto. Before you negotiate rent or sign, convert gross annual pay into an estimated net monthly transfer — including whether the role uses 12 or 14 pagas. This is orientation for candidates and relocators, not a full payroll engine.",
+      benefit: "See take-home before you accept the offer.",
+      howTo: [
+        "Enter the gross annual salary from the offer.",
+        "Choose 12 or 14 payments to match the contract.",
+        "Adjust employee SS % only if you know your exact rate.",
+        "Read estimated net monthly and annual — then compare offers on net.",
+      ],
+      whatItDoes:
+        "Applies simplified state IRPF brackets plus an employee Social Security share to estimate take-home.",
+      whatItDoesNot:
+        "Does not model every CCAA deduction, disability minimums, other payers, or company benefits in kind. Not AEAT software.",
+      tips: [
+        "Negotiate and budget on net, not only bruto.",
+        "Ask HR whether pagas extras are prorated monthly or paid separately.",
+        "If you already had another payer this year, expect different withholding — verify with payroll.",
+      ],
       faq: [
-        { q: "Accurate for my CCAA?", a: "It is national-orientative; regional details can differ." },
-        { q: "Includes employer SS?", a: "No — this focuses on employee net take-home." },
+        {
+          q: "Why is my bank transfer lower than bruto / 12?",
+          a: "IRPF withholding and employee Social Security come out before net. 14-paga contracts also change the monthly figure even when annual bruto is identical.",
+        },
+        {
+          q: "Is this accurate for my comunidad autónoma?",
+          a: "It is national-orientative. Regional IRPF scales and deductions can move the real number — use this to compare offers, then confirm with a payslip simulation or advisor.",
+        },
+        {
+          q: "Does it include employer Social Security?",
+          a: "No. Employer SS is a company cost, not employee take-home. This tool focuses on what you receive.",
+        },
+        {
+          q: "Should I use 12 or 14 pagas?",
+          a: "Match the contract. Many Spanish roles still use 14; using the wrong setting mis-prices your monthly rent budget.",
+        },
+        {
+          q: "Is my salary uploaded?",
+          a: "No. The calculation stays in your browser.",
+        },
       ],
     },
     es: {
       name: "Calculadora de salario",
-      title: "Calculadora de salario neto España — Bruto a neto mensual y anual",
-      description: "Estima el salario neto mensual y anual en España a partir del bruto con tramos IRPF y SS del trabajador.",
-      h1: "Calculadora de salario (bruto → neto)",
-      intro: "Convierte el bruto anual español en neto mensual/anual estimado con IRPF orientativo y cotización del trabajador.",
-      benefit: "Estimación rápida bruto→neto en España.",
-      howTo: ["Introduce bruto anual.", "Elige 12 o 14 pagas.", "Ajusta % SS si hace falta."],
-      whatItDoes: "Aplica tramos IRPF simplificados + SS trabajador.",
-      whatItDoesNot: "No es un motor de nómina — ignora muchas deducciones personales.",
-      tips: ["Usa 14 pagas si tu contrato las tiene.", "Compara ofertas en neto, no solo bruto."],
+      title: "Calculadora salario neto España 2026 — Bruto a neto (12/14 pagas)",
+      description:
+        "Pasa una oferta en bruto a neto mensual y anual estimado. Tramos IRPF orientativos + SS del trabajador — gratis, en tu navegador.",
+      h1: "Calculadora de salario neto (bruto → neto)",
+      intro:
+        "En España las ofertas van en bruto. Antes de negociar el alquiler o firmar, convierte el bruto anual en una transferencia neta mensual estimada — y mira si el puesto paga 12 o 14 pagas. Orientación para candidatos y relocados, no un motor de nómina completo.",
+      benefit: "Ve el neto antes de aceptar la oferta.",
+      howTo: [
+        "Introduce el bruto anual de la oferta.",
+        "Elige 12 o 14 pagas según el contrato.",
+        "Ajusta el % de SS solo si conoces tu tipo exacto.",
+        "Lee el neto mensual y anual — compara ofertas en neto.",
+      ],
+      whatItDoes:
+        "Aplica tramos IRPF estatales simplificados y una parte de SS del trabajador para estimar el neto.",
+      whatItDoesNot:
+        "No modela todas las deducciones autonómicas, mínimos por discapacidad, otros pagadores ni retribución en especie. No es software de la AEAT.",
+      tips: [
+        "Negocia y presupuesta en neto, no solo en bruto.",
+        "Pregunta si las pagas extras se prorratean o se cobran aparte.",
+        "Si ya tuviste otro pagador este año, la retención puede cambiar — confírmalo con nómina o asesor.",
+      ],
       faq: [
-        { q: "¿Vale para mi CCAA?", a: "Es orientativo estatal; detalles regionales pueden variar." },
-        { q: "¿Incluye SS empresa?", a: "No — se centra en el neto del trabajador." },
+        {
+          q: "¿Por qué el ingreso en cuenta es menor que bruto/12?",
+          a: "Salen IRPF y SS del trabajador antes del neto. Con 14 pagas el mensual también cambia aunque el bruto anual sea el mismo.",
+        },
+        {
+          q: "¿Vale para mi comunidad autónoma?",
+          a: "Es orientativo estatal. Las escalas y deducciones autonómicas mueven el número real — úsalo para comparar ofertas y confirma con simulación de nómina o asesor.",
+        },
+        {
+          q: "¿Incluye la SS de la empresa?",
+          a: "No. La SS empresarial es coste de empresa, no neto del trabajador.",
+        },
+        {
+          q: "¿12 o 14 pagas?",
+          a: "Como diga el contrato. Usar el modo incorrecto tuerce el presupuesto mensual del alquiler.",
+        },
+        {
+          q: "¿Se sube mi salario?",
+          a: "No. El cálculo queda en tu navegador.",
+        },
       ],
     },
   }),
@@ -394,34 +456,94 @@ export const spainLifeTools: Tool[] = [
     accent: "#e879f9",
     en: {
       name: "Severance / finiquito calculator",
-      title: "Spain Finiquito Calculator — Severance, Vacation & Pending Pay",
-      description: "Estimate Spanish severance (finiquito) including indemnity days, unused vacation, and pending extras — free guidance tool.",
-      h1: "Finiquito calculator",
-      intro: "Estimate dismissal indemnity (20 or 33 days/year), unused vacation pay, and pending prorations for Spanish employment exits.",
-      benefit: "Orientative finiquito total in euros.",
-      howTo: ["Enter monthly salary and tenure.", "Pick dismissal type.", "Add vacation days and extras."],
-      whatItDoes: "Applies common statutory day tables with caps.",
-      whatItDoesNot: "Does not replace a labour lawyer or convenio rules.",
-      tips: ["Check your convenio for improvements.", "Keep payslips for the daily base."],
+      title: "Spain Finiquito Calculator — Indemnity, Vacation & Pending Pay",
+      description:
+        "Estimate a Spanish employment exit settlement: dismissal indemnity days, unused vacation, and pending extras — free orientation before you sign.",
+      h1: "Finiquito calculator (Spain)",
+      intro:
+        "A finiquito is not one number — it is usually pending salary, unused vacation (and often paga proration), plus indemnity that only applies to some exits. Use this to build an orientation total so you can ask HR or a labour lawyer to explain every line before you sign.",
+      benefit: "Separate the pots before you sign a settlement.",
+      howTo: [
+        "Enter monthly salary and years/months of tenure.",
+        "Pick the exit type that matches your letter (or ask HR which one they claim).",
+        "Add unused vacation days and any pending extras.",
+        "Read the orientation total — then demand a written breakdown.",
+      ],
+      whatItDoes: "Applies common statutory day tables (e.g. 20 vs 33 days/year patterns) with simple caps for orientation.",
+      whatItDoesNot:
+        "Does not replace your convenio, a labour lawyer, or the exact daily salary base from your payslips.",
+      tips: [
+        "Check whether your convenio improves on the statutory minimum.",
+        "Keep the last payslips — daily base disputes are common.",
+        "Temporary contract ends often lack statutory indemnity but still owe vacation/extras.",
+      ],
       faq: [
-        { q: "33 vs 20 days?", a: "Unfair dismissal often uses 33; objective dismissal commonly 20 — confirm legally." },
-        { q: "Contract end?", a: "Many temporary ends lack statutory indemnity — vacation/extras may still apply." },
+        {
+          q: "What is the difference between 20 and 33 days?",
+          a: "As a rule of thumb, objective dismissals often use 20 days/year of service and unfair (improcedente) dismissals 33 — with legal caps. Your letter and convenio decide which path applies; do not guess when money is large.",
+        },
+        {
+          q: "Does every exit include indemnity?",
+          a: "No. Many end-of-temporary-contract situations do not carry the same statutory indemnity as a dismissal, but vacation and prorated extras can still be due.",
+        },
+        {
+          q: "Can I rely on this number in court?",
+          a: "No. It is an orientation tool. Contested exits need payslip math and professional advice.",
+        },
+        {
+          q: "Should I sign the same day?",
+          a: "If you do not understand a line, ask for time and a written breakdown. Signing under pressure is a common regret.",
+        },
+        {
+          q: "Is data uploaded?",
+          a: "No — everything stays on your device.",
+        },
       ],
     },
     es: {
       name: "Calculadora de finiquito",
-      title: "Calculadora de finiquito — Indemnización, vacaciones y pagas",
-      description: "Estima el finiquito en España con indemnización, vacaciones pendientes y prorratas — herramienta orientativa gratis.",
-      h1: "Calculadora de finiquito",
-      intro: "Estima indemnización por despido (20 o 33 días/año), vacaciones no disfrutadas y prorratas pendientes.",
-      benefit: "Total orientativo de finiquito en euros.",
-      howTo: ["Introduce salario y antigüedad.", "Elige tipo de salida.", "Añade vacaciones y extras."],
-      whatItDoes: "Aplica tablas habituales de días con topes.",
-      whatItDoesNot: "No sustituye a un laboralista ni al convenio.",
-      tips: ["Revisa mejoras de convenio.", "Guarda nóminas para la base diaria."],
+      title: "Calculadora de finiquito España — Indemnización, vacaciones y pagas",
+      description:
+        "Estima la liquidación al salir de un empleo: días de indemnización, vacaciones pendientes y extras — orientación gratis antes de firmar.",
+      h1: "Calculadora de finiquito (España)",
+      intro:
+        "El finiquito no es un solo número: suele incluir salario pendiente, vacaciones (y a menudo prorrata de pagas) e indemnización que solo aplica en algunas salidas. Úsalo para montar un total orientativo y pedir a RR. HH. o a un laboralista el desglose línea a línea antes de firmar.",
+      benefit: "Separa los conceptos antes de firmar la liquidación.",
+      howTo: [
+        "Introduce salario mensual y antigüedad.",
+        "Elige el tipo de salida que indica la carta (o pregunta cuál reclaman).",
+        "Añade vacaciones pendientes y extras.",
+        "Lee el total orientativo — y exige el desglose por escrito.",
+      ],
+      whatItDoes: "Aplica tablas habituales de días (p. ej. patrones 20 vs 33 días/año) con topes simples para orientar.",
+      whatItDoesNot:
+        "No sustituye tu convenio, un laboralista ni la base diaria exacta de tus nóminas.",
+      tips: [
+        "Revisa si el convenio mejora el mínimo legal.",
+        "Guarda las últimas nóminas — la base diaria se discute mucho.",
+        "El fin de contrato temporal a menudo no lleva la misma indemnización, pero vacaciones/extras sí pueden deberse.",
+      ],
       faq: [
-        { q: "¿33 o 20 días?", a: "Improcedente suele 33; objetivo suele 20 — confírmalo legalmente." },
-        { q: "¿Fin de contrato?", a: "Muchos temporales no tienen indemnización tipificada — vacaciones/extras sí pueden aplicar." },
+        {
+          q: "¿Qué cambia entre 20 y 33 días?",
+          a: "Como regla orientativa, despido objetivo suele 20 días/año e improcedente 33 — con topes legales. Lo decide tu carta y convenio; no adivines si hay mucho dinero.",
+        },
+        {
+          q: "¿Toda salida incluye indemnización?",
+          a: "No. Muchos fines de contrato temporal no llevan la misma indemnización tipificada, pero vacaciones y prorratas sí pueden corresponder.",
+        },
+        {
+          q: "¿Sirve este número ante un juez?",
+          a: "No. Es orientación. Las salidas conflictivas necesitan nóminas y consejo profesional.",
+        },
+        {
+          q: "¿Debo firmar el mismo día?",
+          a: "Si no entiendes una línea, pide tiempo y desglose escrito. Firmar con prisa es un arrepentimiento habitual.",
+        },
+        {
+          q: "¿Se suben mis datos?",
+          a: "No — todo queda en tu dispositivo.",
+        },
       ],
     },
   }),
@@ -430,34 +552,92 @@ export const spainLifeTools: Tool[] = [
     accent: "#facc15",
     en: {
       name: "Autónomos quota calculator",
-      title: "Cuota de Autónomos Calculator — Estimate Monthly Self-Employed SS",
-      description: "Estimate monthly Spanish autónomo Social Security contributions from net earnings or flat-rate start — free 2026-oriented tool.",
-      h1: "Autónomos quota calculator",
-      intro: "Ballpark your monthly self-employed contribution from estimated net monthly earnings, with an optional early flat-rate mode.",
-      benefit: "Monthly cuota estimate from net earnings.",
-      howTo: ["Enter estimated monthly net.", "Toggle flat rate if newly registered.", "Read base + cuota."],
-      whatItDoes: "Maps simplified brackets to contribution bases.",
-      whatItDoesNot: "Not official Importass output.",
-      tips: ["Track real net quarterly.", "Ask a gestoría before changing base."],
+      title: "Cuota de Autónomos 2026 — Monthly RETA Estimate by Net Earnings",
+      description:
+        "Estimate your monthly Spanish autónomo Social Security cuota from net earnings, with optional early flat-rate mode — free orientation for 2026 planning.",
+      h1: "Autónomos cuota calculator (2026)",
+      intro:
+        "RETA does not wait for late invoices. Before you price clients or quit a salaried job, ballpark the monthly cuota from estimated net earnings. For 2026, Spain extended the previous bracket logic after negotiations stalled — treat this as planning math, then confirm in Importass or with your gestoría.",
+      benefit: "Price your work with cuota already in the budget.",
+      howTo: [
+        "Estimate realistic monthly net earnings (not best-case month).",
+        "Toggle flat-rate mode only if you are in an eligible early period.",
+        "Read contribution base + monthly cuota orientation.",
+        "Add a tax buffer on top before you set client prices.",
+      ],
+      whatItDoes: "Maps simplified earnings brackets to contribution bases and a monthly cuota estimate.",
+      whatItDoesNot: "Not official Importass output. Brackets and flat-rate campaigns change — verify before you file.",
+      tips: [
+        "Use a quiet-month net, not your best month, when stress-testing cashflow.",
+        "Tarifa plana is temporary — plan the step-up.",
+        "Change of base is a process; ask your gestoría before you move.",
+      ],
       faq: [
-        { q: "Official?", a: "Orientative — confirm in Importass / advisor." },
-        { q: "Flat rate?", a: "Early months can be reduced; rules change — verify current campaign." },
+        {
+          q: "Did cuotas change in 2026?",
+          a: "Public reporting indicated the government extended the prior bracket system into early 2026 after talks stalled. Always confirm the table that applies to your alta before you budget.",
+        },
+        {
+          q: "Is this the official Seguridad Social number?",
+          a: "No. It is orientation so you can plan. Importass / your advisor is authoritative.",
+        },
+        {
+          q: "What is tarifa plana?",
+          a: "An early-period reduced cuota for many new altas. It is not permanent — model the later step-up or you will underprice clients.",
+        },
+        {
+          q: "Should I include IVA when estimating net?",
+          a: "Cuota is driven by your net earnings base for RETA, not by charging IVA to clients. Keep IVA cashflow separate from personal net.",
+        },
+        {
+          q: "Is data uploaded?",
+          a: "No — local only.",
+        },
       ],
     },
     es: {
       name: "Cuota de autónomos",
-      title: "Calculadora cuota de autónomos — Estimación mensual SS",
-      description: "Estima la cuota mensual de autónomos según rendimiento neto o tarifa plana — herramienta orientativa 2026 gratis.",
-      h1: "Calculadora de cuota de autónomos",
-      intro: "Calcula una cuota mensual orientativa a partir del rendimiento neto mensual estimado, con modo tarifa plana inicial opcional.",
-      benefit: "Estimación de cuota desde rendimientos netos.",
-      howTo: ["Introduce neto mensual estimado.", "Activa tarifa plana si eres alta nueva.", "Lee base + cuota."],
-      whatItDoes: "Asocia tramos simplificados a bases de cotización.",
-      whatItDoesNot: "No es el resultado oficial de Importass.",
-      tips: ["Sigue el neto real trimestral.", "Consulta gestoría antes de cambiar base."],
+      title: "Cuota de autónomos 2026 — Estimación mensual RETA por rendimientos",
+      description:
+        "Estima tu cuota mensual de autónomos según rendimiento neto, con modo tarifa plana opcional — orientación gratis para planificar 2026.",
+      h1: "Calculadora de cuota de autónomos (2026)",
+      intro:
+        "La RETA no espera a que el cliente pague. Antes de fijar precios o dejar un empleo, estima la cuota mensual con un neto realista. En 2026 se prorrogó la lógica de tramos anterior tras el bloqueo negociador — úsalo para planificar y confirma en Importass o con tu gestoría.",
+      benefit: "Precifica tu trabajo con la cuota ya en el presupuesto.",
+      howTo: [
+        "Estima un neto mensual realista (no el mejor mes).",
+        "Activa tarifa plana solo si estás en periodo elegible.",
+        "Lee base de cotización + cuota mensual orientativa.",
+        "Suma un colchón fiscal antes de fijar precios a clientes.",
+      ],
+      whatItDoes: "Asocia tramos simplificados de rendimientos a bases y una cuota mensual estimada.",
+      whatItDoesNot: "No es el resultado oficial de Importass. Los tramos y campañas cambian — verifica antes de presentar.",
+      tips: [
+        "Estresa la caja con un mes flojo, no con el mejor.",
+        "La tarifa plana es temporal — planifica el salto.",
+        "Cambiar de base es un trámite; habla con gestoría antes.",
+      ],
       faq: [
-        { q: "¿Oficial?", a: "Orientativo — confirma en Importass / asesor." },
-        { q: "¿Tarifa plana?", a: "Los primeros meses pueden reducirse; verifica la campaña vigente." },
+        {
+          q: "¿Cambió la cuota en 2026?",
+          a: "La información pública indica que se prorrogó el sistema de tramos previo al inicio de 2026. Confirma siempre la tabla que aplica a tu alta.",
+        },
+        {
+          q: "¿Es el número oficial de la Seguridad Social?",
+          a: "No. Es orientación para planificar. Importass / tu asesor mandan.",
+        },
+        {
+          q: "¿Qué es la tarifa plana?",
+          a: "Una cuota reducida inicial para muchas altas nuevas. No es permanente — modela el tramo siguiente o infra-cobrarás.",
+        },
+        {
+          q: "¿Debo incluir el IVA al estimar el neto?",
+          a: "La cuota mira tu base de rendimientos netos RETA, no el IVA que cobras. Separa la caja del IVA del neto personal.",
+        },
+        {
+          q: "¿Se suben datos?",
+          a: "No — solo en local.",
+        },
       ],
     },
   }),

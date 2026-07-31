@@ -27,7 +27,15 @@ export const productGrowthLinks: Record<
     comparisonSlugs: [],
   },
   "spain-eats": {
-    toolSlugs: ["spain-tip-calculator", "menu-del-dia-calculator"],
+    toolSlugs: [
+      "spain-tip-calculator",
+      "menu-del-dia-calculator",
+      "calculadora-de-salario",
+      "calculadora-de-finiquito",
+      "cuota-de-autonomos",
+      "calculadora-iva",
+      "calculadora-irpf-retencion",
+    ],
     comparisonSlugs: [],
   },
   "pickleball-deutsch": {
