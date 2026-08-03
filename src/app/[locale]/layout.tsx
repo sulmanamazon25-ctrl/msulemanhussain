@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import Script from "next/script";
 import { Syne, DM_Sans, JetBrains_Mono } from "next/font/google";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -9,6 +10,9 @@ import { isLocale, locales, type Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
 import { LocaleProvider } from "@/i18n/LocaleProvider";
 import { AiSearchLazy } from "@/components/ai/AiSearchLazy";
+
+/** Google Analytics 4 — single sitewide tag (do not duplicate). */
+const GA_MEASUREMENT_ID = "G-6FCTWWXVZF";
 
 const syne = Syne({
   variable: "--font-syne",
@@ -44,11 +48,11 @@ export async function generateMetadata({
   return {
     title: {
       default: dict.meta.title,
-      template: `%s · ${site.name}`,
+      template: `%s | ${site.name}`,
     },
     description: dict.meta.description,
     // Do NOT set canonical/hreflang here — they bleed onto every child page
-    // that omits alternates (privacy, terms, projects). Home sets its own.
+    // that omits alternates. Each leaf sets alternates.canonical via localeCanonical.
     openGraph: {
       title: dict.meta.title,
       description: dict.meta.description,
@@ -66,11 +70,13 @@ export async function generateMetadata({
     },
     icons: {
       icon: [
-        { url: "/favicon.png", type: "image/png" },
         { url: "/brand/mark.svg", type: "image/svg+xml" },
+        { url: "/favicon-32.png", sizes: "32x32", type: "image/png" },
+        { url: "/favicon-16.png", sizes: "16x16", type: "image/png" },
+        { url: "/favicon.png", sizes: "48x48", type: "image/png" },
       ],
-      apple: [{ url: "/brand/mark.png" }],
-      shortcut: ["/favicon.png"],
+      apple: [{ url: "/apple-icon.png", sizes: "180x180", type: "image/png" }],
+      shortcut: ["/favicon-32.png"],
     },
   };
 }
@@ -90,6 +96,21 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale} className={`${syne.variable} ${dm.variable} ${jet.variable} h-full antialiased`}>
+      <head>
+        {/* Google tag (gtag.js) — immediately after <head>, one tag per page */}
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_MEASUREMENT_ID}');
+          `}
+        </Script>
+      </head>
       <body className="foundry-bg flex min-h-full flex-col font-sans text-bone">
         <script
           type="application/ld+json"
