@@ -1,8 +1,33 @@
 services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: msulemanhussain-postgres
+    restart: unless-stopped
+    networks:
+      - g5t1u52ej20yqweuarrspujb
+    environment:
+      POSTGRES_USER: shop
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-changeme_set_in_coolify}
+      POSTGRES_DB: msulemanhussain_shop
+    volumes:
+      - msulemanhussain_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U shop -d msulemanhussain_shop"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    labels:
+      - coolify.managed=true
+      - coolify.name=msulemanhussain-postgres
+      - coolify.projectName=msulemanhussain
+
   web:
     image: msulemanhussain:latest
     container_name: msulemanhussain-web
     restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
     networks:
       - g5t1u52ej20yqweuarrspujb
     environment:
@@ -10,6 +35,22 @@ services:
       - PORT=3000
       - HOSTNAME=0.0.0.0
       - INDEXNOW_KEY=msholh73faen85mw9vpczj2bkq1
+      - DATABASE_URL=${DATABASE_URL:-postgres://shop:changeme_set_in_coolify@postgres:5432/msulemanhussain_shop}
+      - UPLOAD_DIR=/app/data/uploads
+      - SHOP_CURRENCY=${SHOP_CURRENCY:-eur}
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD:-changeme}
+      - SESSION_SECRET=${SESSION_SECRET:-changeme_session_secret_min_32_chars_xx}
+      - STRIPE_SECRET_KEY=${STRIPE_SECRET_KEY:-}
+      - STRIPE_WEBHOOK_SECRET=${STRIPE_WEBHOOK_SECRET:-}
+      - NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=${NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY:-}
+      - SMTP_HOST=${SMTP_HOST:-}
+      - SMTP_PORT=${SMTP_PORT:-587}
+      - SMTP_USER=${SMTP_USER:-}
+      - SMTP_PASS=${SMTP_PASS:-}
+      - SMTP_FROM=${SMTP_FROM:-noreply@msulemanhussain.com}
+      - NEXT_PUBLIC_SITE_URL=${NEXT_PUBLIC_SITE_URL:-https://msulemanhussain.com}
+    volumes:
+      - msulemanhussain_uploads:/app/data/uploads
     labels:
       - traefik.enable=true
       - traefik.http.middlewares.gzip.compress=true
@@ -45,6 +86,10 @@ services:
       - coolify.managed=true
       - coolify.name=msulemanhussain-web
       - coolify.projectName=msulemanhussain
+
+volumes:
+  msulemanhussain_pgdata:
+  msulemanhussain_uploads:
 
 networks:
   g5t1u52ej20yqweuarrspujb:

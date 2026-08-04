@@ -32,6 +32,8 @@ export function Header() {
   const nav = [
     { href: href("/#now"), label: dict.nav.now },
     { href: href("/products"), label: dict.nav.products },
+    { href: href("/shop"), label: dict.nav.shop },
+    { href: href("/book"), label: dict.nav.book },
     { href: href("/tools"), label: dict.nav.tools },
     { href: href("/vs"), label: dict.nav.vs },
     { href: href("/expertise"), label: dict.nav.expertise },
